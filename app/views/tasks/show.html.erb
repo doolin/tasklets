@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <b>Tags:</b>
+  <%= @task.tags %>
+</p>
+
+<p>
   <b>Started:</b>
   <% if @task.started? %>
     <%= @task.start_time %> 

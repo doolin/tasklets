@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Description</th>
+    <th>Tags</th>
     <th>Started</th>
     <th>Finished</th>
     <th></th>
@@ -13,6 +14,7 @@
 <% @tasks.each do |task| %>
   <tr>
     <td><%= task.description %></td>
+    <td><%= task.tags %></td>
     <td><%= task.started %></td>
     <td><%= task.finished %></td>
     <td><%= link_to 'Show', task %></td>
