@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @task.description %>
+</p>
+
+<p>
+  <b>Started:</b>
+  <% if @task.started? %>
+    <%= @task.start_time %> 
+  <% else %>
+    <%= @task.started %>
+  <% end %>
+</p>
+
+<p>
+  <b>Finished:</b>
+  <%= @task.finished %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
