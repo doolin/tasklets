@@ -83,6 +83,9 @@ GEM
       json (~> 1.4.6)
     hashie (0.4.0)
     i18n (0.4.2)
+    jquery-rails (1.0.11)
+      railties (~> 3.0)
+      thor (~> 0.14)
     json (1.4.6)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -166,6 +169,7 @@ DEPENDENCIES
   dynamic_form
   email_spec
   factory_girl_rails (= 1.0)
+  jquery-rails
   launchy
   rails (= 3.0.0)
   rspec
