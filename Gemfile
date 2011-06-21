@@ -4,6 +4,13 @@ gem 'rails', '3.1.0.rc4'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem 'dynamic_form'
+
+# Rails 3.1 - Asset Pipeline
+gem 'json'
+gem 'sass'
+gem 'coffee-script'
+gem 'uglifier'
+
 gem 'jquery-rails'
 
 group :cucumber do
