@@ -13,6 +13,10 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 
+group :production do
+  gem 'therubyracer-heroku'
+end
+
 group :cucumber do
   gem 'capybara'
   gem 'database_cleaner'
