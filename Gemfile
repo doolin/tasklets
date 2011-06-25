@@ -25,6 +25,7 @@ end
 group :development do
   gem 'rspec-rails'
   gem 'annotate-models', '1.0.4'
+  gem 'yaml_db'
 end
 
 group :test do
