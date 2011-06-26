@@ -3,7 +3,10 @@ namespace :db do
     
     def interesting_tables
       ActiveRecord::Base.connection.tables.sort.reject! do |tbl|
-        ['schema_info', 'sessions', 'public_exceptions'].include?(tbl)
+        # This script is from 2006. All of these probably should be 
+        # replaced with only 'schema_migrations' for tasklets
+        # ['schema_info', 'sessions', 'public_exceptions'].include?(tbl)
+        ['schema_migrations'].include?(tbl)
       end
     end
   
