@@ -56,7 +56,10 @@ namespace :backups do
     #backup_name =  "#{APP_NAME}_#{Time.now.to_s(:number)}.sql"
     backup_path = "tmp/#{backup_name}"
     DB_CONFIG = YAML::load(ERB.new(IO.read(File.join(Rails.root.to_s, 'config', 'database.yml'))).result)[Rails.env]
-    `echo #{DB_CONFIG['password']} | pg_dump #{DB_CONFIG['database']} -Fc --username=#{DB_CONFIG['username']} --host=#{DB_CONFIG['host']} > #{backup_path}`
+    # -Fc is pg_dump "custom" flag.
+    #`echo #{DB_CONFIG['password']} | pg_dump #{DB_CONFIG['database']} -Fc --username=#{DB_CONFIG['username']} --host=#{DB_CONFIG['host']} > #{backup_path}`
+    # -Fp is pg_dump plain text output.
+    `echo #{DB_CONFIG['password']} | pg_dump #{DB_CONFIG['database']} -Fp --username=#{DB_CONFIG['username']} --host=#{DB_CONFIG['host']} > #{backup_path}`
 
     puts "gzipping sql file..."
     `gzip #{backup_path}`
@@ -79,7 +82,7 @@ namespace :backups do
     puts "uploading #{backup_name} to S3..."
     
     AWS::S3::S3Object.store(backup_name, File.open(backup_path,"r"), bucket.name, :content_type => 'application/x-gzip')
-    `rm -rf #{backup_path}`
+    #`rm -rf #{backup_path}`
     puts "backup completed @ #{Time.now}"
 
   end
