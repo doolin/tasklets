@@ -1,9 +1,10 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc4'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'pg'
 gem 'devise'
 gem 'dynamic_form'
+gem 'aws-s3'
 
 # Rails 3.1 - Asset Pipeline
 gem 'json'
@@ -13,7 +14,11 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 
-group :cucumber do
+group :production do
+  gem 'therubyracer-heroku'
+end
+
+group :cucumber, :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
@@ -26,9 +31,11 @@ group :development do
   gem 'rspec-rails'
   gem 'annotate-models', '1.0.4'
   gem 'yaml_db'
+  gem 'relish'
 end
 
 group :test do
+  gem 'sqlite3'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'autotest'
