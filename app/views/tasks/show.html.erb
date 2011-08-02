@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+
+
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, :class => "flash #{key}" unless value.blank? %>
+<% end %>
+
 
 <p>
   <b>Description:</b>

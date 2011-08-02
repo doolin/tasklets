@@ -2,15 +2,24 @@
 
 # Steps for task
 
-Given /^I am logged in$/ do
-  pending # express the regexp above with the code you wish you had
+Given /^I am signed in$/ do
+  email = 'testing@man.net'
+  password = 'secretpass'
+
+  Given %{I have one user "#{email}" with password "#{password}"}
+  And %{I go to sign in}
+  And %{I fill in "user_email" with "#{email}"}
+  And %{I fill in "user_password" with "#{password}"}
+  And %{I press "Sign in"}
 end
+
+Given /^on the new task page$/ do
+  visit new_task_path
+end
+
 
 Given /^I fill in the "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value) # pending # express the regexp above with the code you wish you had
 end
 
-Then /^I should see "([^"]*)" checkbox$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
 
