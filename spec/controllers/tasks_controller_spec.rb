@@ -8,12 +8,13 @@ describe TasksController do
 
     it "should deny access to 'create'" do
       post :create
-      response.should redirect_to('users/sign_in')
+      #response.should redirect_to('users/sign_in')
+      response.should redirect_to user_session_path
     end
 
     it "should deny access to 'destroy'" do
       delete :destroy, :id => 1
-      response.should redirect_to('users_sign_in')
+      response.should redirect_to user_session_path
     end
   end
 
@@ -43,7 +44,7 @@ describe TasksController do
     it "assigns a new task as @task" do
       Task.stub(:new) { mock_task }
       get :new
-      assigns(:task).should be(mock_task)
+      assigns(:task).should be(@mock_task)
     end
   end
 
@@ -57,31 +58,42 @@ describe TasksController do
 
   describe "POST create" do
 
+    before(:each) do
+      @user = Factory(:user)
+      sign_in @user
+    end
+
     describe "with valid params" do
       it "assigns a newly created task as @task" do
         Task.stub(:new).with({'these' => 'params'}) { mock_task(:save => true) }
         post :create, :task => {'these' => 'params'}
-        assigns(:task).should be(mock_task)
+        assigns(:task).should be(@mock_task)
       end
 
       it "redirects to the created task" do
         Task.stub(:new) { mock_task(:save => true) }
         post :create, :task => {}
+        #puts task_url(mock_task)
         response.should redirect_to(task_url(mock_task))
       end
     end
 
     describe "with invalid params" do
+
+      before(:each) do
+        sign_out @user
+      end
+
       it "assigns a newly created but unsaved task as @task" do
         Task.stub(:new).with({'these' => 'params'}) { mock_task(:save => false) }
         post :create, :task => {'these' => 'params'}
-        assigns(:task).should be(mock_task)
+        assigns(:task).should be(@mock_task)
       end
 
       it "re-renders the 'new' template" do
         Task.stub(:new) { mock_task(:save => false) }
         post :create, :task => {}
-        response.should render_template("new")
+        response.should render_template(:action => 'new')
       end
     end
 
@@ -126,6 +138,12 @@ describe TasksController do
   end
 
   describe "DELETE destroy" do
+
+    before(:each) do
+      @user = Factory(:user)
+      sign_in @user
+    end
+
     it "destroys the requested task" do
       Task.should_receive(:find).with("37") { mock_task }
       mock_task.should_receive(:destroy)
@@ -135,8 +153,9 @@ describe TasksController do
     it "redirects to the tasks list" do
       Task.stub(:find) { mock_task }
       delete :destroy, :id => "1"
-      response.should redirect_to(tasks_url)
+      response.should redirect_to tasks_path
     end
+
   end
 
 end

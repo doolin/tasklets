@@ -6,5 +6,5 @@ Feature: User manages tasks
     #Then show me the page
     And I fill in the "Description" with "Task"
     When I press "Create Task"
-    Then I should see "Project was successfully created."
+    Then I should see "Task was successfully created."
 
