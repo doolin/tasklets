@@ -1,4 +1,9 @@
+
 # Session
+Given /^that a confirmed user exists$/ do
+  Given %{I have one user "minimal@example.com" with password "test1234"}
+end
+
 Given /^I am logged in$/ do
   visit path_to('the login page')
   fill_in('user_email', :with => @user.email)

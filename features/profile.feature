@@ -8,4 +8,3 @@ Feature: User creates profile
     When the user fills out all the profile fields correctly
     And the user presses the "Create Profile" button
     Then the user is shown the page for the new profile
-    Then show me the page
