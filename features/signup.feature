@@ -11,6 +11,5 @@ Feature: Signing Up
     And I fill in "user_password" with "test1234"
     And I fill in "user_password_confirmation" with "test1234"
     And I press "Sign up"
-    Then show me the page
-    Then I should see "You will receive an email with instructions"
+    Then I should see "You have signed up successfully."
 
