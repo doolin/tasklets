@@ -8,3 +8,11 @@ Feature: User manages tasks
     When I press "Create Task"
     Then I should see "Task was successfully created."
 
+  @wip
+  Scenario: Logged in user deletes a task
+    Given I am signed in
+    And on a specific task's page
+    When I press "Delete Task"
+    Then I should on my tasks list page
+    And I should see "Task was successfully deleted."
+
