@@ -1,7 +1,8 @@
 
 # Session
 Given /^that a confirmed user exists$/ do
-  Given %{I have one user "minimal@example.com" with password "test1234"}
+  #Given %{I have one user "minimal@example.com" with password "test1234"}
+  step %{I have one user "minimal@example.com" with password "test1234"}
 end
 
 Given /^I am logged in$/ do
