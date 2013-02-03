@@ -22,11 +22,11 @@ Given /^I am a new and authenicated user$/ do
   email = 'testing@man.net'
   password = 'secretpass'
 
-  Given %{I have one user "#{email}" with password "#{password}"}
-  And %{I go to sign in}
-  And %{I fill in "user_email" with "#{email}"}
-  And %{I fill in "user_password" with "#{password}"}
-  And %{I press "Sign in"}
+  step %{I have one user "#{email}" with password "#{password}"}
+  step %{I go to sign in}
+  step %{I fill in "user_email" with "#{email}"}
+  step %{I fill in "user_password" with "#{password}"}
+  step %{I press "Sign in"}
 end
 
 Given /^is on the Create Profile page$/ do
@@ -41,9 +41,9 @@ When /^the user fills out all the profile fields correctly$/ do
   #startdate = "2011-07-16"
   #finishdate = "2011-02-03 00:00:00.000000"
   bio = "Foo Bar's bio summary"
-  And %{I fill in "Firstname" with "#{firstname}"}
-  And %{I fill in "Lastname" with "#{lastname}"}
-  And %{I fill in "Bio" with "#{bio}"}
+  step %{I fill in "Firstname" with "#{firstname}"}
+  step %{I fill in "Lastname" with "#{lastname}"}
+  step %{I fill in "Bio" with "#{bio}"}
 
   # Time and date fields are broken in Capybara, or
   # perhaps it's more accurate to say that Rails doesn't
