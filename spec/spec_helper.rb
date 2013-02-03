@@ -3,6 +3,18 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 
+require "email_spec"
+
+Spec::Runner.configure do |config|
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
+end
+
+# For Devise authentication
+RSpec.configure do |config|
+  config.include Devise::TestHelpers, :type => :controller
+end
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -24,10 +36,5 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
-# For Devise authentication
-RSpec.configure do |config|
-  config.include Devise::TestHelpers, :type => :controller
-end
 
 end

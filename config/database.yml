@@ -6,7 +6,7 @@ development:
   database: tasklets_development
   pool: 5
   username: tasklets
-  password: 
+  password:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
