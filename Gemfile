@@ -29,7 +29,6 @@ end
 group :cucumber, :development, :test do
   gem 'capybara'
   gem 'cucumber'
-  gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
 end
 
@@ -45,8 +44,6 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'database_cleaner'
-  gem 'autotest'
   gem 'webrat', '0.7.2'
   gem 'factory_girl_rails', '1.0'
-#  gem 'cover_me', '>= 1.0.0.rc2'
 end
