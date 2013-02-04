@@ -23,7 +23,7 @@ group :production do
 end
 
 group :test do
-  gem 'cucumber-rails', "~> 1.0", require: false
+  gem 'cucumber-rails', require: false
 end
 
 group :cucumber, :development, :test do
@@ -33,7 +33,6 @@ group :cucumber, :development, :test do
 end
 
 group :development do
-  gem 'rspec-rails'
   gem 'yaml_db'
   gem 'relish'
 end
@@ -41,9 +40,8 @@ end
 group :test do
   gem 'email_spec'
   gem 'sqlite3'
-  gem 'rspec'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.12.2'
   gem 'database_cleaner'
   gem 'webrat', '0.7.2'
-  gem 'factory_girl_rails', '1.0'
+  gem 'factory_girl_rails'
 end
