@@ -18,10 +18,6 @@ gem 'jquery-rails'
 
 gem "zurb-foundation", :group => :assets
 
-group :production do
-  gem 'therubyracer-heroku'
-end
-
 group :test do
   gem 'cucumber-rails', require: false
 end
