@@ -12,11 +12,13 @@ module App1
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    config.assets.initialize_on_precompile = false
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   end
 end
