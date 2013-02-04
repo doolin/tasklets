@@ -12,5 +12,5 @@ Feature: Signing Up
     And I fill in "user_password_confirmation" with "test1234"
     And I press "Sign up"
     Then I should see "You have signed up successfully."
-    And "test@example.com" should receive an email
+    #And "test@example.com" should receive an email
 
