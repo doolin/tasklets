@@ -1,9 +1,13 @@
-Factory.define :task do |t|
-  t.description "Task description dummy text."
+FactoryGirl.define do
+  factory :task do
+    description "Task description dummy text."
+  end
 end
 
-Factory.define :user do |u|
-  u.email                 "david.doolin+3@example.com"
-  u.password              "foobar"
-  u.password_confirmation "foobar"
+FactoryGirl.define do
+  factory :user do
+    email                 "david.doolin+3@example.com"
+    password              "foobar"
+    password_confirmation "foobar"
+  end
 end
