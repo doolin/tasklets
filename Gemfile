@@ -12,7 +12,7 @@ gem 'sass'
 gem 'haml'
 gem 'coffee-script'
 gem 'uglifier'
-
+gem 'sprockets'
 gem 'jquery-rails'
 
 gem "zurb-foundation", :group => :assets
