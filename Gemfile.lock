@@ -213,7 +213,6 @@ DEPENDENCIES
   relish
   rspec-rails (= 2.12.2)
   sass
-  sprockets
   sqlite3
   uglifier
   yaml_db
