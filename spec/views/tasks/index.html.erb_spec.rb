@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "tasks/index.html.erb" do
+describe "tasks/index" do
 
   #include Devise::TestHelpers
 

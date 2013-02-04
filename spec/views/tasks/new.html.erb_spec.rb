@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "tasks/new.html.erb" do
+describe "tasks/new" do
   before(:each) do
     assign(:task, stub_model(Task,
       :description => "MyString",

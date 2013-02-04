@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "profiles/show.html.erb" do
+describe "profiles/show" do
   before(:each) do
     @profile = assign(:profile, stub_model(Profile,
       :firstname => "Firstname",
