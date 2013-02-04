@@ -22,9 +22,12 @@ group :production do
   gem 'therubyracer-heroku'
 end
 
+group :test do
+  gem 'cucumber-rails', "~> 1.0", require: false
+end
+
 group :cucumber, :development, :test do
   gem 'capybara'
-  gem 'cucumber-rails'
   gem 'cucumber'
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page

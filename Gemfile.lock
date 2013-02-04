@@ -195,7 +195,7 @@ DEPENDENCIES
   capybara
   coffee-script
   cucumber
-  cucumber-rails
+  cucumber-rails (~> 1.0)
   database_cleaner
   devise
   dynamic_form
