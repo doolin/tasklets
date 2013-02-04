@@ -90,7 +90,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tasks_path, :flash => { :success => 'Task was successfully deleted.'}) }
+      format.html { redirect_to(new_task_path, :flash => { :success => 'Task was successfully deleted.'}) }
       format.xml  { head :ok }
     end
   end
