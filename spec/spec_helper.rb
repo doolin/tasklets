@@ -5,7 +5,7 @@ require 'rspec/rails'
 
 require "email_spec"
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
 end
