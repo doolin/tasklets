@@ -7,11 +7,14 @@ gem 'dynamic_form'
 gem 'aws-s3'
 
 # Rails 3.1 - Asset Pipeline
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+end
+
 gem 'json'
-gem 'sass'
 gem 'haml'
-gem 'coffee-script'
-gem 'uglifier'
 gem 'sprockets'
 gem 'jquery-rails'
 

@@ -13,8 +13,12 @@ App1::Application.configure do
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   # Compress both stylesheets and JavaScripts
+  config.assets.compress = false
   config.assets.js_compressor  = :uglifier
   #config.assets.css_compressor = :scss
+
+  # Don't fallback to assets pipeline if a precompiled asset is missed
+  config.assets.compile = false
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
