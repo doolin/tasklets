@@ -179,10 +179,6 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
-    webrat (0.7.2)
-      nokogiri (>= 1.2.0)
-      rack (>= 1.0)
-      rack-test (>= 0.5.3)
     websocket (1.0.7)
     xml-simple (1.1.2)
     xpath (1.0.0)
@@ -220,6 +216,5 @@ DEPENDENCIES
   sprockets
   sqlite3
   uglifier
-  webrat (= 0.7.2)
   yaml_db
   zurb-foundation

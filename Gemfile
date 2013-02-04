@@ -38,6 +38,5 @@ group :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.12.2'
   gem 'database_cleaner'
-  gem 'webrat', '0.7.2'
   gem 'factory_girl_rails'
 end
