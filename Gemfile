@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'pg'
 gem 'devise'
 gem 'dynamic_form'
@@ -38,7 +38,7 @@ end
 group :test do
   gem 'email_spec'
   gem 'sqlite3'
-  gem 'rspec-rails', '2.12.2'
+  gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
 end
