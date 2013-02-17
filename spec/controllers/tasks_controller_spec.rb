@@ -61,6 +61,7 @@ describe TasksController do
     before(:each) do
       @user = FactoryGirl.build(:user)
       sign_in @user
+      #controller.stub(:authenticate_user!)
     end
 
     describe "with valid params" do
@@ -70,7 +71,8 @@ describe TasksController do
         assigns(:task).should be(@mock_task)
       end
 
-      xit "redirects to the created task" do
+      it "redirects to the created task" do
+        controller.stub(:authenticate_user!)
         Task.stub(:new) { mock_task(:save => true) }
         post :create, :task => {}
         #puts task_url(mock_task)
@@ -142,9 +144,10 @@ describe TasksController do
     before(:each) do
       @user = FactoryGirl.build(:user)
       sign_in @user
+      controller.stub(:authenticate_user!)
     end
 
-    xit "destroys the requested task" do
+    it "destroys the requested task" do
       Task.should_receive(:find).with("37") { mock_task }
       mock_task.should_receive(:destroy)
       delete :destroy, :id => "37"
@@ -152,7 +155,7 @@ describe TasksController do
 
     # app works correctly, test doesn't work, probably should delete it.
     # certainly need to fix it or write a different test.
-    xit "redirects to the tasks list" do
+    it "redirects to the tasks list" do
       Task.stub(:find) { mock_task(:id => "37") }
       delete :destroy, :id => "37"
       response.should redirect_to new_task_path
