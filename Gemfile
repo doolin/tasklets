@@ -5,6 +5,7 @@ gem 'pg'
 gem 'devise'
 gem 'dynamic_form'
 gem 'aws-s3'
+gem 'haml-rails'
 
 # Rails 3.1 - Asset Pipeline
 group :assets do
