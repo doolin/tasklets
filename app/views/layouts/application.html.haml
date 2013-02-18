@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title Inchstone
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    %script{:src => "http://use.typekit.com/dvk8ler.js", :type => "text/javascript"}
+    :javascript
+      try{Typekit.load();}catch(e){}    = csrf_meta_tag
+  %body
+    .container
+      = render 'layouts/header'
+      = yield
+      = render 'layouts/footer'
