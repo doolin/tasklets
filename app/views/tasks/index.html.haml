@@ -1,7 +1,7 @@
 %h2.tasklet-list Tasklet list
 - flash.each do |key, value|
   = content_tag :div, value, :class => "flash #{key}" unless value.blank?
-%table
+%table.tasks
   %tr
     %th Description
     %th Tags
@@ -11,11 +11,11 @@
     %th
     %th
   - @tasks.each do |task|
-    %tr
-      %td= task.description
-      %td= task.tags
-      %td= task.started
-      %td= task.finished
+    %tr.task
+      %td.description= task.description
+      %td.tags= task.tags
+      %td.started= task.started
+      %td.finished= task.finished
       %td= link_to 'Show', task
       %td= link_to 'Edit', edit_task_path(task)
       /
