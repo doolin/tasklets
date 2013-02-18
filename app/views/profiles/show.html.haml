@@ -1,0 +1,31 @@
+%p#notice= notice
+%p
+  %b Firstname:
+  = @profile.firstname
+%p
+  %b Lastname:
+  = @profile.lastname
+%p
+  %b Bio:
+  = @profile.bio
+%p
+  %b Website:
+  = @profile.website
+%p
+  %b Twitter:
+  = @profile.twitter
+%p
+  %b Facebook:
+  = @profile.facebook
+%p
+  %b Linkedin:
+  = @profile.linkedin
+%p
+  %b Google:
+  = @profile.google
+%p
+  %b Url:
+  = @profile.url
+= link_to 'Edit', edit_profile_path(@profile)
+|
+\#{link_to 'Back', profiles_path}
