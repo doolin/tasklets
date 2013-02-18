@@ -1,0 +1,21 @@
+- flash.each do |key, value|
+  = content_tag :div, value, :class => "flash #{key}" unless value.blank?
+%p
+  %b Description:
+  = @task.description
+%p
+  %b Tags:
+  = @task.tags
+%p
+  %b Started:
+  - if @task.started?
+    = @task.start_time
+  - else
+    = @task.started
+%p
+  %b Finished:
+  = @task.finished
+= link_to 'Edit', edit_task_path(@task)
+|
+\#{link_to 'Back', tasks_path} |
+\#{link_to 'Destroy', task_path(@task), :confirm => 'Are you sure?', :method => :delete}
