@@ -37,6 +37,9 @@ end
 
 group :test do
   gem 'email_spec'
+  gem 'jasmine'
+  gem 'jasmine-headless-webkit'
+  gem 'jasminerice', :git => 'https://github.com/bradphelan/jasminerice.git'
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'database_cleaner'
