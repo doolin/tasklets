@@ -36,7 +36,7 @@ group :development do
   gem 'relish'
 end
 
-group :test do
+group :test, :development do
   gem 'email_spec'
   gem 'jasmine'
   gem 'jasmine-headless-webkit'
