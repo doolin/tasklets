@@ -5,6 +5,11 @@ function init() {
     $detail.toggleClass('hidden');
     event.preventDefault();
   });
+
+  // Not the right place for this definition.
+  getFirstLine = function(text) {
+    return "This is the second line.";
+  }
 }
 
 $(function() {
