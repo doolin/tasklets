@@ -8,7 +8,7 @@ function init() {
 
   // Not the right place for this definition.
   getFirstLine = function(text) {
-    return "This is the second line.";
+    return text.split(/[.!?]/)[0];
   }
 }
 
