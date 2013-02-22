@@ -6,7 +6,7 @@ describe("clicking a show link", function() {
     init();
     var description = $('.description').text(); // Need text
     var firstline = getFirstLine(description);
-    expect(firstline).toHaveText('This is the first line.');
+    expect(firstline).toEqual('This is the first line.');
   });
 
 });
