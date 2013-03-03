@@ -4,7 +4,7 @@ gem 'rails', '3.2.12'
 gem 'pg'
 gem 'devise'
 gem 'dynamic_form'
-gem 'aws-s3'
+#gem 'aws-s3'
 gem 'haml-rails'
 
 # Rails 3.1 - Asset Pipeline
