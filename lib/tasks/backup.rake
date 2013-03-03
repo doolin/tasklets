@@ -1,7 +1,7 @@
 
 namespace :olddb do
   namespace :backup do
-    
+
     def interesting_tables
       ActiveRecord::Base.connection.tables.sort.reject! do |tbl|
         # This script is from 2006. All of these probably should be 
@@ -10,43 +10,43 @@ namespace :olddb do
         ['schema_migrations'].include?(tbl)
       end
     end
-  
+
     desc "Dump entire db."
     task :write => :environment do 
 
       dir = './db/backup'
       FileUtils.mkdir_p(dir)
       FileUtils.chdir(dir)
-    
+
       interesting_tables.each do |tbl|
 
         klass = tbl.classify.constantize
         puts "Writing #{tbl}..."
         File.open("#{tbl}.yml", 'w+') { |f| YAML.dump klass.find(:all).collect(&:attributes), f }      
       end
-    
+
     end
-  
+
     task :read => [:environment, 'db:schema:load'] do 
 
       dir = './db/backup'
       FileUtils.mkdir_p(dir)
       FileUtils.chdir(dir)
-    
+
       interesting_tables.each do |tbl|
 
         klass = tbl.classify.constantize
         ActiveRecord::Base.transaction do 
-        
+
           puts "Loading #{tbl}..."
           YAML.load_file("#{tbl}.yml").each do |fixture|
             ActiveRecord::Base.connection.execute "INSERT INTO #{tbl} (#{fixture.keys.join(",")}) VALUES (#{fixture.values.collect { |value| ActiveRecord::Base.connection.quote(value) }.join(",")})", 'Fixture Insert'
-          end        
+          end
         end
       end
-    
+
     end
-  
+
   end
 end
 
@@ -70,7 +70,7 @@ end
 
 BACKUP_BUCKET_NAME = 'tasklets'
 APP_NAME = 'tasklets'
- 
+
 # Example: rake backups:backup
 
 #desc "Create a name for the backup file"
@@ -82,7 +82,7 @@ end
 
 
   desc "Dump a postgres database into tmp"
-def pgdump(backup_name) 
+def pgdump(backup_name)
   #puts "backup started @ #{Time.now}"
   #puts "dumping sql file.."
   #backup_name =  "#{APP_NAME}_#{Time.now.to_s(:number)}.sql"
@@ -92,20 +92,21 @@ def pgdump(backup_name)
 end
 
 
-namespace :backups do 
+namespace :backups do
 
   desc "backup from localhost and send to S3"
   #task :backup => :environment do
-  task :backup, :bucketname, :filename do |t, args|
+  #task :backup, :bucketname, :filename do |t, args|
+  task :backup do |t|
 
     puts "From backups:backup..."
 
-    BACKUP_BUCKET_NAME = args.bucketname
-    backup_name = create_name(args.filename)
+    BACKUP_BUCKET_NAME = 'tasklets' #args.bucketname
+    #backup_name = create_name(args.filename)
     #pgdump(FILENAME)
     #puts "backup started @ #{Time.now}"
     #puts "dumping sql file.."
-    #backup_name =  "#{APP_NAME}_#{Time.now.to_s(:number)}.sql"
+    backup_name =  "#{APP_NAME}_#{Time.now.to_s(:number)}.sql"
     backup_path = "tmp/#{backup_name}"
     DB_CONFIG = YAML::load(ERB.new(IO.read(File.join(Rails.root.to_s, 'config', 'database.yml'))).result)[Rails.env]
     # -Fc is pg_dump "custom" flag.
@@ -132,7 +133,7 @@ namespace :backups do
     end
 
     puts "uploading #{backup_name} to S3..."
-    
+
     AWS::S3::S3Object.store(backup_name, File.open(backup_path,"r"), bucket.name, :content_type => 'application/x-gzip')
     #`rm -rf #{backup_path}`
     puts "backup completed @ #{Time.now}"
@@ -175,11 +176,11 @@ namespace :perez do
 
     backup_name =  "#{Time.now.to_s(:number)}_#{APP_NAME}.dump"
     backup_path = "tmp/#{backup_name}"
-    
+
     #`echo #{DB_CONFIG['password']} | pg_dump #{DB_CONFIG['database']} -Fc --username=#{DB_CONFIG['username']} --host=#{DB_CONFIG['host']} > #{backup_path}`
     # Assumes PGPASSWORD is set, check DB_CONFIG.
     `pg_dump #{DB_CONFIG['database']} -Fc --username=#{DB_CONFIG['username']} --host=#{DB_CONFIG['host']} > #{backup_path}`
-  
+
     puts "gzipping sql file..."
     `gzip #{backup_path}`
 
@@ -201,12 +202,12 @@ namespace :perez do
     end
 
     puts "uploading #{backup_name} to S3..."
-    
+
     AWS::S3::S3Object.store(backup_name, File.open(backup_path,"r"), bucket.name, :content_type => 'application/x-gzip')
     `rm -rf #{backup_path}`
     puts "backup completed @ #{Time.now}"
 #=end
 
- end  
+ end
 
 end
