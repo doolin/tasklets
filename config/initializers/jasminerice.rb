@@ -1,6 +1,7 @@
 # Use this file to set configuration options for Jasminerice,
 # all of these are initialized to their respective defaults,
 # but you can change them here.
+
 Jasminerice.setup do |config|
   # Tell Jasminerice to automatically mount itself in your application.
   # If set to false, you must manually mount the
