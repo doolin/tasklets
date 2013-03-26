@@ -110,9 +110,9 @@ namespace :backups do
     backup_path = "tmp/#{backup_name}"
     DB_CONFIG = YAML::load(ERB.new(IO.read(File.join(Rails.root.to_s, 'config', 'database.yml'))).result)[Rails.env]
     # -Fc is pg_dump "custom" flag.
-    #`echo #{DB_CONFIG['password']} | pg_dump #{DB_CONFIG['database']} -Fc --username=#{DB_CONFIG['username']} --host=#{DB_CONFIG['host']} > #{backup_path}`
+    `echo #{DB_CONFIG['password']} | pg_dump #{DB_CONFIG['database']} -Fc --username=#{DB_CONFIG['username']} --host=#{DB_CONFIG['host']} > #{backup_path}`
     # -Fp is pg_dump plain text output.
-    `echo #{DB_CONFIG['password']} | pg_dump #{DB_CONFIG['database']} -Fp --username=#{DB_CONFIG['username']} --host=#{DB_CONFIG['host']} > #{backup_path}`
+    #`echo #{DB_CONFIG['password']} | pg_dump #{DB_CONFIG['database']} -Fp --username=#{DB_CONFIG['username']} --host=#{DB_CONFIG['host']} > #{backup_path}`
 
     puts "gzipping sql file..."
     `gzip #{backup_path}`
