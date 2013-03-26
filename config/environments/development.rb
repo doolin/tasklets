@@ -5,6 +5,10 @@ App1::Application.configure do
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
   config.cache_classes = false
+  config.action_controller.perform_caching = false
+  # Threading affects caching:
+  # http://stackoverflow.com/questions/7618254/javascript-is-cached-in-development-mode-with-asset-pipeline
+  # config.threadsafe!
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
@@ -22,7 +26,7 @@ App1::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
-  
+
   ## Devise needs this
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
