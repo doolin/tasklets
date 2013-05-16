@@ -1,18 +1,22 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails4_upgrade'
+
+gem 'rails', '4.0.0.rc1'
 gem 'pg'
-gem 'devise'
+gem 'devise', '3.0.0.rc'
 gem 'dynamic_form'
 gem 'aws-s3'
 gem 'haml-rails'
+
+gem 'protected_attributes'
 
 gem 'json', '~> 1.7.7'
 
 # Rails 3.1 - Asset Pipeline
 group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
+  gem 'sass-rails', '4.0.0.rc1'
+  gem 'coffee-rails', '~>4.0.0'
   gem 'uglifier'
 end
 
