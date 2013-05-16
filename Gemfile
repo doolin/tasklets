@@ -7,6 +7,8 @@ gem 'dynamic_form'
 gem 'aws-s3'
 gem 'haml-rails'
 
+gem 'json', '~> 1.7.7'
+
 # Rails 3.1 - Asset Pipeline
 group :assets do
   gem 'sass-rails'
@@ -14,7 +16,6 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'json'
 gem 'haml'
 gem 'sprockets'
 gem 'jquery-rails'
