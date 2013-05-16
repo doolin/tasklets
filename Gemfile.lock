@@ -220,7 +220,6 @@ DEPENDENCIES
   aws-s3
   capybara
   coffee-rails (~> 4.0.0)
-  cucumber
   cucumber-rails
   database_cleaner
   devise (= 3.0.0.rc)

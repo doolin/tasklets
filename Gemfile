@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby '1.9.3'
 
 gem 'rails4_upgrade'
 
@@ -32,7 +33,6 @@ end
 
 group :cucumber, :development, :test do
   gem 'capybara'
-  gem 'cucumber'
   gem 'launchy'    # So you can do Then show me the page
 end
 
