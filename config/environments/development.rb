@@ -10,6 +10,8 @@ App1::Application.configure do
   # http://stackoverflow.com/questions/7618254/javascript-is-cached-in-development-mode-with-asset-pipeline
   # config.threadsafe!
 
+  config.eager_load = false
+
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   #config.action_view.debug_rjs             = true
