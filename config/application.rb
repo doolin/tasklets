@@ -12,7 +12,7 @@ module App1
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    config.assets.initialize_on_precompile = false
+    #config.assets.initialize_on_precompile = false
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
