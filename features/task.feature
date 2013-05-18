@@ -5,8 +5,8 @@ Feature: User manages tasks
     And on the new task page
     #Then show me the page
     And I fill in the "Description" with "Task"
-    When I press "Create Task"
-    Then I should see "Task was successfully created."
+    When I pressem button "Create Task"
+    Then I'ma get "Task was successfully created."
 
   @wip
   Scenario: Logged in user deletes a task
