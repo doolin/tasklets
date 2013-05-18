@@ -9,6 +9,7 @@ gem 'devise', '3.0.0.rc'
 gem 'dynamic_form'
 gem 'aws-s3'
 gem 'haml-rails'
+gem 'thin'
 
 gem 'protected_attributes'
 
