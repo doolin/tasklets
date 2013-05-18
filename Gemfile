@@ -10,6 +10,8 @@ gem 'dynamic_form'
 gem 'aws-s3'
 gem 'haml-rails'
 gem 'thin'
+gem 'foreman'
+gem 'unicorn'
 
 gem 'protected_attributes'
 
