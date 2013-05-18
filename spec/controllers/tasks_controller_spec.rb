@@ -61,7 +61,7 @@ describe TasksController do
     before(:each) do
       @user = FactoryGirl.build(:user)
       sign_in @user
-      #controller.stub(:authenticate_user!)
+      controller.stub(:authenticate_user!)
     end
 
     describe "with valid params" do
@@ -75,15 +75,25 @@ describe TasksController do
         controller.stub(:authenticate_user!)
         Task.stub(:new) { mock_task(:save => true) }
         post :create, :task => {}
-        #puts task_url(mock_task)
         response.should redirect_to(task_url(mock_task))
       end
     end
 
     describe "with invalid params" do
 
-      before(:each) do
-        sign_out @user
+      #before(:each) do
+      #  sign_out @user
+      #end
+
+      it "does not save the new contact" do
+        expect{
+          post :create, task: {}
+        }.to_not change(Task,:count)
+      end
+
+      it "re-renders the new method" do
+        post :create, task: {}
+        response.should render_template :new
       end
 
       it "assigns a newly created but unsaved task as @task" do
@@ -95,7 +105,7 @@ describe TasksController do
       it "re-renders the 'new' template" do
         Task.stub(:new) { mock_task(:save => false) }
         post :create, :task => {}
-        response.should render_template(:action => 'new')
+        response.should render_template('new')
       end
     end
 
