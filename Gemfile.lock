@@ -112,7 +112,7 @@ GEM
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.7.7)
+    json (1.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     mail (2.5.4)
@@ -232,7 +232,6 @@ DEPENDENCIES
   jasmine-headless-webkit
   jasminerice!
   jquery-rails
-  json (~> 1.7.7)
   launchy
   pg
   protected_attributes

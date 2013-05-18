@@ -12,8 +12,6 @@ gem 'haml-rails'
 
 gem 'protected_attributes'
 
-gem 'json', '~> 1.7.7'
-
 # Rails 3.1 - Asset Pipeline
 group :assets do
   gem 'sass-rails', '4.0.0.rc1'
