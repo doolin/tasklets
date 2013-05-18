@@ -14,6 +14,7 @@ gem 'foreman'
 gem 'unicorn'
 
 gem 'protected_attributes'
+gem 'rb-fsevent'
 
 group :production do
   gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
