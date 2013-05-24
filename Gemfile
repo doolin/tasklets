@@ -54,6 +54,8 @@ group :test, :development do
   gem 'email_spec'
   gem 'jasmine'
   gem 'jasmine-headless-webkit'
+  gem 'guard-jasmine'
+  gem 'jasmine-stories'
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'database_cleaner'
