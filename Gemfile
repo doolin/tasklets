@@ -1,10 +1,11 @@
 source 'http://rubygems.org'
-ruby '2.0.0'
+#ruby '2.0.0'
 
 gem 'rails4_upgrade'
 
 gem 'rails', '4.0.0.rc1'
-gem 'pg'
+#gem 'pg'
+gem 'sqlite3'
 gem 'devise', '3.0.0.rc'
 gem 'dynamic_form'
 gem 'aws-s3'
@@ -56,8 +57,7 @@ group :test, :development do
   gem 'jasmine-headless-webkit'
   gem 'guard-jasmine'
   gem 'jasmine-stories'
-  gem 'sqlite3'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.99'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
 end

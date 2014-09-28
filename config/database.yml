@@ -1,17 +1,20 @@
 # SQLite version 3.x
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: tasklets_development
+  #adapter: postgresql
+  adapter: sqlite3
+  #database: tasklets_development
+  database: db/development.sqlite3
   pool: 5
-  username: postgres
-  password:
+  timeout: 5000
+  #encoding: unicode
+  #username: postgres
+  #password:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test: &test
+test: # &test
   adapter: sqlite3
   database: db/test.sqlite3
   pool: 5
@@ -22,5 +25,5 @@ production:
   database: tasklets_production
   pool: 5
 
-cucumber:
-  <<: *test
+#cucumber:
+#  <<: *test

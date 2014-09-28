@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130218161037) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "profiles", force: true do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -26,16 +23,16 @@ ActiveRecord::Schema.define(version: 20130218161037) do
     t.string   "linkedin"
     t.string   "google"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tasks", force: true do |t|
-    t.text     "description"
+    t.text     "description", limit: 255
     t.boolean  "started"
     t.boolean  "finished"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.datetime "start_time"
     t.datetime "finish_time"
     t.string   "tags"
@@ -52,11 +49,11 @@ ActiveRecord::Schema.define(version: 20130218161037) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

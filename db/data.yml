@@ -10,7 +10,7 @@ tasks:
   - start_time
   - finish_time
   - tags
-  records: 
+  records:
 ---
   - - 6
     - Download a bunch of Bluehost images
@@ -18,8 +18,8 @@ tasks:
     - false
     - '2010-12-19 20:48:04.468718'
     - '2011-01-04 20:23:29.448098'
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
     - hosting, Bluehost, images, affiliate markerting
   - - 7
     - Download a bunch of Hostgator images
@@ -27,8 +27,8 @@ tasks:
     - false
     - '2010-12-19 20:54:40.238644'
     - '2011-01-04 20:32:29.750361'
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
     - hosting, Hostgator, images, affiliate markerting
   - - 8
     - Copy the WP Demo plugins to the WiaW directory and load into Aptana 3
@@ -37,7 +37,7 @@ tasks:
     - '2010-12-19 22:08:06.312719'
     - '2011-01-04 20:32:49.699223'
     - '2011-01-04 20:32:49.698824'
-    - '0000-00-00' 
+    - '0000-00-00'
     - WordPress, plugins
   - - 9
     - Add tags to the model for each task entry
@@ -46,7 +46,7 @@ tasks:
     - '2011-01-04 16:28:45.004096'
     - '2011-01-04 20:40:06.721504'
     - '2011-01-04 20:40:06.721070'
-    - '0000-00-00' 
+    - '0000-00-00'
     - tags
   - - 10
     - Have items in task list default to being ordered newest first.
@@ -54,8 +54,8 @@ tasks:
     - false
     - '2011-01-04 16:44:18.484683'
     - '2011-01-04 20:39:50.299080'
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
     - UX, design
   - - 11
     - Add a field for URLs such as gists to be associated for each tasklet.
@@ -63,8 +63,8 @@ tasks:
     - false
     - '2011-01-04 20:31:25.453487'
     - '2011-01-04 20:31:25.453487'
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
     - URL, gist
   - - 12
     - Color code each tasklet according to whether it's started, underway, or completed.
@@ -72,8 +72,8 @@ tasks:
     - false
     - '2011-01-04 20:33:58.219300'
     - '2011-01-04 20:33:58.219300'
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
     - Color code, UX, design
   - - 13
     - Add a BackUp button which sends people's tasklets as a dump to Dropbox.
@@ -81,8 +81,8 @@ tasks:
     - false
     - '2011-01-04 20:34:57.462722'
     - '2011-01-04 20:34:57.462722'
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
     - backups, DropBox
   - - 14
     - Consider adding a "pause" for tasks underway which get interrupted.
@@ -90,8 +90,8 @@ tasks:
     - false
     - '2011-01-04 20:39:22.987272'
     - '2011-01-04 20:39:22.987272'
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
     - timing, pause, interruption
   - - 15
     - Add a way to decomposition of one task into two
@@ -99,8 +99,8 @@ tasks:
     - false
     - '2011-01-04 21:23:14.139995'
     - '2011-01-04 21:23:14.139995'
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
     - task decomposition
 
 ---
@@ -120,15 +120,15 @@ users:
   - last_sign_in_ip
   - created_at
   - updated_at
-  records: 
+  records:
 ---
   - - 1
     - david.doolin@gmail.com
     - $2a$10$XV4Pfp6x7a/pCpIE9vWHQ.iuECz/DCmLLWhbjdX749RZCmp.25yN6
     - $2a$10$XV4Pfp6x7a/pCpIE9vWHQ.
-    - '0000-00-00' 
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
+    - '0000-00-00'
     - 10
     - '2011-01-06 01:44:04.725382'
     - '2011-01-04 02:23:09.802299'
@@ -140,9 +140,9 @@ users:
     - foo@bar.com
     - $2a$10$r8Bvkg5dUSiUUo3CBIsXR.q5M95/BD5aTRVal8hI53s46O33ZRPLW
     - $2a$10$r8Bvkg5dUSiUUo3CBIsXR.
-    - '0000-00-00' 
-    - '0000-00-00' 
-    - '0000-00-00' 
+    - '0000-00-00'
+    - '0000-00-00'
+    - '0000-00-00'
     - 1
     - '2010-12-20 02:25:17.731657'
     - '2010-12-20 02:25:17.731657'
