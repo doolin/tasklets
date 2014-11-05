@@ -8,6 +8,8 @@ require "email_spec"
 RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
+  # backwards compatibility
+  config.infer_spec_type_from_file_location!
 end
 
 # For Devise authentication

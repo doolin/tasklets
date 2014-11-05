@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-#ruby '2.0.0'
 
 gem 'rails4_upgrade'
 
@@ -60,4 +59,5 @@ group :test, :development do
   gem 'rspec-rails', '2.99'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'rspec-activemodel-mocks'
 end

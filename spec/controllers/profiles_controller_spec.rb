@@ -150,7 +150,7 @@ describe ProfilesController do
     it "redirects to the profiles list" do
       profile = Profile.create! valid_attributes
       delete :destroy, :id => profile.id.to_s
-      response.should redirect_to(profiles_url)
+      expect(response).to redirect_to(profiles_url)
     end
   end
 
