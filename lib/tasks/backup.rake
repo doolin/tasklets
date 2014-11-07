@@ -58,16 +58,9 @@ end
 #require 'rake/dsl_definition'
 require 'rake'
 require 'yaml'
-require 'aws/s3'
+# require 'aws/s3'
 
 =begin
-module ::PortfolioProject
-  class Application
-    include Rake::DSL
-  end
-end
-=end
-
 BACKUP_BUCKET_NAME = 'tasklets'
 APP_NAME = 'tasklets'
 
@@ -211,3 +204,4 @@ namespace :perez do
  end
 
 end
+=end

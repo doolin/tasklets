@@ -7,7 +7,7 @@ gem 'rails' #, '~>4.1.0'
 gem 'sqlite3'
 gem 'devise', '3.0.0'
 gem 'dynamic_form'
-gem 'aws-s3'
+# gem 'aws-s3'
 gem 'haml-rails'
 gem 'thin'
 gem 'foreman'
@@ -41,6 +41,9 @@ end
 group :cucumber, :development, :test do
   gem 'capybara'
   gem 'launchy'    # So you can do Then show me the page
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-rails'
 end
 
 group :development do

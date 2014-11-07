@@ -152,7 +152,7 @@ describe TasksController do
   describe "DELETE destroy" do
 
     before(:each) do
-      @user = FactoryGirl.build(:user)
+      @user = build :user
       sign_in @user
       controller.stub(:authenticate_user!)
     end

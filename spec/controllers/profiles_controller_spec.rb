@@ -31,7 +31,7 @@ describe ProfilesController do
     it "assigns all profiles as @profiles" do
       profile = Profile.create! valid_attributes
       get :index
-      assigns(:profiles).should eq([profile])
+      expect(assigns(:profiles).first).to eq(profile)
     end
   end
 
