@@ -1,9 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails4_upgrade'
+# gem 'rails4_upgrade'
 
-gem 'rails' #, '~>4.1.0'
-#gem 'pg'
+gem 'rails'
 gem 'sqlite3'
 gem 'devise', '3.0.0'
 gem 'dynamic_form'
@@ -13,7 +12,6 @@ gem 'thin'
 gem 'foreman'
 gem 'unicorn'
 
-gem 'protected_attributes'
 gem 'rb-fsevent'
 
 group :production do
@@ -21,12 +19,9 @@ group :production do
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 end
 
-# Rails 3.1 - Asset Pipeline
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails' #, '~>4.0.0'
-  gem 'uglifier'
-end
+gem 'sass-rails'
+gem 'coffee-rails' #, '~>4.0.0'
+gem 'uglifier'
 
 gem 'haml'
 gem 'sprockets'
