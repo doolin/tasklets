@@ -2,9 +2,9 @@ source 'http://rubygems.org'
 
 # gem 'rails4_upgrade'
 
-gem 'rails'
+gem 'rails', '4.2.3'
 gem 'sqlite3'
-gem 'devise', '3.0.0'
+gem 'devise', '3.5.1'
 gem 'dynamic_form'
 # gem 'aws-s3'
 gem 'haml-rails'
