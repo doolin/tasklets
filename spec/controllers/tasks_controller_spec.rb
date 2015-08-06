@@ -9,12 +9,12 @@ describe TasksController do
     it "should deny access to 'create'" do
       post :create
       #response.should redirect_to('users/sign_in')
-      response.should redirect_to user_session_path
+      expect(response).to redirect_to user_session_path
     end
 
     it "should deny access to 'destroy'" do
       delete :destroy, :id => 1
-      response.should redirect_to user_session_path
+      expect(response).to redirect_to user_session_path
     end
   end
 
@@ -28,7 +28,7 @@ describe TasksController do
     it "assigns all tasks as @tasks" do
       Task.stub(:all) { [mock_task] }
       get :index
-      assigns(:tasks).should eq([mock_task])
+      expect(assigns(:tasks)).to eq([mock_task])
     end
   end
 
@@ -36,7 +36,7 @@ describe TasksController do
     it "assigns the requested task as @task" do
       Task.stub(:find).with("37") { mock_task }
       get :show, :id => "37"
-      assigns(:task).should be(mock_task)
+      expect(assigns(:task)).to be(mock_task)
     end
   end
 
@@ -44,7 +44,8 @@ describe TasksController do
     it "assigns a new task as @task" do
       Task.stub(:new) { mock_task }
       get :new
-      assigns(:task).should be(@mock_task)
+      # assigns(:task).should be(@mock_task)
+      expect(assigns(:task)).to be(@mock_task)
     end
   end
 
@@ -52,7 +53,7 @@ describe TasksController do
     it "assigns the requested task as @task" do
       Task.stub(:find).with("37") { mock_task }
       get :edit, :id => "37"
-      assigns(:task).should be(mock_task)
+      expect(assigns(:task)).to be(mock_task)
     end
   end
 
@@ -93,19 +94,19 @@ describe TasksController do
 
       it "re-renders the new method" do
         post :create, task: {}
-        response.should render_template :new
+        expect(response).to render_template :new
       end
 
       it "assigns a newly created but unsaved task as @task" do
         Task.stub(:new).with({'these' => 'params'}) { mock_task(:save => false) }
         post :create, :task => {'these' => 'params'}
-        assigns(:task).should be(@mock_task)
+        expect(assigns(:task)).to be(@mock_task)
       end
 
       it "re-renders the 'new' template" do
         Task.stub(:new) { mock_task(:save => false) }
         post :create, :task => {}
-        response.should render_template('new')
+        expect(response).to render_template('new')
       end
     end
 
@@ -136,13 +137,13 @@ describe TasksController do
       it "assigns the task as @task" do
         Task.stub(:find) { mock_task(:update_attributes => false) }
         put :update, :id => "1"
-        assigns(:task).should be(mock_task)
+        expect(assigns(:task)).to be(mock_task)
       end
 
       it "re-renders the 'edit' template" do
         Task.stub(:find) { mock_task(:update_attributes => false) }
         put :update, :id => "1"
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -166,9 +167,7 @@ describe TasksController do
     it "redirects to the tasks list" do
       Task.stub(:find) { mock_task(:id => "37") }
       delete :destroy, :id => "37"
-      response.should redirect_to new_task_path
+      expect(response).to redirect_to new_task_path
     end
-
   end
-
 end
