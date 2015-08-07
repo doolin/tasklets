@@ -1,14 +1,11 @@
 require 'spec_helper'
 
 describe TasksController do
-
   render_views
 
   describe "access control" do
-
     it "should deny access to 'create'" do
       post :create
-      #response.should redirect_to('users/sign_in')
       expect(response).to redirect_to user_session_path
     end
 
@@ -21,6 +18,7 @@ describe TasksController do
   def mock_task(stubs={})
     (@mock_task ||= mock_model(Task).as_null_object).tap do |task|
       task.stub(stubs) unless stubs.empty?
+      # allow(task).to receive(stubs) unless stubs.empty?
     end
   end
 
@@ -44,7 +42,6 @@ describe TasksController do
     it "assigns a new task as @task" do
       Task.stub(:new) { mock_task }
       get :new
-      # assigns(:task).should be(@mock_task)
       expect(assigns(:task)).to be(@mock_task)
     end
   end
@@ -149,11 +146,10 @@ describe TasksController do
   end
 
   describe "DELETE destroy" do
-
     before(:each) do
       @user = build :user
       sign_in @user
-      controller.stub(:authenticate_user!)
+      allow(controller).to receive(:authenticate_user!)
     end
 
     it "destroys the requested task" do
@@ -162,8 +158,6 @@ describe TasksController do
       delete :destroy, :id => "37"
     end
 
-    # app works correctly, test doesn't work, probably should delete it.
-    # certainly need to fix it or write a different test.
     it "redirects to the tasks list" do
       Task.stub(:find) { mock_task(:id => "37") }
       delete :destroy, :id => "37"
