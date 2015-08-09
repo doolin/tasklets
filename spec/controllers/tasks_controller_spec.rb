@@ -66,14 +66,14 @@ describe TasksController do
       xit "assigns a newly created task as @task" do
         Task.stub(:new).with({'these' => 'params'}) { mock_task(:save => true) }
         post :create, :task => {'these' => 'params'}
-        assigns(:task).should be(@mock_task)
+        expect(assigns(:task)).to be(@mock_task)
       end
 
       xit "redirects to the created task" do
         controller.stub(:authenticate_user!)
         Task.stub(:new) { mock_task(:save => true) }
         post :create, :task => {}
-        response.should redirect_to(task_url(mock_task))
+        expect(response).to redirect_to(task_url(mock_task))
       end
     end
 
