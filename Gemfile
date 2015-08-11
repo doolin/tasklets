@@ -12,6 +12,8 @@ gem 'thin'
 gem 'foreman'
 gem 'unicorn'
 
+gem 'rubocop'
+
 gem 'rb-fsevent'
 
 group :production do
