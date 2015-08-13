@@ -43,9 +43,9 @@ describe ProfilesController do
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Profile" do
-        expect {
+        expect do
           post :create, :profile => valid_attributes
-        }.to change(Profile, :count).by(1)
+        end.to change(Profile, :count).by(1)
       end
 
       it "assigns a newly created profile as @profile" do
@@ -116,9 +116,9 @@ describe ProfilesController do
   describe "DELETE destroy" do
     it "destroys the requested profile" do
       profile = Profile.create! valid_attributes
-      expect {
+      expect do
         delete :destroy, :id => profile.id.to_s
-      }.to change(Profile, :count).by(-1)
+      end.to change(Profile, :count).by(-1)
     end
 
     it "redirects to the profiles list" do
