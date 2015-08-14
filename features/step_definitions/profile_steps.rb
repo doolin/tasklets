@@ -5,8 +5,8 @@
 
 require 'uri'
 require 'cgi'
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'paths'))
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'selectors'))
 
 Given /^I am not authenticated$/ do
   visit('/users/sign_out') # ensure that at least
@@ -36,8 +36,8 @@ end
 
 # Date and time gem: https://gist.github.com/558786
 When /^the user fills out all the profile fields correctly$/ do
-  firstname = "Foo"
-  lastname  = "Bar"
+  firstname = 'Foo'
+  lastname  = 'Bar'
   #startdate = "2011-07-16"
   #finishdate = "2011-02-03 00:00:00.000000"
   bio = "Foo Bar's bio summary"

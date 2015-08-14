@@ -57,7 +57,7 @@ class TasksController < ApplicationController
         format.html { redirect_to(@task, :flash => { :success => 'Task was successfully created.'}) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => 'new' }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
       end
     end
@@ -77,7 +77,7 @@ class TasksController < ApplicationController
         format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => 'edit' }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
       end
     end

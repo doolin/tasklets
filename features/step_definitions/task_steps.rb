@@ -28,5 +28,5 @@ When(/^I pressem button "(.*?)"$/) do |arg1|
 end
 
 Then(/^I'ma get "(.*?)"$/) do |arg1|
-  page.body.should have_selector ".flash.success", text: "Task was successfully created."
+  page.body.should have_selector '.flash.success', text: 'Task was successfully created.'
 end

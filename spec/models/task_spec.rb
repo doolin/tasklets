@@ -7,8 +7,8 @@ describe Task do
     t.should_not be_valid
   end
 
-  it "saves a valid task" do
-    t = Task.create!(:description => "jgshdlfjk")
+  it 'saves a valid task' do
+    t = Task.create!(:description => 'jgshdlfjk')
     t.should be_valid
   end
 

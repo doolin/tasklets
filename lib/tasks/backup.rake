@@ -11,7 +11,7 @@ namespace :olddb do
       end
     end
 
-    desc "Dump entire db."
+    desc 'Dump entire db.'
     task :write => :environment do 
 
       dir = './db/backup'

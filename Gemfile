@@ -29,7 +29,7 @@ gem 'haml'
 gem 'sprockets'
 gem 'jquery-rails'
 
-gem "zurb-foundation", :group => :assets
+gem 'zurb-foundation', :group => :assets
 
 group :test do
   gem 'cucumber-rails', require: false
