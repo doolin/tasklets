@@ -40,7 +40,7 @@ namespace :olddb do
 
           puts "Loading #{tbl}..."
           YAML.load_file("#{tbl}.yml").each do |fixture|
-            ActiveRecord::Base.connection.execute "INSERT INTO #{tbl} (#{fixture.keys.join(",")}) VALUES (#{fixture.values.collect { |value| ActiveRecord::Base.connection.quote(value) }.join(",")})", 'Fixture Insert'
+            ActiveRecord::Base.connection.execute "INSERT INTO #{tbl} (#{fixture.keys.join(',')}) VALUES (#{fixture.values.collect { |value| ActiveRecord::Base.connection.quote(value) }.join(',')})", 'Fixture Insert'
           end
         end
       end
