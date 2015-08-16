@@ -54,7 +54,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to(@task, :flash => { :success => 'Task was successfully created.'}) }
+        format.html { redirect_to(@task, :flash => { :success => 'Task was successfully created.' }) }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         format.html { render :action => 'new' }
@@ -90,7 +90,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to(new_task_path, :flash => { :success => 'Task was successfully deleted.'}) }
+      format.html { redirect_to(new_task_path, :flash => { :success => 'Task was successfully deleted.' }) }
       format.xml  { head :ok }
     end
   end

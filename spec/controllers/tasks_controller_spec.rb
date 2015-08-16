@@ -64,8 +64,8 @@ describe TasksController do
 
     describe 'with valid params' do
       xit 'assigns a newly created task as @task' do
-        Task.stub(:new).with({'these' => 'params'}) { mock_task(:save => true) }
-        post :create, :task => {'these' => 'params'}
+        Task.stub(:new).with({ 'these' => 'params' }) { mock_task(:save => true) }
+        post :create, :task => { 'these' => 'params' }
         expect(assigns(:task)).to be(@mock_task)
       end
 
@@ -95,8 +95,8 @@ describe TasksController do
       end
 
       it 'assigns a newly created but unsaved task as @task' do
-        Task.stub(:new).with({'these' => 'params'}) { mock_task(:save => false) }
-        post :create, :task => {'these' => 'params'}
+        Task.stub(:new).with({ 'these' => 'params' }) { mock_task(:save => false) }
+        post :create, :task => { 'these' => 'params' }
         expect(assigns(:task)).to be(@mock_task)
       end
 
@@ -113,8 +113,8 @@ describe TasksController do
     describe 'with valid params' do
       xit 'updates the requested task' do
         Task.should_receive(:find).with('37') { mock_task }
-        mock_task.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => '37', :task => {'these' => 'params'}
+        mock_task.should_receive(:update_attributes).with({ 'these' => 'params' })
+        put :update, :id => '37', :task => { 'these' => 'params' }
       end
 
       xit 'assigns the requested task as @task' do

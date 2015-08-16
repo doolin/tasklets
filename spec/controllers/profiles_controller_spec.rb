@@ -79,8 +79,8 @@ describe ProfilesController do
     describe 'with valid params' do
       it 'updates the requested profile' do
         profile = Profile.create! valid_attributes
-        allow_any_instance_of(Profile).to receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => profile.id, :profile => {'these' => 'params'}
+        allow_any_instance_of(Profile).to receive(:update_attributes).with({ 'these' => 'params' })
+        put :update, :id => profile.id, :profile => { 'these' => 'params' }
       end
 
       it 'assigns the requested profile as @profile' do
