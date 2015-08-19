@@ -70,10 +70,10 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-    if @task.started?
-      @task.start_time = Time::now
-      @task.save
-    end
+        if @task.started?
+          @task.start_time = Time::now
+          @task.save
+        end
         format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }
         format.xml  { head :ok }
       else

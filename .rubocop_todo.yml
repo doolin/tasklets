@@ -227,8 +227,6 @@ Style/IndentationConsistency:
 # Configuration parameters: Width.
 Style/IndentationWidth:
   Exclude:
-    - 'app/controllers/tasks_controller.rb'
-    - 'features/step_definitions/email_steps.rb'
     - 'lib/tasks/cucumber.rake'
 
 # Offense count: 26
