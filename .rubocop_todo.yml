@@ -39,7 +39,6 @@ Lint/UnusedBlockArgument:
   Exclude:
     - 'config/initializers/jasminerice.rb'
     - 'features/step_definitions/task_steps.rb'
-    - 'spec/factories/user.rb'
 
 # Offense count: 1
 Lint/UselessAssignment:
