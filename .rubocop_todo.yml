@@ -56,7 +56,12 @@ Metrics/CyclomaticComplexity:
 # Offense count: 165
 # Configuration parameters: AllowURI, URISchemes.
 Metrics/LineLength:
-  Max: 216
+  Max: 130
+  Exclude:
+    - 'lib/tasks/backup.rake'
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/secret_token.rb'
+    - 'features/step_definitions/email_steps.rb'
 
 # Offense count: 5
 # Configuration parameters: CountComments.
