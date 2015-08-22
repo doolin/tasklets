@@ -49,7 +49,7 @@ class TasksController < ApplicationController
     # This will need to be done in the edit method
     # as well.  Will dry it out afterward.
     if @task.started?
-      @task.start_time = Time::now
+      @task.start_time = Time.now
     end
 
     respond_to do |format|
@@ -71,7 +71,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update_attributes(params[:task])
         if @task.started?
-          @task.start_time = Time::now
+          @task.start_time = Time.now
           @task.save
         end
         format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }

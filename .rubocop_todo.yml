@@ -78,8 +78,7 @@ Performance/Count:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, Include.
 Rails/ActionFilter:
-  Exclude:
-    - 'app/controllers/tasks_controller.rb'
+  Enabled: true
 
 # Offense count: 2
 # Configuration parameters: EnforcedStyle, SupportedStyles.
@@ -140,7 +139,6 @@ Style/ClosingParenthesisIndentation:
 # Cop supports --auto-correct.
 Style/ColonMethodCall:
   Exclude:
-    - 'app/controllers/tasks_controller.rb'
     - 'features/step_definitions/email_steps.rb'
 
 # Offense count: 1
