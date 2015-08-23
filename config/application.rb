@@ -8,7 +8,6 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module App1
   class Application < Rails::Application
-
     # Enable the asset pipeline
     config.assets.enabled = true
 

@@ -172,7 +172,6 @@ Style/EmptyLines:
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/EmptyLinesAroundBlockBody:
   Exclude:
-    - 'config/routes.rb'
     - 'db/migrate/20101217012805_devise_create_users.rb'
     - 'db/schema.rb'
     - 'lib/tasks/backup.rake'
@@ -189,9 +188,7 @@ Style/EmptyLinesAroundBlockBody:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/EmptyLinesAroundClassBody:
-  Exclude:
-    - 'app/controllers/tasks_controller.rb'
-    - 'config/application.rb'
+  Enabled: true
 
 # Offense count: 7
 # Cop supports --auto-correct.
