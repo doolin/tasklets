@@ -151,8 +151,7 @@ Style/CommentAnnotation:
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/CommentIndentation:
-  Exclude:
-    - 'Gemfile'
+  Enabled: true
 
 # Offense count: 21
 Style/Documentation:
