@@ -193,10 +193,8 @@ Style/EmptyLinesAroundClassBody:
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment.
 Style/ExtraSpacing:
+  Enabled: true
   Exclude:
-    - 'config.ru'
-    - 'config/environments/production.rb'
-    - 'config/environments/test.rb'
     - 'db/schema.rb'
     - 'script/rails'
 
