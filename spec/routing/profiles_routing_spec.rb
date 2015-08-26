@@ -12,11 +12,11 @@ describe ProfilesController do
     end
 
     it 'routes to #show' do
-      expect(get('/profiles/1')).to route_to('profiles#show', :id => '1')
+      expect(get('/profiles/1')).to route_to('profiles#show', id: '1')
     end
 
     it 'routes to #edit' do
-      expect(get('/profiles/1/edit')).to route_to('profiles#edit', :id => '1')
+      expect(get('/profiles/1/edit')).to route_to('profiles#edit', id: '1')
     end
 
     it 'routes to #create' do
@@ -24,11 +24,11 @@ describe ProfilesController do
     end
 
     it 'routes to #update' do
-      expect(put('/profiles/1')).to route_to('profiles#update', :id => '1')
+      expect(put('/profiles/1')).to route_to('profiles#update', id: '1')
     end
 
     it 'routes to #destroy' do
-      expect(delete('/profiles/1')).to route_to('profiles#destroy', :id => '1')
+      expect(delete('/profiles/1')).to route_to('profiles#destroy', id: '1')
     end
 
   end

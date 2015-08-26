@@ -29,7 +29,7 @@ gem 'haml'
 gem 'sprockets'
 gem 'jquery-rails'
 
-gem 'zurb-foundation', :group => :assets
+gem 'zurb-foundation', group: :assets
 
 group :test do
   gem 'cucumber-rails', require: false
@@ -48,7 +48,7 @@ group :development do
   gem 'relish'
 end
 
-gem 'jasminerice', :git => 'https://github.com/bradphelan/jasminerice.git'
+gem 'jasminerice', git: 'https://github.com/bradphelan/jasminerice.git'
 
 group :test, :development do
   gem 'email_spec'

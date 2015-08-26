@@ -3,15 +3,15 @@ require 'spec_helper'
 describe 'profiles/show' do
   before(:each) do
     @profile = assign(:profile, stub_model(Profile,
-      :firstname => 'Firstname',
-      :lastname => 'Lastname',
-      :bio => 'MyText',
-      :website => 'Website',
-      :twitter => 'Twitter',
-      :facebook => 'Facebook',
-      :linkedin => 'Linkedin',
-      :google => 'Google',
-      :url => 'Url'
+      firstname: 'Firstname',
+      lastname: 'Lastname',
+      bio: 'MyText',
+      website: 'Website',
+      twitter: 'Twitter',
+      facebook: 'Facebook',
+      linkedin: 'Linkedin',
+      google: 'Google',
+      url: 'Url'
     ))
   end
 

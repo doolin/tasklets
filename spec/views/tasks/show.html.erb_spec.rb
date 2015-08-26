@@ -3,9 +3,9 @@ require 'spec_helper'
 describe 'tasks/show' do
   before(:each) do
     @task = assign(:task, stub_model(Task,
-      :description => 'Description',
-      :started => false,
-      :finished => false
+      description: 'Description',
+      started: false,
+      finished: false
     ))
   end
 

@@ -13,7 +13,7 @@ RSpec.configure do |config|
   # backwards compatibility
   config.infer_spec_type_from_file_location!
   # For Devise authentication
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Devise::TestHelpers, type: :controller
   config.mock_with :rspec
 end
 

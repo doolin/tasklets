@@ -12,7 +12,7 @@ namespace :olddb do
     end
 
     desc 'Dump entire db.'
-    task :write => :environment do 
+    task write: :environment do 
 
       dir = './db/backup'
       FileUtils.mkdir_p(dir)
@@ -27,7 +27,7 @@ namespace :olddb do
 
     end
 
-    task :read => [:environment, 'db:schema:load'] do 
+    task read: [:environment, 'db:schema:load'] do 
 
       dir = './db/backup'
       FileUtils.mkdir_p(dir)

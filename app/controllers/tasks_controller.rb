@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :create, :destroy]
+  before_filter :authenticate_user!, only: [:new, :create, :destroy]
 
   # GET /tasks
   # GET /tasks.xml
@@ -8,7 +8,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @tasks }
+      format.xml  { render xml: @tasks }
     end
   end
 
@@ -19,7 +19,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @task }
+      format.xml  { render xml: @task }
     end
   end
 
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @task }
+      format.xml  { render xml: @task }
     end
   end
 
@@ -53,11 +53,11 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to(@task, :flash => { :success => 'Task was successfully created.' }) }
-        format.xml  { render :xml => @task, :status => :created, :location => @task }
+        format.html { redirect_to(@task, flash: { success: 'Task was successfully created.' }) }
+        format.xml  { render xml: @task, status: :created, location: @task }
       else
-        format.html { render :action => 'new' }
-        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+        format.html { render action: 'new' }
+        format.xml  { render xml: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,11 +73,11 @@ class TasksController < ApplicationController
           @task.start_time = Time.now
           @task.save
         end
-        format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }
+        format.html { redirect_to(@task, notice: 'Task was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => 'edit' }
-        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+        format.html { render action: 'edit' }
+        format.xml  { render xml: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -89,7 +89,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to(new_task_path, :flash => { :success => 'Task was successfully deleted.' }) }
+      format.html { redirect_to(new_task_path, flash: { success: 'Task was successfully deleted.' }) }
       format.xml  { head :ok }
     end
   end
