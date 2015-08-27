@@ -208,8 +208,7 @@ Style/HashSyntax:
 # Cop supports --auto-correct.
 # Configuration parameters: MaxLineLength.
 Style/IfUnlessModifier:
-  Exclude:
-    - 'app/controllers/tasks_controller.rb'
+  Enabled: true
 
 # Offense count: 2
 # Cop supports --auto-correct.

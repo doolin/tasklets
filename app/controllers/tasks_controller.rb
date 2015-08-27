@@ -47,9 +47,7 @@ class TasksController < ApplicationController
     # Create the time stamp if the task is started.
     # This will need to be done in the edit method
     # as well.  Will dry it out afterward.
-    if @task.started?
-      @task.start_time = Time.now
-    end
+    @task.start_time = Time.now if @task.started?
 
     respond_to do |format|
       if @task.save
