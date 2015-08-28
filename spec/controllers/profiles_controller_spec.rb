@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe ProfilesController do
-
   # This should return the minimal set of attributes required to create a valid
   # Profile. As you add validations to Profile, be sure to
   # update the return value of this method accordingly.

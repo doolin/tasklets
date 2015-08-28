@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe TasksController do
   describe 'routing' do
-
     it 'recognizes and generates #index' do
       expect(get: '/tasks').to route_to(controller: 'tasks', action: 'index')
     end
@@ -30,6 +29,5 @@ describe TasksController do
     it 'recognizes and generates #destroy' do
       expect(delete: '/tasks/1').to route_to(controller: 'tasks', action: 'destroy', id: '1')
     end
-
   end
 end

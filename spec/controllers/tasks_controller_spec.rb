@@ -55,7 +55,6 @@ describe TasksController do
   end
 
   describe 'POST create' do
-
     before(:each) do
       @user = FactoryGirl.build(:user)
       sign_in @user
@@ -78,7 +77,6 @@ describe TasksController do
     end
 
     describe 'with invalid params' do
-
       #before(:each) do
       #  sign_out @user
       #end
@@ -106,7 +104,6 @@ describe TasksController do
         expect(response).to render_template('new')
       end
     end
-
   end
 
   describe 'PUT update' do

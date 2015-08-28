@@ -174,14 +174,6 @@ Style/EmptyLinesAroundBlockBody:
     - 'db/migrate/20101217012805_devise_create_users.rb'
     - 'db/schema.rb'
     - 'lib/tasks/backup.rake'
-    - 'spec/controllers/profiles_controller_spec.rb'
-    - 'spec/controllers/tasks_controller_spec.rb'
-    - 'spec/models/task_spec.rb'
-    - 'spec/routing/profiles_routing_spec.rb'
-    - 'spec/routing/tasks_routing_spec.rb'
-    - 'spec/views/profiles/index.html.erb_spec.rb'
-    - 'spec/views/profiles/new.html.erb_spec.rb'
-    - 'spec/views/tasks/index.html.erb_spec.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -214,8 +206,7 @@ Style/IfUnlessModifier:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/IndentationConsistency:
-  Exclude:
-    - 'app/controllers/tasks_controller.rb'
+  Enabled: true
 
 # Offense count: 5
 # Cop supports --auto-correct.
