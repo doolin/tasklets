@@ -10,13 +10,13 @@ describe 'tasks/index' do
         description: 'Description',
         started: true,
         finished: false
-      ),
+                ),
 
       stub_model(Task,
         description: 'Description',
         started: true,
         finished: false
-      )
+                )
     ])
   end
 

@@ -12,7 +12,7 @@ describe 'profiles/show' do
       linkedin: 'Linkedin',
       google: 'Google',
       url: 'Url'
-    ))
+                                          ))
   end
 
   it 'renders attributes in <p>' do

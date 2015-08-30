@@ -12,7 +12,7 @@ describe 'profiles/new' do
       linkedin: 'MyString',
       google: 'MyString',
       url: 'MyString'
-    ).as_new_record)
+                               ).as_new_record)
   end
 
   it 'renders new profile form' do

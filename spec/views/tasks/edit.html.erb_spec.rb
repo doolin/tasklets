@@ -6,7 +6,7 @@ describe 'tasks/edit' do
       description: 'MyString',
       started: false,
       finished: false
-    ))
+                                    ))
   end
 
   it 'renders the edit task form' do

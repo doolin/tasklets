@@ -13,7 +13,7 @@ describe 'profiles/index' do
         linkedin: 'Linkedin',
         google: 'Google',
         url: 'Url'
-      ),
+                ),
       stub_model(Profile,
         firstname: 'Firstname',
         lastname: 'Lastname',
@@ -24,7 +24,7 @@ describe 'profiles/index' do
         linkedin: 'Linkedin',
         google: 'Google',
         url: 'Url'
-      )
+                )
     ])
   end
 

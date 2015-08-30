@@ -6,7 +6,7 @@ describe 'tasks/new' do
       description: 'MyString',
       started: false,
       finished: false
-    ).as_new_record)
+                            ).as_new_record)
   end
 
   it 'renders new task form' do

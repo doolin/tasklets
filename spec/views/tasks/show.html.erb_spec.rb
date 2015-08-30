@@ -6,7 +6,7 @@ describe 'tasks/show' do
       description: 'Description',
       started: false,
       finished: false
-    ))
+                                    ))
   end
 
   it 'renders attributes in <p>' do

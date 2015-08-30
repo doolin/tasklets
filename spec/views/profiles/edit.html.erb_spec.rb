@@ -12,7 +12,7 @@ describe 'profiles/edit' do
       linkedin: 'MyString',
       google: 'MyString',
       url: 'MyString'
-    ))
+                                          ))
   end
 
   it 'renders the edit profile form' do

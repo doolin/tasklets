@@ -125,15 +125,7 @@ Style/ClassAndModuleChildren:
 # Offense count: 10
 # Cop supports --auto-correct.
 Style/ClosingParenthesisIndentation:
-  Exclude:
-    - 'spec/views/profiles/edit.html.erb_spec.rb'
-    - 'spec/views/profiles/index.html.erb_spec.rb'
-    - 'spec/views/profiles/new.html.erb_spec.rb'
-    - 'spec/views/profiles/show.html.erb_spec.rb'
-    - 'spec/views/tasks/edit.html.erb_spec.rb'
-    - 'spec/views/tasks/index.html.erb_spec.rb'
-    - 'spec/views/tasks/new.html.erb_spec.rb'
-    - 'spec/views/tasks/show.html.erb_spec.rb'
+  Enabled: true
 
 # Offense count: 7
 # Cop supports --auto-correct.
