@@ -282,7 +282,6 @@ Style/SignalException:
 Style/SingleSpaceBeforeFirstArg:
   Exclude:
     - 'db/schema.rb'
-    - 'spec/factories.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
