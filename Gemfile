@@ -13,6 +13,7 @@ gem 'foreman'
 gem 'unicorn'
 
 gem 'rubocop'
+gem 'brakeman'
 
 gem 'rb-fsevent'
 
