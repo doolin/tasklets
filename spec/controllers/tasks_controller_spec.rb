@@ -84,7 +84,7 @@ describe TasksController do
       it 'does not save the new contact' do
         expect do
           post :create, task: {}
-        end.to_not change(Task,:count)
+        end.to_not change(Task, :count)
       end
 
       it 're-renders the new method' do

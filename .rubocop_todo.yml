@@ -288,7 +288,6 @@ Style/SingleSpaceBeforeFirstArg:
 Style/SpaceAfterComma:
   Exclude:
     - 'features/step_definitions/web_steps.rb'
-    - 'spec/controllers/tasks_controller_spec.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
