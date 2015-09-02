@@ -322,15 +322,13 @@ Style/SpaceInsideHashLiteralBraces:
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/SpaceInsideParens:
-  Exclude:
-    - 'spec/routing/tasks_routing_spec.rb'
+  Enabled: true
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/SpaceInsideStringInterpolation:
-  Exclude:
-    - 'Guardfile'
+  Enabled: true
 
 # Offense count: 367
 # Cop supports --auto-correct.

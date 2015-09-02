@@ -11,7 +11,7 @@ describe TasksController do
     end
 
     it 'recognizes and generates #show' do
-      expect( get: '/tasks/1').to route_to(controller: 'tasks', action: 'show', id: '1')
+      expect(get: '/tasks/1').to route_to(controller: 'tasks', action: 'show', id: '1')
     end
 
     it 'recognizes and generates #edit' do
