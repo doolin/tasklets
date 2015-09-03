@@ -355,9 +355,4 @@ Style/TrailingBlankLines:
 # Offense count: 15
 # Cop supports --auto-correct.
 Style/TrailingWhitespace:
-  Exclude:
-    - 'features/step_definitions/web_steps.rb'
-    - 'features/support/env.rb'
-    - 'features/support/paths.rb'
-    - 'lib/tasks/backup.rake'
-    - 'lib/tasks/cucumber.rake'
+  Enabled: true

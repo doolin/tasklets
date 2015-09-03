@@ -4,7 +4,7 @@ namespace :olddb do
 
     def interesting_tables
       ActiveRecord::Base.connection.tables.sort.reject! do |tbl|
-        # This script is from 2006. All of these probably should be 
+        # This script is from 2006. All of these probably should be
         # replaced with only 'schema_migrations' for tasklets
         # ['schema_info', 'sessions', 'public_exceptions'].include?(tbl)
         ['schema_migrations'].include?(tbl)
@@ -12,7 +12,7 @@ namespace :olddb do
     end
 
     desc 'Dump entire db.'
-    task write: :environment do 
+    task write: :environment do
 
       dir = './db/backup'
       FileUtils.mkdir_p(dir)
@@ -22,12 +22,12 @@ namespace :olddb do
 
         klass = tbl.classify.constantize
         puts "Writing #{tbl}..."
-        File.open("#{tbl}.yml", 'w+') { |f| YAML.dump klass.find(:all).collect(&:attributes), f }      
+        File.open("#{tbl}.yml", 'w+') { |f| YAML.dump klass.find(:all).collect(&:attributes), f }
       end
 
     end
 
-    task read: [:environment, 'db:schema:load'] do 
+    task read: [:environment, 'db:schema:load'] do
 
       dir = './db/backup'
       FileUtils.mkdir_p(dir)
@@ -36,7 +36,7 @@ namespace :olddb do
       interesting_tables.each do |tbl|
 
         klass = tbl.classify.constantize
-        ActiveRecord::Base.transaction do 
+        ActiveRecord::Base.transaction do
 
           puts "Loading #{tbl}..."
           YAML.load_file("#{tbl}.yml").each do |fixture|
