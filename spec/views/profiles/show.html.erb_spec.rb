@@ -18,22 +18,22 @@ describe 'profiles/show' do
   it 'renders attributes in <p>' do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Firstname/)
+    expect(rendered).to match(/Firstname/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Lastname/)
+    expect(rendered).to match(/Lastname/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/MyText/)
+    expect(rendered).to match(/MyText/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Website/)
+    expect(rendered).to match(/Website/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Twitter/)
+    expect(rendered).to match(/Twitter/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Facebook/)
+    expect(rendered).to match(/Facebook/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Linkedin/)
+    expect(rendered).to match(/Linkedin/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Google/)
+    expect(rendered).to match(/Google/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Url/)
+    expect(rendered).to match(/Url/)
   end
 end
