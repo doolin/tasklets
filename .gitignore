@@ -8,3 +8,4 @@ tmp/**/*
 .tddium
 .tddium-deploy-key
 .env
+todo.txt

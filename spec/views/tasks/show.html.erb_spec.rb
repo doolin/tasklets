@@ -13,10 +13,10 @@ describe 'tasks/show' do
     render
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Description/)
+    expect(rendered).to match(/Description/)
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/false/)
+    expect(rendered).to match(/false/)
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     #rendered.should_not match(/false/)
