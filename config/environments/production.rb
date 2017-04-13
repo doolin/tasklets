@@ -17,7 +17,7 @@ App1::Application.configure do
   # Compress both stylesheets and JavaScripts
   config.assets.compress = false
   config.assets.js_compressor = :uglifier
-  #config.assets.css_compressor = :scss
+  # config.assets.css_compressor = :scss
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = true

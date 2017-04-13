@@ -3,10 +3,9 @@ require 'spec_helper'
 describe 'tasks/edit' do
   before(:each) do
     @task = assign(:task, stub_model(Task,
-      description: 'MyString',
-      started: false,
-      finished: false
-                                    ))
+                                     description: 'MyString',
+                                     started: false,
+                                     finished: false))
   end
 
   it 'renders the edit task form' do

@@ -3,29 +3,27 @@ require 'spec_helper'
 describe 'profiles/index' do
   before(:each) do
     assign(:profiles, [
-      stub_model(Profile,
-        firstname: 'Firstname',
-        lastname: 'Lastname',
-        bio: 'MyText',
-        website: 'Website',
-        twitter: 'Twitter',
-        facebook: 'Facebook',
-        linkedin: 'Linkedin',
-        google: 'Google',
-        url: 'Url'
-                ),
-      stub_model(Profile,
-        firstname: 'Firstname',
-        lastname: 'Lastname',
-        bio: 'MyText',
-        website: 'Website',
-        twitter: 'Twitter',
-        facebook: 'Facebook',
-        linkedin: 'Linkedin',
-        google: 'Google',
-        url: 'Url'
-                )
-    ])
+             stub_model(Profile,
+                        firstname: 'Firstname',
+                        lastname: 'Lastname',
+                        bio: 'MyText',
+                        website: 'Website',
+                        twitter: 'Twitter',
+                        facebook: 'Facebook',
+                        linkedin: 'Linkedin',
+                        google: 'Google',
+                        url: 'Url'),
+             stub_model(Profile,
+                        firstname: 'Firstname',
+                        lastname: 'Lastname',
+                        bio: 'MyText',
+                        website: 'Website',
+                        twitter: 'Twitter',
+                        facebook: 'Facebook',
+                        linkedin: 'Linkedin',
+                        google: 'Google',
+                        url: 'Url')
+           ])
   end
 
   it 'renders a list of profiles' do

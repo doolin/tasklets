@@ -33,13 +33,12 @@ Given /^is on the Create Profile page$/ do
   visit new_profile_path
 end
 
-
 # Date and time gem: https://gist.github.com/558786
 When /^the user fills out all the profile fields correctly$/ do
   firstname = 'Foo'
   lastname  = 'Bar'
-  #startdate = "2011-07-16"
-  #finishdate = "2011-02-03 00:00:00.000000"
+  # startdate = "2011-07-16"
+  # finishdate = "2011-02-03 00:00:00.000000"
   bio = "Foo Bar's bio summary"
   step %{I fill in "Firstname" with "#{firstname}"}
   step %{I fill in "Lastname" with "#{lastname}"}
@@ -52,10 +51,10 @@ When /^the user fills out all the profile fields correctly$/ do
   # Widespread adoption may be a few years in the future.
   # For now, getting the project to work correctly requires
   # removing the presence requirement of dates.
-  #select(value, :from => field)
-  #select_date("July 16, 2011", :from => 'Startdate')
-  #And %{I select "#{startdate}" from "Startdate"}
-  #And %{I select #{finishdate} from "Finishdate"}
+  # select(value, :from => field)
+  # select_date("July 16, 2011", :from => 'Startdate')
+  # And %{I select "#{startdate}" from "Startdate"}
+  # And %{I select #{finishdate} from "Finishdate"}
 end
 
 When /^the user presses the "([^"]*)" button$/ do |button|
@@ -65,8 +64,6 @@ end
 Then /^the user is shown the page for the new profile$/ do
   visit profile_path(1)
 end
-
-
 
 Then /^the member is shown the page for the new project$/ do
   # Fixme: the url needs to be extracted from the data

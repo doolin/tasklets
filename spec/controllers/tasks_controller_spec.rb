@@ -15,7 +15,7 @@ describe TasksController do
     end
   end
 
-  def mock_task(stubs={})
+  def mock_task(stubs = {})
     (@mock_task ||= mock_model(Task).as_null_object).tap do |task|
       task.stub(stubs) unless stubs.empty?
       # allow(task).to receive(stubs) unless stubs.empty?
@@ -63,7 +63,7 @@ describe TasksController do
 
     describe 'with valid params' do
       xit 'assigns a newly created task as @task' do
-        Task.stub(:new).with({ 'these' => 'params' }) { mock_task(save: true) }
+        Task.stub(:new).with('these' => 'params') { mock_task(save: true) }
         post :create, task: { 'these' => 'params' }
         expect(assigns(:task)).to be(@mock_task)
       end
@@ -77,9 +77,9 @@ describe TasksController do
     end
 
     describe 'with invalid params' do
-      #before(:each) do
+      # before(:each) do
       #  sign_out @user
-      #end
+      # end
 
       it 'does not save the new contact' do
         expect do
@@ -93,7 +93,7 @@ describe TasksController do
       end
 
       it 'assigns a newly created but unsaved task as @task' do
-        Task.stub(:new).with({ 'these' => 'params' }) { mock_task(save: false) }
+        Task.stub(:new).with('these' => 'params') { mock_task(save: false) }
         post :create, task: { 'these' => 'params' }
         expect(assigns(:task)).to be(@mock_task)
       end
@@ -110,7 +110,7 @@ describe TasksController do
     describe 'with valid params' do
       xit 'updates the requested task' do
         Task.should_receive(:find).with('37') { mock_task }
-        mock_task.should_receive(:update_attributes).with({ 'these' => 'params' })
+        mock_task.should_receive(:update_attributes).with('these' => 'params')
         put :update, id: '37', task: { 'these' => 'params' }
       end
 

@@ -3,10 +3,9 @@ require 'spec_helper'
 describe 'tasks/new' do
   before(:each) do
     assign(:task, stub_model(Task,
-      description: 'MyString',
-      started: false,
-      finished: false
-                            ).as_new_record)
+                             description: 'MyString',
+                             started: false,
+                             finished: false).as_new_record)
   end
 
   it 'renders new task form' do

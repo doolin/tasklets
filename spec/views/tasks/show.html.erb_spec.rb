@@ -3,10 +3,9 @@ require 'spec_helper'
 describe 'tasks/show' do
   before(:each) do
     @task = assign(:task, stub_model(Task,
-      description: 'Description',
-      started: false,
-      finished: false
-                                    ))
+                                     description: 'Description',
+                                     started: false,
+                                     finished: false))
   end
 
   it 'renders attributes in <p>' do
@@ -19,6 +18,6 @@ describe 'tasks/show' do
     expect(rendered).to match(/false/)
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    #rendered.should_not match(/false/)
+    # rendered.should_not match(/false/)
   end
 end

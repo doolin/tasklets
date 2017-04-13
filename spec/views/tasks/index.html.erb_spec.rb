@@ -1,23 +1,21 @@
 require 'spec_helper'
 
 describe 'tasks/index' do
-  #include Devise::TestHelpers
+  # include Devise::TestHelpers
 
   before(:each) do
     assign(:tasks, [
 
-      stub_model(Task,
-        description: 'Description',
-        started: true,
-        finished: false
-                ),
+             stub_model(Task,
+                        description: 'Description',
+                        started: true,
+                        finished: false),
 
-      stub_model(Task,
-        description: 'Description',
-        started: true,
-        finished: false
-                )
-    ])
+             stub_model(Task,
+                        description: 'Description',
+                        started: true,
+                        finished: false)
+           ])
   end
 
   it 'renders a list of tasks' do

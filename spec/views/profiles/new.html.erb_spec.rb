@@ -3,16 +3,15 @@ require 'spec_helper'
 describe 'profiles/new' do
   before(:each) do
     assign(:profile, stub_model(Profile,
-      firstname: 'MyString',
-      lastname: 'MyString',
-      bio: 'MyText',
-      website: 'MyString',
-      twitter: 'MyString',
-      facebook: 'MyString',
-      linkedin: 'MyString',
-      google: 'MyString',
-      url: 'MyString'
-                               ).as_new_record)
+                                firstname: 'MyString',
+                                lastname: 'MyString',
+                                bio: 'MyText',
+                                website: 'MyString',
+                                twitter: 'MyString',
+                                facebook: 'MyString',
+                                linkedin: 'MyString',
+                                google: 'MyString',
+                                url: 'MyString').as_new_record)
   end
 
   it 'renders new profile form' do
