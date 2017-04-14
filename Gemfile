@@ -23,7 +23,7 @@ group :production do
 end
 
 gem 'sass-rails'
-gem 'coffee-rails' #, '~>4.0.0'
+gem 'coffee-rails' # , '~>4.0.0'
 gem 'uglifier'
 
 gem 'haml'

@@ -3,16 +3,15 @@ require 'spec_helper'
 describe 'profiles/edit' do
   before(:each) do
     @profile = assign(:profile, stub_model(Profile,
-      firstname: 'MyString',
-      lastname: 'MyString',
-      bio: 'MyText',
-      website: 'MyString',
-      twitter: 'MyString',
-      facebook: 'MyString',
-      linkedin: 'MyString',
-      google: 'MyString',
-      url: 'MyString'
-                                          ))
+                                           firstname: 'MyString',
+                                           lastname: 'MyString',
+                                           bio: 'MyText',
+                                           website: 'MyString',
+                                           twitter: 'MyString',
+                                           facebook: 'MyString',
+                                           linkedin: 'MyString',
+                                           google: 'MyString',
+                                           url: 'MyString'))
   end
 
   it 'renders the edit profile form' do

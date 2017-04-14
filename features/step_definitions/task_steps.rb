@@ -17,9 +17,8 @@ Given /^on the new task page$/ do
   visit new_task_path
 end
 
-
 Given /^I fill in the "([^"]*)" with "([^"]*)"$/ do |field, value|
-  #puts "in the field %s fill in step value %s" % [field, value]
+  # puts "in the field %s fill in step value %s" % [field, value]
   fill_in(field, with: value)
 end
 

@@ -18,7 +18,6 @@
 # * http://elabs.se/blog/15-you-re-cuking-it-wrong
 #
 
-
 require 'uri'
 require 'cgi'
 require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'paths'))
@@ -41,9 +40,9 @@ When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
   with_scope(parent) { When "#{step}:", table_or_string }
 end
 
-#Given /^(?:|I )am on (.+)$/ do |page_name|
+# Given /^(?:|I )am on (.+)$/ do |page_name|
 #  visit path_to(page_name)
-#end
+# end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
@@ -197,7 +196,7 @@ Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
   query = URI.parse(current_url).query
   actual_params = query ? CGI.parse(query) : {}
   expected_params = {}
-  expected_pairs.rows_hash.each_pair { |k,v| expected_params[k] = v.split(',') }
+  expected_pairs.rows_hash.each_pair { |k, v| expected_params[k] = v.split(',') }
 
   if actual_params.respond_to? :should
     actual_params.should == expected_params
@@ -209,8 +208,3 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
-
-
-
-
-

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create, :destroy]
+  before_filter :authenticate_user!, only: %i[new create destroy]
 
   # GET /tasks
   # GET /tasks.xml
