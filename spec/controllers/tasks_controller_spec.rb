@@ -93,8 +93,10 @@ describe TasksController do
       end
 
       it 'assigns a newly created but unsaved task as @task' do
-        Task.stub(:new).with('these' => 'params') { mock_task(save: false) }
-        post :create, task: { 'these' => 'params' }
+        # Task.stub(:new).with('these' => 'params') { mock_task(save: false) }
+        task = class_double("Task")
+        allow(task).to receive(:new).with('name' => 'params') { mock_task(save: false) }
+        post :create, params: { task: { 'these' => 'params' } }
         expect(assigns(:task)).to be(@mock_task)
       end
 

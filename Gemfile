@@ -2,9 +2,9 @@ source 'http://rubygems.org'
 
 # gem 'rails4_upgrade'
 
-gem 'rails', '4.2.4'
+gem 'rails', '5.0.2'
 gem 'sqlite3'
-gem 'devise' # , '3.5.1'
+gem 'devise'
 gem 'dynamic_form'
 # gem 'aws-s3'
 gem 'haml-rails'
@@ -34,6 +34,7 @@ gem 'zurb-foundation', group: :assets
 
 group :test do
   gem 'cucumber-rails', require: false
+  gem 'rails-controller-testing'
 end
 
 group :cucumber, :development, :test do
@@ -45,7 +46,7 @@ group :cucumber, :development, :test do
 end
 
 group :development do
-  gem 'yaml_db'
+  # gem 'yaml_db'
   gem 'relish'
 end
 
