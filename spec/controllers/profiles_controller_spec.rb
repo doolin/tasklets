@@ -76,8 +76,10 @@ describe ProfilesController do
     end
   end
 
-  describe 'PUT update' do
-    describe 'with valid params' do
+  # TODO: refactor and general cleanup
+  # TODO: update profile factory to have all attributes and user association
+  describe '.update' do
+    context 'with valid params' do
       it 'updates the requested profile' do
         profile = create :profile
         put :update, params: { id: profile.id, profile: { firstname: 'cersei' } }
@@ -86,30 +88,28 @@ describe ProfilesController do
       end
 
       it 'assigns the requested profile as @profile' do
-        profile = Profile.create! valid_attributes
-        put :update, id: profile.id, profile: valid_attributes
+        profile = create :profile
+        put :update, params: { id: profile.id, profile: { lastname: 'lannister' } }
         expect(assigns(:profile)).to eq(profile)
       end
 
       it 'redirects to the profile' do
-        profile = Profile.create! valid_attributes
-        put :update, id: profile.id, profile: valid_attributes
+        profile = create :profile
+        put :update, params: { id: profile.id, profile: { firstname: 'jaime', lastname: 'lannister'} }
         expect(response).to redirect_to(profile)
       end
     end
 
-    describe 'with invalid params' do
+    context 'with invalid params' do
       it 'assigns the profile as @profile' do
-        profile = Profile.create! valid_attributes
-        allow(profile).to receive(:save).and_return(false)
-        put :update, id: profile.id.to_s, profile: {}
+        profile = create :profile
+        put :update, params: { id: profile.id, profile: { foobar: 'quux' } }
         expect(assigns(:profile)).to eq(profile)
       end
 
       it "re-renders the 'edit' template" do
-        profile = Profile.create! valid_attributes
-        allow_any_instance_of(Profile).to receive(:save).and_return(false)
-        put :update, id: profile.id.to_s, profile: {}
+        profile = create :profile
+        put :update, params: {id: profile.id, profile: { quux: 'foobar' } }
         expect(response).to render_template('edit')
       end
     end

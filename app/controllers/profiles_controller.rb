@@ -45,19 +45,24 @@ class ProfilesController < ApplicationController
   end
 
   def permitted_params
-    params.require(:profile).permit(:firstname)
+    params.require(:profile).permit(:firstname, :lastname)
   end
 
   def update
     @profile = Profile.find(params[:id])
 
     respond_to do |format|
-      if @profile.update_attributes(permitted_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { head :ok }
-      else
+      # Not sold on the following logic.
+      # Read through http://weblog.rubyonrails.org/2012/3/21/strong-parameters/
+      if permitted_params.empty?
         format.html { render action: 'edit' }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
+      else
+        # This is succeeding when the parameter is not permitted, due to allowing
+        # {} to be permitted.
+        @profile.update_attributes(permitted_params)
+        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.json { head :ok }
       end
     end
   end
