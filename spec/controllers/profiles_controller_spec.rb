@@ -4,6 +4,8 @@ describe ProfilesController do
   # This should return the minimal set of attributes required to create a valid
   # Profile. As you add validations to Profile, be sure to
   # update the return value of this method accordingly.
+  # TODO: either update this, or preferably, delete it in favor of
+  # using FactoryGirl attributes_for.
   def valid_attributes
     {}
   end
@@ -77,9 +79,10 @@ describe ProfilesController do
   describe 'PUT update' do
     describe 'with valid params' do
       it 'updates the requested profile' do
-        profile = Profile.create! valid_attributes
-        allow_any_instance_of(Profile).to receive(:update_attributes).with('these' => 'params')
-        put :update, id: profile.id, profile: { 'these' => 'params' }
+        profile = create :profile
+        put :update, params: { id: profile.id, profile: { firstname: 'cersei' } }
+        profile.reload
+        expect(profile.firstname).to eq 'cersei'
       end
 
       it 'assigns the requested profile as @profile' do
