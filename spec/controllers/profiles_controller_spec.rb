@@ -21,7 +21,7 @@ describe ProfilesController do
   describe 'GET show' do
     it 'assigns the requested profile as @profile' do
       profile = Profile.create! valid_attributes
-      get :show, id: profile.id.to_s
+      get :show, params: { id: profile.id.to_s }
       expect(assigns(:profile)).to eq(profile)
     end
   end
@@ -36,41 +36,41 @@ describe ProfilesController do
   describe 'GET edit' do
     it 'assigns the requested profile as @profile' do
       profile = Profile.create! valid_attributes
-      get :edit, id: profile.id.to_s
+      get :edit, params: { id: profile.id.to_s }
       expect(assigns(:profile)).to eq(profile)
     end
   end
 
-  describe 'POST create' do
-    describe 'with valid params' do
+  describe '#create' do
+    context 'with valid params' do
       it 'creates a new Profile' do
         expect do
-          post :create, profile: valid_attributes
+          post :create, params: { profile: valid_attributes }
         end.to change(Profile, :count).by(1)
       end
 
       it 'assigns a newly created profile as @profile' do
-        post :create, profile: valid_attributes
+        post :create, params: { profile: valid_attributes }
         expect(assigns(:profile)).to be_a(Profile)
         expect(assigns(:profile)).to be_persisted
       end
 
       it 'redirects to the created profile' do
-        post :create, profile: valid_attributes
+        post :create, params: { profile: valid_attributes }
         expect(response).to redirect_to(Profile.last)
       end
     end
 
-    describe 'with invalid params' do
+    context 'with invalid params' do
       it 'assigns a newly created but unsaved profile as @profile' do
         allow_any_instance_of(Profile).to receive(:save).and_return(false)
-        post :create, profile: {}
+        post :create, params: { profile: {} }
         expect(assigns(:profile)).to be_a_new(Profile)
       end
 
       it "re-renders the 'new' template" do
         allow_any_instance_of(Profile).to receive(:save).and_return(false)
-        post :create, profile: {}
+        post :create, params: { profile: {} }
         expect(response).to render_template('new')
       end
     end
@@ -109,7 +109,7 @@ describe ProfilesController do
 
       it "re-renders the 'edit' template" do
         profile = create :profile
-        put :update, params: {id: profile.id, profile: { quux: 'foobar' } }
+        put :update, params: { id: profile.id, profile: { quux: 'foobar' } }
         expect(response).to render_template('edit')
       end
     end
@@ -119,13 +119,13 @@ describe ProfilesController do
     it 'destroys the requested profile' do
       profile = Profile.create! valid_attributes
       expect do
-        delete :destroy, id: profile.id.to_s
+        delete :destroy, params: { id: profile.id.to_s }
       end.to change(Profile, :count).by(-1)
     end
 
     it 'redirects to the profiles list' do
       profile = Profile.create! valid_attributes
-      delete :destroy, id: profile.id.to_s
+      delete :destroy, params: { id: profile.id.to_s }
       expect(response).to redirect_to(profiles_url)
     end
   end
