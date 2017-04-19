@@ -56,23 +56,27 @@ describe TasksController do
 
   describe '#create' do
     before(:each) do
-      @user = FactoryGirl.build(:user)
+      @user = create :user
       sign_in @user
       allow(controller).to receive(:authenticate_user!)
     end
 
     context 'with valid params' do
-      xit 'assigns a newly created task as @task' do
-        Task.stub(:new).with('these' => 'params') { mock_task(save: true) }
-        post :create, params: { task: { 'description' => 'some description' } }
-        expect(assigns(:task)).to be(@mock_task)
+      it 'creates a new task with correct parameters' do
+        expect do
+          post :create, params: { task: { 'description' => 'some description' } }
+        end.to change(Task, :count).by(1)
       end
 
-      xit 'redirects to the created task' do
-        controller.stub(:authenticate_user!)
-        Task.stub(:new) { mock_task(save: true) }
-        post :create, task: {}
-        expect(response).to redirect_to(task_url(mock_task))
+      it 'assigns a newly created task as @task' do
+        post :create, params: { task: { 'description' => 'some description' } }
+        expect(assigns(:task)).to be_a(Task)
+        expect(assigns(:task)).to be_persisted
+      end
+
+      it 'redirects to the created task' do
+        post :create, params: { task: { 'description' => 'some description' } }
+        expect(response).to redirect_to(task_url(Task.last))
       end
     end
 
@@ -88,14 +92,10 @@ describe TasksController do
         expect(response).to render_template :new
       end
 
-      xit 'assigns a newly built but unsaved task as @task' do
-        # Task.stub(:new).with('these' => 'params') { mock_task(save: false) }
-        task = class_double("Task")
-        allow(task).to receive(:new).with('invalid' => 'params') { mock_task(save: false) }
+      it 'assigns a newly built but unsaved task as @task' do
+        allow_any_instance_of(Profile).to receive(:save).and_return(false)
         post :create, params: { task: { 'invalid' => 'params' } }
-        # expect(assigns(:task)).to be(@mock_task)
-        # binding.pry
-        expect(assigns(:task)).to be(@mock_task)
+        expect(assigns(:task)).to be_a_new(Task)
       end
 
       it "re-renders the 'new' template" do
@@ -106,37 +106,38 @@ describe TasksController do
   end
 
   describe '.update' do
+    let(:task) { create :task }
+
     context 'with valid params' do
-      xit 'updates the requested task' do
-        Task.should_receive(:find).with('37') { mock_task }
-        expect(mock_task).to receive(:update_attributes).with('these' => 'params')
-        put :update, params: { id: '37', task: { 'these' => 'params' } }
-        # expect ???
+
+      it 'updates the requested task' do
+        put :update, params: { id: task.id, task: { 'description' => 'description' } }
+        task.reload
+        expect(task.description).to eq 'description'
       end
 
-      xit 'assigns the requested task as @task' do
-        Task.stub(:find) { mock_task(update_attributes: true) }
-        put :update, params: { id: '1' }
-        expect(assigns(:task)).to be(mock_task)
+      it 'assigns the requested task as @task' do
+        put :update, params: { id: task.id, task: { 'description' => 'description' } }
+        task.reload
+        expect(assigns(:task)).to eq(task)
       end
 
-      xit 'redirects to the task' do
-        Task.stub(:find) { mock_task(update_attributes: true) }
-        put :update, params: { id: 1 }
-        expect(response).to redirect_to(task_url(mock_task))
+      it 'redirects to the task' do
+        put :update, params: { id: task.id, task: { 'description' => 'description' } }
+        expect(response).to redirect_to(task_url(task))
       end
     end
 
     context 'with invalid params' do
       it 'assigns the task as @task' do
         Task.stub(:find) { mock_task(update_attributes: false) }
-        put :update, params: { id: '1' }
+        put :update, params: { id: task.id, task: { 'description' => 'description' } }
         expect(assigns(:task)).to be(mock_task)
       end
 
       it "re-renders the 'edit' template" do
         Task.stub(:find) { mock_task(update_attributes: false) }
-        put :update, params: { id: '1' }
+        put :update, params: { id: task.id, task: { 'description' => 'description' } }
         expect(response).to render_template('edit')
       end
     end

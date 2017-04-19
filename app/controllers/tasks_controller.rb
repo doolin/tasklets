@@ -56,13 +56,12 @@ class TasksController < ApplicationController
     end
   end
 
-  # PUT /tasks/1
-  # PUT /tasks/1.xml
   def update
     @task = Task.find(params[:id])
 
     respond_to do |format|
-      if @task.update_attributes(params[:task])
+      # if @task.update_attributes(params[:task])
+      if @task.update_attributes(permitted_params)
         if @task.started?
           @task.start_time = Time.now
           @task.save
