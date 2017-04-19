@@ -1,8 +1,6 @@
 class TasksController < ApplicationController
-  before_filter :authenticate_user!, only: %i[new create destroy]
+  before_action :authenticate_user!, only: %i[new create destroy]
 
-  # GET /tasks
-  # GET /tasks.xml
   def index
     @tasks = Task.all
 
@@ -12,8 +10,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.xml
   def show
     @task = Task.find(params[:id])
 
@@ -23,8 +19,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # GET /tasks/new
-  # GET /tasks/new.xml
   def new
     @task = Task.new
 
@@ -34,15 +28,17 @@ class TasksController < ApplicationController
     end
   end
 
-  # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
   end
 
-  # POST /tasks
-  # POST /tasks.xml
+  def permitted_params
+    params.require(:task).permit(:description)
+  end
+
   def create
-    @task = Task.new(params[:task])
+    # @task = Task.new(params[:task])
+    @task = Task.new(permitted_params)
 
     # Create the time stamp if the task is started.
     # This will need to be done in the edit method
@@ -60,13 +56,12 @@ class TasksController < ApplicationController
     end
   end
 
-  # PUT /tasks/1
-  # PUT /tasks/1.xml
   def update
     @task = Task.find(params[:id])
 
     respond_to do |format|
-      if @task.update_attributes(params[:task])
+      # if @task.update_attributes(params[:task])
+      if @task.update_attributes(permitted_params)
         if @task.started?
           @task.start_time = Time.now
           @task.save
