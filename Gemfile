@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 # gem 'rails4_upgrade'
 
-gem 'rails', '5.1.0.rc1'
+gem 'rails', '5.1.0.rc2'
 gem 'sqlite3'
 gem 'devise'
 gem 'dynamic_form'
