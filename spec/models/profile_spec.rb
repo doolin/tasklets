@@ -1,5 +1,15 @@
 require 'spec_helper'
 
-describe Profile do
-  skip "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Profile do
+  context 'validations' do
+    subject(:profile) { build :profile }
+
+    context 'firstname' do
+      it 'does not valiate' do
+        profile.firstname = 'a'
+        expect(profile).not_to be_valid
+      end
+    end
+  end
+
 end

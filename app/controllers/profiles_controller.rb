@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.new(params[:profile])
+    @profile = Profile.new(permitted_params)
 
     respond_to do |format|
       if @profile.save

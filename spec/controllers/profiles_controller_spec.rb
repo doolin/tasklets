@@ -7,7 +7,9 @@ describe ProfilesController do
   # TODO: either update this, or preferably, delete it in favor of
   # using FactoryGirl attributes_for.
   def valid_attributes
-    {}
+    {
+      firstname: 'cersei'
+    }
   end
 
   describe 'GET index' do
@@ -64,13 +66,13 @@ describe ProfilesController do
     context 'with invalid params' do
       it 'assigns a newly created but unsaved profile as @profile' do
         allow_any_instance_of(Profile).to receive(:save).and_return(false)
-        post :create, params: { profile: {} }
+        post :create, params: { profile: { foo: :bar } }
         expect(assigns(:profile)).to be_a_new(Profile)
       end
 
       it "re-renders the 'new' template" do
         allow_any_instance_of(Profile).to receive(:save).and_return(false)
-        post :create, params: { profile: {} }
+        post :create, params: { profile: { foo: :bar } }
         expect(response).to render_template('new')
       end
     end
