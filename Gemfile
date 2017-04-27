@@ -26,7 +26,7 @@ gem 'sass-rails'
 gem 'coffee-rails' # , '~>4.0.0'
 gem 'uglifier'
 
-gem 'haml'
+# gem 'haml'
 gem 'sprockets'
 gem 'jquery-rails'
 
