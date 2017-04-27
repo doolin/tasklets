@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTagsToTasks < ActiveRecord::Migration
   def self.up
     add_column :tasks, :tags, :string

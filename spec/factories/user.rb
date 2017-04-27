@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryGirl.define do
   factory :minimal_user, class: User do
     username 'minimal'

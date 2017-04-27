@@ -1,5 +1,7 @@
 
 
+# frozen_string_literal: true
+
 # Steps for task
 
 Given /^I am signed in$/ do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe ProfilesController do
@@ -97,7 +99,7 @@ describe ProfilesController do
 
       it 'redirects to the profile' do
         profile = create :profile
-        put :update, params: { id: profile.id, profile: { firstname: 'jaime', lastname: 'lannister'} }
+        put :update, params: { id: profile.id, profile: { firstname: 'jaime', lastname: 'lannister' } }
         expect(response).to redirect_to(profile)
       end
     end

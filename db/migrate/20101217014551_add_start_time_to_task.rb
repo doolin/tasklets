@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddStartTimeToTask < ActiveRecord::Migration
   def self.up
     add_column :tasks, :start_time, :timestamp

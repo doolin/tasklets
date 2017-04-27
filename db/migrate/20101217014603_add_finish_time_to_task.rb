@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddFinishTimeToTask < ActiveRecord::Migration
   def self.up
     add_column :tasks, :finish_time, :timestamp

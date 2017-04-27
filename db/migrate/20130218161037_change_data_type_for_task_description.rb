@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeDataTypeForTaskDescription < ActiveRecord::Migration
   def up
     change_table :tasks do |t|

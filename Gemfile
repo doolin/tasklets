@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'http://rubygems.org'
 
 # gem 'rails4_upgrade'
@@ -39,7 +41,7 @@ end
 
 group :cucumber, :development, :test do
   gem 'capybara'
-  gem 'launchy'    # So you can do Then show me the page
+  gem 'launchy' # So you can do Then show me the page
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 App1::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 

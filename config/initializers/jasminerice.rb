@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this file to set configuration options for Jasminerice,
 # all of these are initialized to their respective defaults,
 # but you can change them here.

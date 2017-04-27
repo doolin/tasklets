@@ -1,4 +1,6 @@
 
+# frozen_string_literal: true
+
 namespace :olddb do
   namespace :backup do
 

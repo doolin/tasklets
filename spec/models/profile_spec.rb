@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Profile do
@@ -11,5 +13,4 @@ RSpec.describe Profile do
       end
     end
   end
-
 end

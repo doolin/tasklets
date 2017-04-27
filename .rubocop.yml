@@ -61,7 +61,10 @@ Metrics/AbcSize:
 # Offense count: 12
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/BlockLength:
-  Max: 133
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'db/schema.rb'
+    - 'lib/tasks/backup.rake'
 
 # Offense count: 1
 Metrics/CyclomaticComplexity:

@@ -1,4 +1,6 @@
 
+# frozen_string_literal: true
+
 # Session
 Given /^that a confirmed user exists$/ do
   # Given %{I have one user "minimal@example.com" with password "test1234"}

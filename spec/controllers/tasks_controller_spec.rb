@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe TasksController do
@@ -109,7 +111,6 @@ describe TasksController do
     let(:task) { create :task }
 
     context 'with valid params' do
-
       it 'updates the requested task' do
         put :update, params: { id: task.id, task: { 'description' => 'description' } }
         task.reload
