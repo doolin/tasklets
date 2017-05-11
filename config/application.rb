@@ -1,25 +1,23 @@
-# frozen_string_literal: true
-
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 
-# If you have a Gemfile, require the gems listed there, including any gems
+# Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
+Bundler.require(*Rails.groups)
 
 module App1
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.1
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # config.assets.initialize_on_precompile = false
 
-    # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = 'utf-8'
-
-    # Upcoming default behavior
-    config.i18n.enforce_available_locales = true
+    # Application configuration should go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded.
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
