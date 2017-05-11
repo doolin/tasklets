@@ -50,6 +50,7 @@ end
 group :development do
   # gem 'yaml_db'
   gem 'relish'
+  gem 'listen'
 end
 
 gem 'jasminerice', git: 'https://github.com/bradphelan/jasminerice.git'

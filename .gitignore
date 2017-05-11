@@ -9,3 +9,4 @@ tmp/**/*
 .tddium-deploy-key
 .env
 todo.txt
+*.bak
