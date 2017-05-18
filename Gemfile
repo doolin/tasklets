@@ -2,9 +2,7 @@
 
 source 'http://rubygems.org'
 
-# gem 'rails4_upgrade'
-
-gem 'rails', '5.1.0.rc2'
+gem 'rails', '5.1.1'
 gem 'sqlite3'
 gem 'devise'
 gem 'dynamic_form'
@@ -28,7 +26,6 @@ gem 'sass-rails'
 gem 'coffee-rails' # , '~>4.0.0'
 gem 'uglifier'
 
-# gem 'haml'
 gem 'sprockets'
 gem 'jquery-rails'
 
