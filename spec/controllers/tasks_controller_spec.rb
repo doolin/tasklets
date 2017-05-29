@@ -27,7 +27,7 @@ describe TasksController do
 
   describe 'GET index' do
     it 'assigns all tasks as @tasks' do
-      Task.stub(:all) { [mock_task] }
+      allow(Task).to receive (:all) { [mock_task] }
       get :index
       expect(assigns(:tasks)).to eq([mock_task])
     end
@@ -35,7 +35,7 @@ describe TasksController do
 
   describe 'GET show' do
     it 'assigns the requested task as @task' do
-      Task.stub(:find).with('37') { mock_task }
+      allow(Task).to receive(:find).with('37') { mock_task }
       get :show, params: { id: '37' }
       expect(assigns(:task)).to be(mock_task)
     end
@@ -43,7 +43,7 @@ describe TasksController do
 
   describe 'GET new' do
     it 'assigns a new task as @task' do
-      Task.stub(:new) { mock_task }
+      allow(Task).to receive(:new) { mock_task }
       get :new
       expect(assigns(:task)).to be(@mock_task)
     end
@@ -51,7 +51,7 @@ describe TasksController do
 
   describe 'GET edit' do
     it 'assigns the requested task as @task' do
-      Task.stub(:find).with('37') { mock_task }
+      allow(Task).to receive(:find).with('37') { mock_task }
       get :edit, params: { id: '37' }
       expect(assigns(:task)).to be(mock_task)
     end
@@ -132,13 +132,13 @@ describe TasksController do
 
     context 'with invalid params' do
       it 'assigns the task as @task' do
-        Task.stub(:find) { mock_task(update_attributes: false) }
+        allow(Task).to receive(:find) { mock_task(update_attributes: false) }
         put :update, params: { id: task.id, task: { 'description' => 'description' } }
         expect(assigns(:task)).to be(mock_task)
       end
 
       it "re-renders the 'edit' template" do
-        Task.stub(:find) { mock_task(update_attributes: false) }
+        allow(Task).to receive(:find) { mock_task(update_attributes: false) }
         put :update, params: { id: task.id, task: { 'description' => 'description' } }
         expect(response).to render_template('edit')
       end
@@ -153,13 +153,13 @@ describe TasksController do
     end
 
     it 'destroys the requested task' do
-      Task.should_receive(:find).with('37') { mock_task }
-      mock_task.should_receive(:destroy)
+      expect(Task).to receive(:find).with('37') { mock_task }
+      expect(mock_task).to receive(:destroy)
       delete :destroy, params: { id: '37' }
     end
 
     it 'redirects to the tasks list' do
-      Task.stub(:find) { mock_task(id: '37') }
+      allow(Task).to receive(:find) { mock_task(id: '37') }
       delete :destroy, params: { id: '37' }
       expect(response).to redirect_to new_task_path
     end
