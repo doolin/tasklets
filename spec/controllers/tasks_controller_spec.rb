@@ -19,7 +19,7 @@ describe TasksController do
 
   def mock_task(stubs = {})
     (@mock_task ||= mock_model(Task).as_null_object).tap do |task|
-      stubs.each do |k, v|
+      stubs.each do |k, _v|
         allow(task).to receive(k)
       end
     end
@@ -27,7 +27,7 @@ describe TasksController do
 
   describe 'GET index' do
     it 'assigns all tasks as @tasks' do
-      allow(Task).to receive (:all) { [mock_task] }
+      allow(Task).to receive(:all) { [mock_task] }
       get :index
       expect(assigns(:tasks)).to eq([mock_task])
     end
