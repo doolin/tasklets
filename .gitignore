@@ -10,3 +10,4 @@ tmp/**/*
 .env
 todo.txt
 *.bak
+db/test.sqlite3-journal

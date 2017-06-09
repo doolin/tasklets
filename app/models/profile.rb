@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class Profile < ActiveRecord::Base
-  validates :firstname, presence: true, length: { minimum: 6 }
+  validates :firstname, presence: true, length: { minimum: 3 }
 end
