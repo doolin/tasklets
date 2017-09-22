@@ -7,6 +7,8 @@ describe TasksController do
 
   describe 'access control' do
     it "denies access to 'create'" do
+      user = create :user
+      request.headers.merge!(user.create_new_auth_token)
       post :create
       expect(response).to redirect_to user_session_path
     end

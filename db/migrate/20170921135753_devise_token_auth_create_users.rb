@@ -1,5 +1,10 @@
 class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.1]
   def change
+    # TODO: change all this to add_column.
+
+    add_column :users, :provider, :string, null: false, default: 'email'
+
+=begin
     create_table(:users) do |t|
       ## Required
       t.string :provider, :null => false, :default => "email"
@@ -50,5 +55,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.1]
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,       unique: true
+=end
+
   end
 end
