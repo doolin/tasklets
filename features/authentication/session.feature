@@ -3,7 +3,7 @@ Feature: Session handling
   As a registered user
   I need to be able to login and logout
 
-Background: 
+Background:
   Given that a confirmed user exists
 
 Scenario Outline: Logging in
