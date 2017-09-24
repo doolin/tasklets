@@ -21,7 +21,7 @@ describe TasksController do
 
   def mock_task(stubs = {})
     (@mock_task ||= mock_model(Task).as_null_object).tap do |task|
-      stubs.each do |k, _v|
+      stubs.each_key do |k|
         allow(task).to receive(k)
       end
     end

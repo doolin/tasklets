@@ -12,6 +12,7 @@ AllCops:
     - 'config/environments/**/*.rb'
     - 'config/*.rb'
     - 'bin/**/*'
+    - 'db/schema.rb'
 
 # Offense count: 8
 # Cop supports --auto-correct.
@@ -92,7 +93,7 @@ Metrics/MethodLength:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, IndentationWidth.
 # SupportedStyles: with_first_parameter, with_fixed_indentation
-Style/AlignParameters:
+Layout/AlignParameters:
   Exclude:
     - 'bin/unicorn'
     - 'bin/unicorn_rails'
@@ -124,7 +125,7 @@ Style/Documentation:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/EmptyLineAfterMagicComment:
+Layout/EmptyLineAfterMagicComment:
   Exclude:
     - 'db/schema.rb'
 
@@ -132,7 +133,7 @@ Style/EmptyLineAfterMagicComment:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: empty_lines, no_empty_lines
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - 'db/migrate/20101217012805_devise_create_users.rb'
     - 'db/schema.rb'
@@ -141,7 +142,7 @@ Style/EmptyLinesAroundBlockBody:
 # Offense count: 4
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
-Style/ExtraSpacing:
+Layout/ExtraSpacing:
   Exclude:
     - 'db/schema.rb'
     - 'script/rails'
@@ -149,7 +150,7 @@ Style/ExtraSpacing:
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: Width, IgnoredPatterns.
-Style/IndentationWidth:
+Layout/IndentationWidth:
   Exclude:
     - 'lib/tasks/cucumber.rake'
 
@@ -164,7 +165,7 @@ Style/LineEndConcatenation:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, IndentationWidth.
 # SupportedStyles: aligned, indented
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Exclude:
     - 'features/support/paths.rb'
     - 'features/support/selectors.rb'
