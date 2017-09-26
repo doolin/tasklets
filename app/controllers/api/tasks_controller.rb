@@ -3,7 +3,7 @@
 module Api
   class TasksController < BaseController
     def show
-      render json: Task.first
+      render json: Task.first.to_json
     end
   end
 end
