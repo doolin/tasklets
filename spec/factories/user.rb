@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 FactoryGirl.define do
+  factory :user do
+    email 'david.doolin+3@example.com'
+    password 'foobarquux'
+    password_confirmation 'foobarquux'
+  end
+
   factory :minimal_user, class: User do
     username 'minimal'
     email 'minimal@example.com'
