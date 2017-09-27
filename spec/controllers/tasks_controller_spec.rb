@@ -68,12 +68,14 @@ describe TasksController do
 
     context 'with valid params' do
       it 'creates a new task with correct parameters' do
+        create :user, email: 'foo@bar.com'
         expect do
           post :create, params: { task: { 'description' => 'some description' } }
         end.to change(Task, :count).by(1)
       end
 
       it 'assigns a newly created task as @task' do
+        create :user, email: 'foo@bar.com'
         post :create, params: { task: { 'description' => 'some description' } }
         expect(assigns(:task)).to be_a(Task)
         expect(assigns(:task)).to be_persisted
@@ -93,6 +95,7 @@ describe TasksController do
       end
 
       it 're-renders the new method' do
+        create :user, email: 'foo@bar.com'
         post :create, params: { task: { foo: 'bar' } }
         expect(response).to render_template :new
       end
@@ -104,6 +107,7 @@ describe TasksController do
       end
 
       it "re-renders the 'new' template" do
+        create :user, email: 'foo@bar.com'
         post :create, params: { task: { invalid: 'foo' } }
         expect(response).to render_template('new')
       end

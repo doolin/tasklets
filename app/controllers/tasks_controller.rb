@@ -35,12 +35,17 @@ class TasksController < ApplicationController
   end
 
   def permitted_params
-    params.require(:task).permit(:description)
+    params.require(:task).permit(:description) # , :user_id)
   end
 
   def create
-    # @task = Task.new(params[:task])
-    @task = Task.new(permitted_params)
+    # Really ought to catch the errors here. Then again, doing
+    # create without "!" allows for redirecting appropriately.
+    # Keep an eye out for better ways to do this.
+    # @task = current_user.tasks.create!(permitted_params)
+    @task = current_user.tasks.create(permitted_params)
+
+    # binding.pry
 
     # Create the time stamp if the task is started.
     # This will need to be done in the edit method
@@ -48,7 +53,7 @@ class TasksController < ApplicationController
     @task.start_time = Time.now if @task.started?
 
     respond_to do |format|
-      if @task.save
+      if @task.valid?
         format.html { redirect_to(@task, flash: { success: 'Task was successfully created.' }) }
         format.xml  { render xml: @task, status: :created, location: @task }
       else

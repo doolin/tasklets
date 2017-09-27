@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :task do
     description 'Task description dummy text.'
+    association :user
   end
 end

@@ -8,6 +8,7 @@ describe Task do
   end
 
   it 'saves a valid task' do
-    expect(Task.create!(description: 'jgshdlfjk')).to be_valid
+    task = create :task
+    expect(task).to be_valid
   end
 end

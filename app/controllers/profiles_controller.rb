@@ -6,7 +6,6 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @profiles }
     end
   end
 
@@ -33,15 +32,13 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.new(permitted_params)
+    @profile = current_user.build_profile(permitted_params)
 
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render json: @profile, status: :created, location: @profile }
       else
         format.html { render action: 'new' }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
   end
