@@ -27,6 +27,7 @@ group :production do
 end
 
 group :test do
+  gem 'simplecov', require: false
   gem 'cucumber-rails', require: false
   gem 'rails-controller-testing'
 end
