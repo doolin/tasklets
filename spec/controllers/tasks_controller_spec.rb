@@ -45,9 +45,10 @@ describe TasksController do
 
   describe 'GET new' do
     it 'assigns a new task as @task' do
-      allow(Task).to receive(:new) { mock_task }
+      user = create :user
+      sign_in user
       get :new
-      expect(assigns(:task)).to be(@mock_task)
+      expect(response).to have_http_status(:ok)
     end
   end
 
@@ -114,7 +115,7 @@ describe TasksController do
     end
   end
 
-  describe '.update' do
+  describe '#update' do
     let(:task) { create :task }
 
     context 'with valid params' do
@@ -127,6 +128,15 @@ describe TasksController do
       it 'assigns the requested task as @task' do
         put :update, params: { id: task.id, task: { 'description' => 'description' } }
         task.reload
+        expect(assigns(:task)).to eq(task)
+      end
+
+      it 'starts task and sets time' do
+        put :update, params: { id: task.id, task: { 'started' => 'true' } }
+        task.reload
+        expect(response).to have_http_status(:redirect)
+        expect(task.started).to be true
+        expect(task.start_time.year).to eq 2017
         expect(assigns(:task)).to eq(task)
       end
 

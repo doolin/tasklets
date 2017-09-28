@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   end
 
   def permitted_params
-    params.require(:task).permit(:description) # , :user_id)
+    params.require(:task).permit(:description, :started)
   end
 
   def create
