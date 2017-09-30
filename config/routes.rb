@@ -5,12 +5,12 @@ App1::Application.routes.draw do
   resources :tasks
 
   devise_for :users
-  # mount_devise_token_auth_for 'User', at: 'auth'
 
   root to: 'tasks#index'
 
   namespace :api do
     resources :tasks
+    mount_devise_token_auth_for 'User', at: 'auth'
   end
 
   authenticated do

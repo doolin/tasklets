@@ -12,46 +12,49 @@
 
 ActiveRecord::Schema.define(version: 20170926111808) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "profiles", force: :cascade do |t|
-    t.string "firstname", limit: 255
-    t.string "lastname", limit: 255
+    t.string "firstname"
+    t.string "lastname"
     t.text "bio"
-    t.string "website", limit: 255
-    t.string "twitter", limit: 255
-    t.string "facebook", limit: 255
-    t.string "linkedin", limit: 255
-    t.string "google", limit: 255
-    t.string "url", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "website"
+    t.string "twitter"
+    t.string "facebook"
+    t.string "linkedin"
+    t.string "google"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.text "description", limit: 255
+    t.text "description"
     t.boolean "started"
     t.boolean "finished"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.datetime "start_time"
     t.datetime "finish_time"
-    t.string "tags", limit: 255
+    t.string "tags"
     t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", limit: 255, default: "", null: false
-    t.string "encrypted_password", limit: 255, default: "", null: false
-    t.string "reset_password_token", limit: 255
-    t.string "reset_password_sent_at", limit: 255
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.string "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip", limit: 255
-    t.string "last_sign_in_ip", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.text "tokens"

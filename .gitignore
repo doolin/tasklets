@@ -12,3 +12,4 @@ todo.txt
 *.bak
 db/test.sqlite3-journal
 coverage/*
+.idea/*
