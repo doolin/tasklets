@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Api
+module Api::V1
   class UsersController < Api::BaseController
     # before_action :authenticate_user!, except: [:new, :create]
     # skip_before_filter :verify_authenticity_token

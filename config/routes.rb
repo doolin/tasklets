@@ -9,8 +9,13 @@ App1::Application.routes.draw do
   root to: 'tasks#index'
 
   namespace :api do
-    resources :tasks
-    mount_devise_token_auth_for 'User', at: 'auth'
+    namespace :v1 do
+      resources :tasks
+      resources :users
+    end
+    scope :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth' # , base_controller: 'Api::V1::BaseController'
+    end
   end
 
   authenticated do
