@@ -6,6 +6,7 @@ describe ProfilesController do
   # This should return the minimal set of attributes required to create a valid
   # Profile. As you add validations to Profile, be sure to
   # update the return value of this method accordingly.
+  #
   # TODO: either update this, or preferably, delete it in favor of
   # using FactoryGirl attributes_for.
   def valid_attributes(attrs = {})
@@ -52,7 +53,7 @@ describe ProfilesController do
   describe '#create' do
     context 'with valid params' do
       it 'creates a new Profile' do
-        parameters = { profile: valid_attributes() }
+        parameters = { profile: valid_attributes }
         expect do
           # post profiles_url, params: parameters # TODO: this is Rails 5 way, not working.
           post :create, params: parameters
