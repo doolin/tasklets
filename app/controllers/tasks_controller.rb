@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create destroy]
+  before_action :authenticate_user!
 
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.all
+    # @tasks = Task.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +27,6 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render xml: @task }
     end
   end
 
@@ -46,8 +46,6 @@ class TasksController < ApplicationController
 
     @task = current_user.tasks.create(permitted_params)
 
-    # binding.pry
-
     # Create the time stamp if the task is started.
     # This will need to be done in the edit method
     # as well.  Will dry it out afterward.
@@ -58,7 +56,7 @@ class TasksController < ApplicationController
         format.html { redirect_to(@task, flash: { success: 'Task was successfully created.' }) }
         format.xml  { render xml: @task, status: :created, location: @task }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', status: :forbidden }
         format.xml  { render xml: @task.errors, status: :unprocessable_entity }
       end
     end
@@ -77,14 +75,12 @@ class TasksController < ApplicationController
         format.html { redirect_to(@task, notice: 'Task was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', status: :unprocessable_entity }
         format.xml  { render xml: @task.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /tasks/1
-  # DELETE /tasks/1.xml
   def destroy
     @task = Task.find(params[:id])
     @task.destroy

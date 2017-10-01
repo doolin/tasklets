@@ -8,6 +8,10 @@ require 'rspec/rails'
 require 'devise'
 require 'email_spec'
 
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in spec/support/ and its subdirectories.
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 RSpec.configure do |config|
   config.include EmailSpec::Helpers
   config.include EmailSpec::Matchers
@@ -24,13 +28,11 @@ RSpec.configure do |config|
     end
   end
 
+  config.include RequestSpecHelper, type: :request
+
   # backwards compatibility
   config.infer_spec_type_from_file_location!
   # For Devise authentication
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.mock_with :rspec
 end
-
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }

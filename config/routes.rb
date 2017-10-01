@@ -12,4 +12,8 @@ App1::Application.routes.draw do
   namespace :api do
     resources :tasks
   end
+
+  authenticated do
+    root to: "secret#index", as: :authenticated_root
+  end
 end

@@ -2,11 +2,12 @@
 
 require 'spec_helper'
 
-describe 'Tasks' do
+describe 'Tasks', type: :request do
   describe 'GET /tasks' do
     it 'lists tasks' do
-      get tasks_path
-      expect(response.status).to be(200)
+      get tasks_url
+      # expect(response.status).to be(200)
+      expect(response).to have_http_status(:redirect)
     end
   end
 end

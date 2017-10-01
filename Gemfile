@@ -29,9 +29,6 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'cucumber-rails', require: false
-  gem 'jasminerice', git: 'https://github.com/bradphelan/jasminerice.git'
-  gem 'rails-controller-testing'
-  # gem 'sqlite3'
 end
 
 group :cucumber, :development, :test do
