@@ -1,7 +1,7 @@
 # Tasklets
 
 [![Build
-Status](https://travis-ci.org/doolin/tasklets.svg)](http://travis-ci.org/doolin/tasklets)
+Status](https://travis-ci.org/doolin/tasklets.svg?branch=master)](http://travis-ci.org/doolin/tasklets)
 
 Tasklets is a long term, intermittently developed ongoing project
 for achieving the following:
