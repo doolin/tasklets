@@ -64,7 +64,8 @@ When /^the user presses the "([^"]*)" button$/ do |button|
 end
 
 Then /^the user is shown the page for the new profile$/ do
-  visit profile_path(1)
+  profile = Profile.last
+  visit profile_path(profile.id)
 end
 
 Then /^the member is shown the page for the new project$/ do

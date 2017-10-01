@@ -4,7 +4,7 @@
 # all of these are initialized to their respective defaults,
 # but you can change them here.
 
-Jasminerice.setup do |config|
+# Jasminerice.setup do |config|
   # Tell Jasminerice to automatically mount itself in your application.
   # If set to false, you must manually mount the
   # engine in order to use Jasminerice.
@@ -18,4 +18,4 @@ Jasminerice.setup do |config|
   # Specify a path where your fixutures can be found.
   # Defaults to 'spec/javascripts/fixtures'
   # config.fixture_path = 'spec/javascripts/fixtures'
-end
+# end

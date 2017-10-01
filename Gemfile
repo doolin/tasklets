@@ -3,7 +3,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '5.1.4'
-gem 'sqlite3'
+gem 'pg'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'dynamic_form'
@@ -29,7 +29,9 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'cucumber-rails', require: false
+  gem 'jasminerice', git: 'https://github.com/bradphelan/jasminerice.git'
   gem 'rails-controller-testing'
+  # gem 'sqlite3'
 end
 
 group :cucumber, :development, :test do
@@ -45,7 +47,6 @@ group :development do
   gem 'listen'
 end
 
-gem 'jasminerice', git: 'https://github.com/bradphelan/jasminerice.git'
 
 group :test, :development do
   gem 'email_spec'
