@@ -70,9 +70,17 @@ describe TasksController do
     context 'with valid params' do
       it 'creates a new task with correct parameters' do
         create :user, email: 'foo@bar.com'
+        tags = %w(foo bar baz).join(',')
+        parameters = {
+         task: {
+           'description' => 'some description',
+           'tags' => tags
+         }
+        }
         expect do
-          post :create, params: { task: { 'description' => 'some description' } }
+          post :create, params: parameters
         end.to change(Task, :count).by(1)
+        expect(Task.last.tags).to eq(tags)
       end
 
       it 'assigns a newly created task as @task' do

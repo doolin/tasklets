@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   end
 
   def permitted_params
-    params.require(:task).permit(:description, :started)
+    params.require(:task).permit(:description, :started, :tags)
   end
 
   def create
@@ -43,6 +43,7 @@ class TasksController < ApplicationController
     # create without "!" allows for redirecting appropriately.
     # Keep an eye out for better ways to do this.
     # @task = current_user.tasks.create!(permitted_params)
+
     @task = current_user.tasks.create(permitted_params)
 
     # binding.pry
