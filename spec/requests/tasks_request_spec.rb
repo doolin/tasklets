@@ -2,10 +2,14 @@
 
 require 'spec_helper'
 
-describe TasksController do
+describe TasksController, type: :request do
+  let(:user) { create :user }
+  before { sign_in user }
+
   describe 'access control' do
+    before { sign_out user }
+
     it "denies access to 'create'" do
-      user = create :user
       post tasks_url
       expect(response).to redirect_to user_session_path
     end
@@ -16,6 +20,8 @@ describe TasksController do
     end
   end
 
+#=begin
+  # TODO: see about getting rid of this thing.
   def mock_task(stubs = {})
     (@mock_task ||= mock_model(Task).as_null_object).tap do |task|
       stubs.each_key do |k|
@@ -23,17 +29,19 @@ describe TasksController do
       end
     end
   end
+#=end
 
-  describe 'GET index', type: :request do
+  describe 'GET index' do
   # describe 'GET /tasks' do
     it 'lists tasks' do
+      sign_out user
       get tasks_url
       expect(response).to have_http_status(:redirect)
     end
 
     it 'assigns all tasks as @tasks' do
-      user = create :user
-      sign_in user
+      # user = create :user
+      # sign_in user
       get tasks_url
       expect(response).to have_http_status(:success)
     end
@@ -41,10 +49,11 @@ describe TasksController do
 
   # describe '#index', type: :feature do
   describe '#index', type: :controller do
-    it 'assigns all tasks as @tasks' do
+    # TODO: move this back to controller spec
+    xit 'assigns all tasks as @tasks' do
       #allow(Task).to receive(:all) { [mock_task] }
-      user = create :user
-      sign_in user
+      # user = create :user
+      # sign_in user
       allow(user).to receive(:all) { [mock_task] }
       get :index
       expect(response).to have_http_status(:success)
@@ -52,39 +61,39 @@ describe TasksController do
     end
   end
 
-  describe 'GET show', type: :request do
+  describe 'GET show' do
     it 'assigns the requested task as @task' do
       allow(Task).to receive(:find).with('37') { mock_task }
-      user = create :user
+      # user = create :user
       sign_in user
       get task_url(37)
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe 'GET new', type: :request do
+  describe 'GET new' do
     it 'assigns a new task as @task' do
-      user = create :user
-      sign_in user
+      # user = create :user
+      # sign_in user
       get new_task_url
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe 'GET edit', type: :request do
+  describe 'GET edit' do
     it 'assigns the requested task as @task' do
       allow(Task).to receive(:find).with('37') { mock_task }
-      user = create :user
-      sign_in user
+      # user = create :user
+      # sign_in user
       get edit_task_url(37)
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe '#create', type: :request do
+  describe '#create' do
     before(:each) do
-      user = create :user
-      sign_in user
+      # user = create :user
+      # sign_in user
     end
 
     context 'with valid params' do
@@ -135,7 +144,7 @@ describe TasksController do
     end
   end
 
-  describe '#update', type: :request do
+  describe '#update' do
     let!(:task) { create :task }
     let!(:user) { create :user, email: 'foobar@io.io' }
 
@@ -146,12 +155,6 @@ describe TasksController do
         put task_url(task.id), params: { task: { 'description' => 'description' } }
         task.reload
         expect(task.description).to eq 'description'
-      end
-
-      xit 'assigns the requested task as @task' do
-        put task_url(task.id), params: { task: { 'description' => 'description' } }
-        task.reload
-        # expect(assigns(:task)).to eq(task)
       end
 
       it 'starts task and sets time' do
@@ -186,10 +189,10 @@ describe TasksController do
     end
   end
 
-  describe 'DELETE destroy', type: :request do
+  describe 'DELETE destroy' do
     before(:each) do
-      @user = build :user
-      sign_in @user
+      # @user = build :user
+      # sign_in @user
     end
 
     it 'destroys the requested task' do
