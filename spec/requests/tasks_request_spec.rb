@@ -20,91 +20,52 @@ describe TasksController, type: :request do
     end
   end
 
-#=begin
-  # TODO: see about getting rid of this thing.
-  def mock_task(stubs = {})
-    (@mock_task ||= mock_model(Task).as_null_object).tap do |task|
-      stubs.each_key do |k|
-        allow(task).to receive(k)
-      end
-    end
-  end
-#=end
-
-  describe 'GET index' do
-  # describe 'GET /tasks' do
-    it 'lists tasks' do
+  describe 'get tasks_url' do
+    it 'redirects user to sign in' do
       sign_out user
       get tasks_url
       expect(response).to have_http_status(:redirect)
     end
 
-    it 'assigns all tasks as @tasks' do
-      # user = create :user
-      # sign_in user
+    it 'lists tasks for user' do
       get tasks_url
       expect(response).to have_http_status(:success)
     end
   end
 
-  # describe '#index', type: :feature do
-  describe '#index', type: :controller do
-    # TODO: move this back to controller spec
-    xit 'assigns all tasks as @tasks' do
-      #allow(Task).to receive(:all) { [mock_task] }
-      # user = create :user
-      # sign_in user
-      allow(user).to receive(:all) { [mock_task] }
-      get :index
-      expect(response).to have_http_status(:success)
-      # expect(assigns(:tasks)).to eq([mock_task])
-    end
-  end
-
-  describe 'GET show' do
+  describe 'get task_url/:id' do
     it 'assigns the requested task as @task' do
-      allow(Task).to receive(:find).with('37') { mock_task }
-      # user = create :user
-      sign_in user
-      get task_url(37)
+      task = create :task, user: user
+      get task_url(task.id)
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe 'GET new' do
+  describe 'get new_task_url' do
     it 'assigns a new task as @task' do
-      # user = create :user
-      # sign_in user
       get new_task_url
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe 'GET edit' do
+  describe 'get edit_task_url/:id' do
     it 'assigns the requested task as @task' do
-      allow(Task).to receive(:find).with('37') { mock_task }
-      # user = create :user
-      # sign_in user
-      get edit_task_url(37)
+      task = create :task, user: user
+      get edit_task_url(task.id)
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe '#create' do
-    before(:each) do
-      # user = create :user
-      # sign_in user
-    end
-
+  describe 'post tasks_url' do
     context 'with valid params' do
       it 'creates a new task with correct parameters' do
         create :user, email: 'foo@bar.com'
-        tags = %w(foo bar baz).join(',')
+        tags = %w[foo bar baz].join(',')
         parameters = {
-         task: {
-           'description' => 'some description',
-           'tags' => tags
-         }
+          task: {
+            'description' => 'some description',
+            'tags' => tags
+          }
         }
         expect do
           post tasks_url, params: parameters
@@ -144,11 +105,8 @@ describe TasksController, type: :request do
     end
   end
 
-  describe '#update' do
-    let!(:task) { create :task }
-    let!(:user) { create :user, email: 'foobar@io.io' }
-
-    before { sign_in user }
+  describe 'put task_url/:id' do
+    let!(:task) { create :task, user: user }
 
     context 'with valid params' do
       it 'updates the requested task' do
@@ -172,14 +130,11 @@ describe TasksController, type: :request do
     end
 
     context 'with invalid params' do
-      # TODO: this feels weak.
-      it 'assigns the task as @task' do
-        # allow_any_instance_of(task).to receive(:update_attributes).and_return(:false)
-        # put :update, params: { id: task.id, task: { 'description' => 'description' } }
-        expect {
+      it 'produces no change in attributes' do
+        expect do
           put task_url(task.id), params: { task: { 'start_time' => 'foobar' } }
           task.reload
-        }.to_not change{task.description}
+        end.to_not(change { task.description })
       end
 
       it "re-renders the 'edit' template" do
@@ -189,22 +144,13 @@ describe TasksController, type: :request do
     end
   end
 
-  describe 'DELETE destroy' do
-    before(:each) do
-      # @user = build :user
-      # sign_in @user
-    end
-
+  describe 'delete task_url/:id' do
     it 'destroys the requested task' do
-      expect(Task).to receive(:find).with('37') { mock_task }
-      expect(mock_task).to receive(:destroy)
-      delete task_url(37)
-    end
-
-    it 'redirects to the tasks list' do
-      allow(Task).to receive(:find) { mock_task(id: '37') }
-      delete task_url(37)
-      expect(response).to redirect_to new_task_path
+      task = create :task, user: user
+      expect do
+        delete task_url(task.id)
+        expect(response).to redirect_to new_task_path
+      end.to change { Task.count }.by(-1)
     end
   end
 end
