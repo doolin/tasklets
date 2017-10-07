@@ -31,7 +31,7 @@ describe TasksController, type: :controller do
   end
 
   describe '#index' do
-    it 'assigns all tasks as @tasks' do
+    it 'lists tasks for signed in user' do
       allow(user).to receive(:all) { [mock_task] }
       get :index
       expect(response).to have_http_status(:success)
@@ -45,35 +45,30 @@ describe TasksController, type: :controller do
       expect(response).to have_http_status(:ok)
     end
 
-    xit 'does not find the task' do
+    it 'does not find the task' do
       get :show, params: { id: '37' }
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:not_found)
     end
   end
 
   describe '#new' do
-    it 'assigns a new task as @task' do
+    it '' do
       get :new
       expect(response).to have_http_status(:ok)
     end
   end
 
   describe '#edit' do
-    it 'successfully finds the correct task' do
+    it 'successfully edits the correct task' do
       allow(Task).to receive(:find).with('37') { mock_task }
       get :edit, params: { id: '37' }
       expect(response).to have_http_status(:ok)
     end
   end
 
-  describe '#create', type: :request do
-    before(:each) do
-      allow(controller).to receive(:authenticate_user!)
-    end
-
+  describe '#create' do
     context 'with valid params' do
       it 'creates a new task with correct parameters' do
-        create :user, email: 'foo@bar.com'
         tags = %w(foo bar baz).join(',')
         parameters = {
          task: {
@@ -81,51 +76,34 @@ describe TasksController, type: :controller do
            'tags' => tags
          }
         }
+
         expect do
-          # post :create, params: parameters
-          # post :create, params: { task: { 'description' => 'some description' } }
-          post tasks_url, params: parameters
+          post :create, params: parameters
         end.to change(Task, :count).by(1)
         expect(Task.last.tags).to eq(tags)
       end
 
-      it 'assigns a newly created task as @task' do
-        create :user, email: 'foo@bar.com'
-        # post :create, params: { task: { 'description' => 'some description' } }
-        post tasks_url, params: { task: { 'description' => 'some description' } }
-        expect(response).to have_http_status(:redirect)
-        # expect(assigns(:task)).to be_a(Task)
-        # expect(assigns(:task)).to be_persisted
-      end
-
       it 'redirects to the created task' do
-        # post :create, params: { task: { 'description' => 'some description' } }
-        post tasks_url, params: { task: { 'description' => 'some description' } }
-        expect(response).to redirect_to(task_url(Task.last))
+        create :user, email: 'foo@bar.com'
+        post :create, params: { task: { 'description' => 'some description' } }
+
+        aggregate_failures do
+          expect(response).to have_http_status(:redirect)
+          expect(response).to redirect_to(task_url(Task.last))
+        end
       end
     end
 
     context 'with invalid params' do
       it 'does not save the new contact' do
         expect do
-          # post :create, params: { task: { foo: 'bar' } }
-          post tasks_url, params: { task: { foo: 'bar' } }
+          post :create, params: { task: { foo: 'bar' } }
         end.to_not change(Task, :count)
       end
 
-      it 're-renders the new template' do
-        create :user, email: 'foo@bar.com'
-        # post :create, params: { task: { foo: 'bar' } }
-        post tasks_url, params: { task: { foo: 'bar' } }
-        # expect(response).to render_template :new
+      it 'will not allow assignment of wrong attributes' do
+        post :create, params: { task: { foo: 'bar' } }
         expect(response).to have_http_status(:forbidden)
-      end
-
-      it 'assigns a newly built but unsaved task as @task' do
-        allow_any_instance_of(Profile).to receive(:save).and_return(false)
-        # post :create, params: { task: { 'invalid' => 'params' } }
-        post tasks_url, params: { task: { 'invalid' => 'params' } }
-        # expect(assigns(:task)).to be_a_new(Task)
       end
     end
   end
