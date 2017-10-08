@@ -4,9 +4,9 @@ require 'rails_helper'
 
 module Api
   module V1
-    RSpec.describe TasksController do
-      let(:user) { create :user }
-      before { request.headers.merge! user.create_new_auth_token }
+    RSpec.describe 'Task request', type: :request do
+      let!(:user) { create :user }
+      let(:header_params) { user.create_new_auth_token }
 
       describe '#index' do
       end
@@ -16,23 +16,29 @@ module Api
       describe '#new' do
       end
 
-      describe '#create' do
-        it 'a task for signed in user' do
+      describe 'api_v1_tasks_url' do
+        it 'creates a task for signed in user' do
+          parameters = { task: { description: 'some task' } }
+
           expect do
-            post :create, params: { task: { description: 'some task' } }
+            post api_v1_tasks_url, params: parameters, headers: header_params
             expect(response).to have_http_status(:created)
           end.to change { Task.count }.by 1
         end
       end
 
-      describe '#show' do
-        it 'task found by task id' do
+      describe 'api_v1_task_url/:id' do
+        it 'returns task specified by :id' do
           task = Task.create! description: 'foobar', user: user
-          get :show, params: { id: task.id }
+
+          get api_v1_task_url(task), headers: header_params
           expect(response).to have_http_status(:ok)
         end
       end
 
+      # TODO: edit should not be something we care about with API.
+      # As above with new, I'm leaving it in here to think about
+      # it for a bit.
       describe '#edit' do
       end
 
