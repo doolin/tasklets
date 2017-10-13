@@ -1,23 +1,20 @@
 # frozen_string_literal: true
 
-module Api::V1
-  class UsersController < Api::BaseController
-    # before_action :authenticate_user!, except: [:new, :create]
-    # skip_before_filter :verify_authenticity_token
+module Api
+  module V1
+    class UsersController < BaseController
+      def show
+        render json: current_user.to_json
+      end
 
-    def show
-      render json: current_user.to_json
-    end
+      def create
+        User.create! permitted_params
+        render json: {}, status: :created
+      end
 
-=begin
-    def create
-      current_user.tasks.build(permitted_params).save!
-      render json: {}, status: :created
+      def permitted_params
+        params.require(:user).permit(:email, :password, :password_confirmation)
+      end
     end
-
-    def permitted_params
-      params.require(:task).permit(:description)
-    end
-=end
   end
 end
