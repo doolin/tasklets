@@ -10,6 +10,7 @@ App1::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :profiles
       resources :tasks
       resources :users
     end

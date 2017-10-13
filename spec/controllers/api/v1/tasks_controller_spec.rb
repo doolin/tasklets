@@ -11,11 +11,6 @@ module Api
       describe '#index' do
       end
 
-      # TODO: should not be necessary with API, but I'm leaving
-      # it here to think about for a bit.
-      describe '#new' do
-      end
-
       describe '#create' do
         it 'a task for signed in user' do
           expect do
