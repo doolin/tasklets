@@ -44,7 +44,6 @@ group :development do
   gem 'listen'
 end
 
-
 group :test, :development do
   gem 'email_spec'
   gem 'jasmine-rails'

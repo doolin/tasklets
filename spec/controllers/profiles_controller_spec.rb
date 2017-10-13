@@ -59,9 +59,9 @@ describe ProfilesController, type: :controller do
     end
 
     context 'with invalid params' do
-      it "redirects to new" do
+      it 'redirects to new' do
         allow_any_instance_of(Profile).to receive(:save).and_return(false)
-         post :create, params: { profile: { foo: :bar } }
+        post :create, params: { profile: { foo: :bar } }
         expect(response).to redirect_to(new_profile_url)
       end
     end

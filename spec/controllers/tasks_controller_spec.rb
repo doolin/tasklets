@@ -69,12 +69,12 @@ describe TasksController, type: :controller do
   describe '#create' do
     context 'with valid params' do
       it 'creates a new task with correct parameters' do
-        tags = %w(foo bar baz).join(',')
+        tags = %w[foo bar baz].join(',')
         parameters = {
-         task: {
-           'description' => 'some description',
-           'tags' => tags
-         }
+          task: {
+            'description' => 'some description',
+            'tags' => tags
+          }
         }
 
         expect do
@@ -134,14 +134,14 @@ describe TasksController, type: :controller do
 
     context 'with invalid params' do
       it 'will not update with invalid parameters' do
-        expect {
+        expect do
           put :update, params: { id: task.id, task: { 'start_time' => 'foobar' } }
           expect(response).to have_http_status(:redirect)
           task.reload
-        }.to_not change{task.description}
+        end.to_not(change { task.description })
       end
 
-      it "does not process bad parameters" do
+      it 'does not process bad parameters' do
         allow(Task).to receive(:find) { mock_task(update_attributes: false) }
         put :update, params: { id: task.id, task: { 'description' => 'description' } }
         expect(response).to have_http_status(:unprocessable_entity)
