@@ -3,7 +3,7 @@ Feature: Session handling
   As a registered user
   I need to be able to login and logout
 
-Background: 
+Background:
   Given that a confirmed user exists
 
 Scenario Outline: Logging in
@@ -20,4 +20,4 @@ Scenario Outline: Logging in
 Scenario: Logging out
   Given I am signed in
   When I sign out
-  Then I should see "Signed out successfully"
+  Then I should see "You need to sign in or sign up before continuing."
