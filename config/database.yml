@@ -3,7 +3,7 @@ production:
   database: tasklets_production
   pool: 5
   timeout: 5000
-  encoding: unicode
+  encoding: unicode # why not utf-8?
 
 development:
   adapter: postgresql
@@ -13,8 +13,7 @@ development:
   pool: 5
   timeout: 5000
   port: <%= ENV['DOCKER_POSTGRES_PORT'] || 5432 %>
-  # encoding: unicode
-  # username: postgres
+  username: postgres
   # password:
 
 # Warning: The database defined as "test" will be erased and
