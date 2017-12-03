@@ -12,6 +12,7 @@ development:
   # database: db/development.sqlite3
   pool: 5
   timeout: 5000
+  port: <%= ENV['DOCKER_POSTGRES_PORT'] || 5432 %>
   # encoding: unicode
   # username: postgres
   # password:
@@ -24,6 +25,9 @@ test: # &test
   database: tasklets_test
   # adapter: sqlite3
   # database: db/test.sqlite3
+  host: localhost
+  port: <%= ENV['DOCKER_POSTGRES_PORT'] || 5432 %>
+  username: postgres
   pool: 5
   timeout: 5000
 
