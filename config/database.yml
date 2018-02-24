@@ -12,6 +12,7 @@ development:
   # database: db/development.sqlite3
   pool: 5
   timeout: 5000
+  host: localhost
   port: <%= ENV['DOCKER_POSTGRES_PORT'] || 5432 %>
   username: postgres
   # password:
