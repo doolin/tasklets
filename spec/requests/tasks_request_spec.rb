@@ -120,7 +120,7 @@ describe TasksController, type: :request do
         task.reload
         expect(response).to have_http_status(:redirect)
         expect(task.started).to be true
-        expect(task.start_time.year).to eq 2017
+        expect(task.start_time.year).to eq Time.now.year
       end
 
       it 'redirects to the task' do
