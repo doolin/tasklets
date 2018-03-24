@@ -41,6 +41,7 @@ end
 
 group :development do
   gem 'relish'
+  gem 'mry'
   gem 'listen'
 end
 
