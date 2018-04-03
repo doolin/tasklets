@@ -11,7 +11,6 @@ gem 'haml-rails'
 gem 'thin'
 gem 'foreman'
 gem 'unicorn'
-gem 'rubocop'
 gem 'brakeman'
 gem 'rb-fsevent'
 gem 'sass-rails'
@@ -41,6 +40,7 @@ end
 
 group :development do
   gem 'relish'
+  gem 'rubocop'
   gem 'mry'
   gem 'listen'
 end
