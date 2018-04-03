@@ -529,7 +529,7 @@ Gemspec/RequiredRubyVersion:
 Layout/ClassStructure:
   Description: Enforces a configured order of definitions within a class body.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-classes
-  Enabled: false
+  Enabled: true
   Categories:
     module_inclusion:
     - include
@@ -548,8 +548,8 @@ Layout/ClassStructure:
 Layout/EmptyComment:
   Description: Checks empty comment.
   Enabled: true
-  AllowBorderComment: true
-  AllowMarginComment: true
+  # AllowBorderComment: true
+  # AllowMarginComment: true
 
 # Supports --auto-correct
 Layout/EmptyLinesAroundArguments:
@@ -899,7 +899,7 @@ Style/RescueStandardError:
 # Supports --auto-correct
 Style/ReturnNil:
   Description: Use return instead of return nil.
-  Enabled: false
+  Enabled: true
   EnforcedStyle: return
   SupportedStyles:
   - return
@@ -915,7 +915,7 @@ Style/StderrPuts:
 Style/StringHashKeys:
   Description: Prefer symbols instead of strings as hash keys.
   StyleGuide: "#symbols-as-keys"
-  Enabled: false
+  Enabled: true
 
 # Supports --auto-correct
 Style/TrailingBodyOnClass:

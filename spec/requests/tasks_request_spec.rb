@@ -63,8 +63,8 @@ describe TasksController, type: :request do
         tags = %w[foo bar baz].join(',')
         parameters = {
           task: {
-            'description' => 'some description',
-            'tags' => tags
+            description: 'some description',
+            tags: tags
           }
         }
         expect do
@@ -75,12 +75,12 @@ describe TasksController, type: :request do
 
       it 'assigns a newly created task as @task' do
         create :user, email: 'foo@bar.com'
-        post tasks_url, params: { task: { 'description' => 'some description' } }
+        post tasks_url, params: { task: { description: 'some description' } }
         expect(response).to have_http_status(:redirect)
       end
 
       it 'redirects to the created task' do
-        post tasks_url, params: { task: { 'description' => 'some description' } }
+        post tasks_url, params: { task: { description: 'some description' } }
         expect(response).to redirect_to(task_url(Task.last))
       end
     end
@@ -100,7 +100,7 @@ describe TasksController, type: :request do
 
       it 'assigns a newly built but unsaved task as @task' do
         allow_any_instance_of(Profile).to receive(:save).and_return(false)
-        post tasks_url, params: { task: { 'invalid' => 'params' } }
+        post tasks_url, params: { task: { invalid: 'params' } }
       end
     end
   end
@@ -110,13 +110,13 @@ describe TasksController, type: :request do
 
     context 'with valid params' do
       it 'updates the requested task' do
-        put task_url(task.id), params: { task: { 'description' => 'description' } }
+        put task_url(task.id), params: { task: { description: 'description' } }
         task.reload
         expect(task.description).to eq 'description'
       end
 
       it 'starts task and sets time' do
-        put task_url(task.id), params: { task: { 'started' => 'true' } }
+        put task_url(task.id), params: { task: { started: 'true' } }
         task.reload
         expect(response).to have_http_status(:redirect)
         expect(task.started).to be true
@@ -124,7 +124,7 @@ describe TasksController, type: :request do
       end
 
       it 'redirects to the task' do
-        put task_url(task.id), params: { task: { 'description' => 'description' } }
+        put task_url(task.id), params: { task: { description: 'description' } }
         expect(response).to redirect_to(task_url(task))
       end
     end
@@ -132,13 +132,13 @@ describe TasksController, type: :request do
     context 'with invalid params' do
       it 'produces no change in attributes' do
         expect do
-          put task_url(task.id), params: { task: { 'start_time' => 'foobar' } }
+          put task_url(task.id), params: { task: { start_time: 'foobar' } }
           task.reload
         end.to_not(change { task.description })
       end
 
       it "re-renders the 'edit' template" do
-        put task_url(task.id), params: { task: { 'description' => '' } }
+        put task_url(task.id), params: { task: { description: '' } }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end

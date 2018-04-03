@@ -72,8 +72,8 @@ describe TasksController, type: :controller do
         tags = %w[foo bar baz].join(',')
         parameters = {
           task: {
-            'description' => 'some description',
-            'tags' => tags
+            description: 'some description',
+            tags: tags
           }
         }
 
@@ -85,7 +85,7 @@ describe TasksController, type: :controller do
 
       it 'redirects to the created task' do
         create :user, email: 'foo@bar.com'
-        post :create, params: { task: { 'description' => 'some description' } }
+        post :create, params: { task: { description: 'some description' } }
 
         aggregate_failures do
           expect(response).to have_http_status(:redirect)
@@ -113,13 +113,13 @@ describe TasksController, type: :controller do
 
     context 'with valid params' do
       it 'updates the requested task' do
-        put :update, params: { id: task.id, task: { 'description' => 'description' } }
+        put :update, params: { id: task.id, task: { description: 'description' } }
         task.reload
         expect(task.description).to eq 'description'
       end
 
       it 'starts task and sets time' do
-        put :update, params: { id: task.id, task: { 'started' => 'true' } }
+        put :update, params: { id: task.id, task: { started: 'true' } }
         task.reload
         expect(response).to have_http_status(:redirect)
         expect(task.started).to be true
@@ -127,7 +127,7 @@ describe TasksController, type: :controller do
       end
 
       it 'redirects to the task' do
-        put :update, params: { id: task.id, task: { 'description' => 'description' } }
+        put :update, params: { id: task.id, task: { description: 'description' } }
         expect(response).to redirect_to(task_url(task))
       end
     end
@@ -135,7 +135,7 @@ describe TasksController, type: :controller do
     context 'with invalid params' do
       it 'will not update with invalid parameters' do
         expect do
-          put :update, params: { id: task.id, task: { 'start_time' => 'foobar' } }
+          put :update, params: { id: task.id, task: { start_time: 'foobar' } }
           expect(response).to have_http_status(:redirect)
           task.reload
         end.to_not(change { task.description })
@@ -143,7 +143,7 @@ describe TasksController, type: :controller do
 
       it 'does not process bad parameters' do
         allow(Task).to receive(:find) { mock_task(update_attributes: false) }
-        put :update, params: { id: task.id, task: { 'description' => 'description' } }
+        put :update, params: { id: task.id, task: { description: 'description' } }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
