@@ -12,6 +12,8 @@ AllCops:
     - 'config/environments/**/*.rb'
     - 'config/*.rb'
     - 'bin/**/*'
+    - 'features/**/*'
+    - 'lib/tasks/backup.rake'
     - 'db/schema.rb'
 
 # Offense count: 8
@@ -433,7 +435,7 @@ Style/EmptyLambdaParameter:
   Enabled: true
 
 # Supports --auto-correct
-Style/EmptyLineAfterGuardClause:
+Layout/EmptyLineAfterGuardClause:
   Description: Add empty line after guard clause.
   Enabled: true
 
@@ -831,7 +833,7 @@ Style/EmptyLambdaParameter:
   Enabled: true
 
 # Supports --auto-correct
-Style/EmptyLineAfterGuardClause:
+Layout/EmptyLineAfterGuardClause:
   Description: Add empty line after guard clause.
   Enabled: false
 
