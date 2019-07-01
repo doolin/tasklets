@@ -2,7 +2,7 @@
 
 source 'http://rubygems.org'
 
-gem 'rails', '5.2.2'
+gem 'rails', '5.2.3'
 gem 'pg'
 gem 'devise'
 gem 'devise_token_auth'
