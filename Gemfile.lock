@@ -209,7 +209,7 @@ GEM
       minitar (~> 0.6.0)
       powerbar (~> 1.0)
     minitest (5.13.0)
-    mry (0.59.0.0)
+    mry (0.78.0.0)
       rubocop (>= 0.41.0)
     multi_json (1.14.1)
     multi_test (0.1.2)
@@ -222,7 +222,7 @@ GEM
     parser (2.6.5.0)
       ast (~> 2.4.0)
     path_expander (1.1.0)
-    pg (1.0.0)
+    pg (1.1.4)
     phantomjs (2.1.1.0)
     powerbar (1.0.18)
       hashie (>= 1.1.0)
@@ -307,13 +307,18 @@ GEM
       rspec-mocks (~> 3.9.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.0)
-    rubocop (0.68.1)
+    rubocop (0.78.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.5, != 2.5.1.1)
+      parser (>= 2.6)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 1.6)
+      unicode-display_width (>= 1.4.0, < 1.7)
+    rubocop-performance (1.5.1)
+      rubocop (>= 0.71.0)
+    rubocop-rails (2.4.0)
+      rack (>= 1.1)
+      rubocop (>= 0.72.0)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     ruby_parser (3.14.1)
@@ -368,7 +373,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
-    unicode-display_width (1.5.0)
+    unicode-display_width (1.6.0)
     unicorn (5.4.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -418,6 +423,8 @@ DEPENDENCIES
   rspec-activemodel-mocks
   rspec-rails
   rubocop
+  rubocop-performance
+  rubocop-rails
   rubycritic
   sass-rails
   simplecov
