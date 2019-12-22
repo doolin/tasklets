@@ -18,7 +18,7 @@ Bundler/OrderedGems:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: with_first_parameter, with_fixed_indentation
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Exclude:
     - 'bin/unicorn'
     - 'bin/unicorn_rails'
@@ -62,7 +62,7 @@ Layout/IndentationWidth:
 
 # Offense count: 5
 # Cop supports --auto-correct.
-Layout/LeadingBlankLines:
+Layout/LeadingEmptyLines:
   Exclude:
     - 'features/step_definitions/authentication_steps.rb'
     - 'features/step_definitions/profile_steps.rb'

@@ -37,6 +37,7 @@ group :development do
   gem 'relish'
   gem 'rubocop'
   gem 'rubocop-rails'
+  gem 'rubocop-rspec'
   gem 'rubocop-performance'
   gem 'mry'
   gem 'listen'

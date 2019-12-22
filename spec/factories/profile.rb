@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :profile do
-    firstname 'myrcella'
+    firstname { 'myrcella' }
     association :user
   end
 end
