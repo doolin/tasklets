@@ -46,7 +46,7 @@ end
 group :test, :development do
   gem 'email_spec'
   gem 'jasmine-rails'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rspec-activemodel-mocks'
