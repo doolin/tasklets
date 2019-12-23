@@ -49,7 +49,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    @profile.update_attributes(permitted_params)
+    @profile.update(permitted_params)
 
     respond_to do |format|
       # Not sold on the following logic.

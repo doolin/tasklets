@@ -142,7 +142,7 @@ describe TasksController, type: :controller do
       end
 
       it 'does not process bad parameters' do
-        allow(Task).to receive(:find) { mock_task(update_attributes: false) }
+        allow(Task).to receive(:find) { mock_task(update: false) }
         put :update, params: { id: task.id, task: { description: 'description' } }
         expect(response).to have_http_status(:unprocessable_entity)
       end

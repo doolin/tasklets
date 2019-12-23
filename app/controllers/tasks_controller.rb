@@ -67,7 +67,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       # if @task.update_attributes(params[:task])
-      if @task.update_attributes(permitted_params)
+      if @task.update(permitted_params)
         if @task.started?
           @task.start_time = Time.now
           @task.save
