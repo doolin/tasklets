@@ -19,6 +19,7 @@ gem 'uglifier'
 gem 'sprockets'
 gem 'jquery-rails'
 gem 'zurb-foundation', group: :assets
+gem 'coverband'
 
 group :test do
   gem 'simplecov', require: false
