@@ -28,6 +28,7 @@ end
 
 group :cucumber, :development, :test do
   gem 'capybara'
+  gem 'cucumber-rails'
   gem 'launchy'
   gem 'pry'
   gem 'pry-nav'
