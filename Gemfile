@@ -23,12 +23,11 @@ gem 'coverband'
 
 group :test do
   gem 'simplecov', require: false
-  gem 'cucumber-rails', require: false
 end
 
 group :cucumber, :development, :test do
   gem 'capybara'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'launchy'
   gem 'pry'
   gem 'pry-nav'
