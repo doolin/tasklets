@@ -17,7 +17,7 @@ to achieve what I was looking for, the Javascript would be painful
 and ugly, and I didn't have the time or inclination to pursue it
 at that time. Since then, the Javascript world has advanced
 tremendously, especially with the rise of Single Page Applications.
-It may be time to revisit the project soon.
+At some point it will be time to revisit the project.
 
 In the meantime, it's worth keeping the Ruby and the Rails
 code up to date with respect to versions, and keeping up
@@ -40,7 +40,7 @@ What follows is the original README written at project inception.
 Most of is still at least somewhat valid, and will be revisited and
 updated in the future.
 
-## The Old README text
+## The old README text
 
 Tasklets are little tasks or todo items that take between 15 minutes
 to 1 hour to complete.
@@ -94,9 +94,9 @@ So I"m looking into couchdb, redis and mongodb.
 
 
 For the moment, Rails makes using RDBM very easy with ActiveModel.  Built in CRUD.
-Create, Replace, Update, Delete... maps very well onto RESTful 
+Create, Replace, Update, Delete... maps very well onto RESTful
 protocols which are practically native HTTP.
-his is what people don't get about Rails.  It leverages the 
+his is what people don't get about Rails.  It leverages the
 fuck out of HTTP.  That's why it's so useful.
 Non-linear design, "ideation" (ugh), talk talk talk blah blah blah, collaboration, etc.
 Yes.  Once you hit the metal, it has to be linear.
@@ -105,10 +105,9 @@ guarantee, they have mastered at least one of things *cold*.
 
 
 Rearranging is a UX thing.
-mtngrown: For tabular layouts, that's just a piece of jQuery.
-Separation of model and view.
-Roberto Koci: Ok. Compartmentalization is the way to go there.
-Roberto Koci: I think.
+dave: For tabular layouts, that's just a piece of jQuery.  Separation of model and view.
+roberto: Ok. Compartmentalization is the way to go there.
+roberto: I think.
 Each tasklet is no longer than 1 hour.
 If you can't do in an hour or less, decompose it into two or more tasklets.
 
