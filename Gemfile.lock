@@ -234,7 +234,7 @@ GEM
     parser (2.7.1.4)
       ast (~> 2.4.1)
     path_expander (1.1.0)
-    pg (1.2.2)
+    pg (1.2.3)
     phantomjs (2.1.1.0)
     powerbar (1.0.18)
       hashie (>= 1.1.0)
