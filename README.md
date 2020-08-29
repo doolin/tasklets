@@ -23,6 +23,11 @@ In the meantime, it's worth keeping the Ruby and the Rails
 code up to date with respect to versions, and keeping up
 to date with best practice.
 
+Update 2020-08-29: I've started adding detailed comments and links
+to the source code to help serve as a reference implementation.
+Normally, _I never add such comments to production code!_.
+
+
 #### More reading on habits and mastery
 
 Mastery is path, not a destination, and requires framing activity
