@@ -6,7 +6,6 @@ gem 'rails', '6.0.3.2'
 gem 'pg'
 gem 'devise'
 gem 'devise_token_auth'
-gem 'dynamic_form'
 gem 'haml-rails'
 gem 'thin'
 # http://blog.daviddollar.org/2011/05/06/introducing-foreman.html
