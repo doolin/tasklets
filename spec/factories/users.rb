@@ -2,7 +2,6 @@
 
 FactoryBot.define do
   factory :user do
-    username { 'foobar' }
     # SecureRandom.hex is a Ruby stdlib method, see
     # https://ruby-doc.org/stdlib-2.7.1/libdoc/securerandom/rdoc/SecureRandom.html
     # which is extended by
@@ -13,7 +12,6 @@ FactoryBot.define do
   end
 
   factory :minimal_user, class: User do
-    username { 'minimal' }
     email { "minimal+#{SecureRandom.hex}@example.com" }
     password { 'test1234' }
     password_confirmation { 'test1234' }
