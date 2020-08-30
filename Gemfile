@@ -9,7 +9,11 @@ gem 'devise_token_auth'
 gem 'dynamic_form'
 gem 'haml-rails'
 gem 'thin'
-gem 'foreman'
+# http://blog.daviddollar.org/2011/05/06/introducing-foreman.html
+# The advice from https://github.com/ddollar/foreman is to _not_
+# put `foreman` in the Gemfile, install is using `gem install foreman`
+# Hence taking it out.
+# gem 'foreman'
 gem 'unicorn'
 gem 'brakeman'
 gem 'rb-fsevent'
