@@ -1,8 +1,17 @@
 # frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
+
+# rake db:reset will drop the at least the testing and development databases,
+# and run db:seed to create the following in the development database. Running
+# tasklets_development=# select tags, id, parent_id from tasks where parent_id IS NULL;
+# at the psql command line should return the Animalia record.
+user = User.create(email: 'foo@bar.com')
+root = Task.create!(tags: 'Animalia', description: 'Top level root of tree', user: user)
+
+# Leverage the built in associations methods:
+# https://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html
+root.children.create(tags: 'Rotifers', description: 'second level of tree', user: user)
+root.children.create(tags: 'Sponges', description: 'second level of tree', user: user)
+chordates = root.children.create(tags: 'Chordates', description: 'second level of tree', user: user)
+
+chordates.children.create(tags: 'Amphibian', description: 'third level of tree', user: user)
+chordates.children.create(tags: 'Mammalia', description: 'third level of tree', user: user)
