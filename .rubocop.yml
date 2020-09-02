@@ -6,6 +6,11 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
+AllCops:
+  Exclude:
+    - 'config.ru'
+    - 'db/schema.rb'
+
 # Offense count: 11
 # Cop supports --auto-correct.
 # Configuration parameters: TreatCommentsAsGroupSeparators, Include.
@@ -187,17 +192,7 @@ Style/Documentation:
     - 'app/models/task.rb'
     - 'app/models/user.rb'
     - 'config/application.rb'
-    - 'db/migrate/20101217011115_create_tasks.rb'
-    - 'db/migrate/20101217012805_devise_create_users.rb'
-    - 'db/migrate/20101217014551_add_start_time_to_task.rb'
-    - 'db/migrate/20101217014603_add_finish_time_to_task.rb'
-    - 'db/migrate/20110104201910_add_tags_to_tasks.rb'
-    - 'db/migrate/20110802181853_create_profiles.rb'
-    - 'db/migrate/20130218161037_change_data_type_for_task_description.rb'
-    - 'db/migrate/20170921135753_devise_token_auth_create_users.rb'
-    - 'db/migrate/20170926111731_add_user_id_to_profile.rb'
-    - 'db/migrate/20170926111808_add_user_id_to_task.rb'
-    - 'db/migrate/20170930202132_add_access_token_to_user.rb'
+    - 'db/migrate/*.rb'
     - 'features/step_definitions/email_steps.rb'
     - 'features/step_definitions/web_steps.rb'
     - 'features/support/paths.rb'
@@ -372,3 +367,7 @@ Style/WordArray:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 216
+# The following cops are added between 0.62 and 0.89.1.
+# The configurations are default.
+# If you want to use a cop by default, remove a configuration for the cop from here.
+# If you want to disable a cop, change `Enabled` to false.

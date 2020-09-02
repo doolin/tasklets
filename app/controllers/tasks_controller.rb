@@ -73,10 +73,8 @@ class TasksController < ApplicationController
           @task.save
         end
         format.html { redirect_to(@task, notice: 'Task was successfully updated.') }
-        format.xml  { head :ok }
       else
         format.html { render action: 'edit', status: :unprocessable_entity }
-        format.xml  { render xml: @task.errors, status: :unprocessable_entity }
       end
     end
   end
