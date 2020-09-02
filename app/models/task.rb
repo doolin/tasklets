@@ -11,24 +11,39 @@ class Task < ActiveRecord::Base
   validates :description, presence: true
 
   def self.count_descendents_with_cte(id = nil)
-    descendents_with_cte(id)[0]['count']
+    sql = CteQueryBuilder.descendants_count(id)
+    execute(sql)[0]['count']
   end
 
   def self.descendents_with_cte(id)
-    id = id.nil? ? 'IS NULL' : "= #{id}"
+    sql = CteQueryBuilder.descendants(id)
+    execute(sql)
+  end
 
-    # This pulls all the descendents into a flat array.
-    sql = <<-SQL
-      WITH RECURSIVE tree AS (
-        select t.id, t.parent_id, t.tags from tasks t where parent_id #{id}
-        UNION ALL
-        select t1.id, t1.parent_id, t1.tags from tree
-        join tasks t1 ON t1.parent_id = tree.id
-      ) SELECT count(*) FROM tree
-    SQL
-
+  def self.execute(sql)
     # connection is in the ConnectionHandling module which is included in Base:
     # https://github.com/rails/rails/blob/master/activerecord/lib/active_record/base.rb#L271
     ActiveRecord::Base.connection.execute(sql)
+  end
+
+  class CteQueryBuilder
+    def self.descendants(id)
+      id = id.nil? ? 'IS NULL' : "= #{id}"
+
+      # This pulls all the descendents into a flat array.
+      sql = <<-SQL
+        WITH RECURSIVE tree AS (
+          select t.id, t.parent_id, t.tags from tasks t where parent_id #{id}
+          UNION ALL
+          select t1.id, t1.parent_id, t1.tags from tree
+          join tasks t1 ON t1.parent_id = tree.id
+        )
+      SQL
+      sql
+    end
+
+    def self.descendants_count(id)
+      descendants(id) + 'SELECT count(*) FROM tree'
+    end
   end
 end
