@@ -31,7 +31,7 @@ class Task < ActiveRecord::Base
       id = id.nil? ? 'IS NULL' : "= #{id}"
 
       # This pulls all the descendents into a flat array.
-      sql = <<-SQL
+      <<-SQL
         WITH RECURSIVE tree AS (
           select t.id, t.parent_id, t.tags from tasks t where parent_id #{id}
           UNION ALL
@@ -39,11 +39,10 @@ class Task < ActiveRecord::Base
           join tasks t1 ON t1.parent_id = tree.id
         )
       SQL
-      sql
     end
 
     def self.descendants_count(id)
-      descendants(id) + 'SELECT count(*) FROM tree'
+      "#{descendants(id)} SELECT count(*) FROM tree"
     end
   end
 end
