@@ -10,6 +10,16 @@ class Task < ActiveRecord::Base
 
   validates :description, presence: true
 
+  # This is a nasty way to do it, makes a database call for each record.
+  # But it does work!
+  def descendants(root = self)
+    children = []
+    root.children.each do |c|
+      children << descendants(c)
+    end
+    { tags: root.tags, children: children }
+  end
+
   def self.count_descendents_with_cte(id = nil)
     sql = CteQueryBuilder.descendants_count(id)
     execute(sql)[0]['count']
