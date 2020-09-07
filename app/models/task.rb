@@ -22,7 +22,7 @@ class Task < ActiveRecord::Base
   end
 
   def self.to_hash(task)
-    tasks = descendants_cte(task.parent_id)
+    tasks = descendants_cte(task.label)
     index = tasks.index { |a| a['parent_id'].nil? }
     root = tasks.delete_at(index)
     find_children(root, tasks)
@@ -44,9 +44,14 @@ class Task < ActiveRecord::Base
     root['children'].each { |c| find_children(c, array) }
   end
 
-  def self.count_descendants_with_cte(id = nil)
-    sql = CteQueryBuilder.descendants_count(id)
+  def self.size_with_cte(label)
+    sql = CteQueryBuilder.descendants_count(label)
     execute(sql)[0]['count']
+  end
+
+  def self.count_descendants_with_cte(label)
+    size = size_with_cte(label)
+    size.zero? ? 0 : size - 1
   end
 
   def self.descendants_cte(id)
@@ -63,13 +68,13 @@ class Task < ActiveRecord::Base
   end
 
   class CteQueryBuilder
-    def self.descendants(id)
-      id = id.nil? ? 'IS NULL' : "= #{id}"
+    def self.descendants(label)
+      # id = id.nil? ? 'IS NULL' : "= #{id}"
 
       # This pulls all the descendants into a flat array.
       <<-SQL
         WITH RECURSIVE tree AS (
-          select t.id, t.parent_id, t.label from tasks t where parent_id #{id}
+          select t.id, t.parent_id, t.label from tasks t where label = \'#{label}\'
           UNION ALL
           select t1.id, t1.parent_id, t1.label from tree
           join tasks t1 ON t1.parent_id = tree.id
@@ -82,7 +87,7 @@ class Task < ActiveRecord::Base
     end
 
     def self.descendants_count(id)
-      "#{descendants(id)} SELECT count(*) FROM tree"
+      "#{descendants(id)} SELECT count(*) FROM tree where parent_id IS NOT NULL"
     end
   end
 end
