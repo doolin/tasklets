@@ -26,11 +26,11 @@ RSpec.describe Task do
     before :all do
       user = User.create(email: 'foo@bar.com')
       root = Task.create!(tags: 'Animalia', description: 'Top level root of tree', user: user)
-      root.children.create(tags: 'Rotifers', description: 'second level of tree', user: user)
-      root.children.create(tags: 'Sponges', description: 'second level of tree', user: user)
       chordates = root.children.create(tags: 'Chordates', description: 'second level of tree', user: user)
-      chordates.children.create(tags: 'Amphibian', description: 'third level of tree', user: user)
+      root.children.create(tags: 'Sponges', description: 'second level of tree', user: user)
+      root.children.create(tags: 'Rotifers', description: 'second level of tree', user: user)
       chordates.children.create(tags: 'Mammalia', description: 'third level of tree', user: user)
+      chordates.children.create(tags: 'Amphibian', description: 'third level of tree', user: user)
     end
 
     describe 'descendants' do
