@@ -38,6 +38,7 @@ group :cucumber, :development, :test do
 end
 
 group :development do
+  gem 'awesome_print'
   gem 'relish'
   gem 'rubocop'
   gem 'rubocop-rails'

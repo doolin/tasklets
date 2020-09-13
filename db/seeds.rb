@@ -14,4 +14,8 @@ root.children.create(tags: 'Sponges', description: 'second level of tree', user:
 chordates = root.children.create(tags: 'Chordates', description: 'second level of tree', user: user)
 
 chordates.children.create(tags: 'Amphibian', description: 'third level of tree', user: user)
-chordates.children.create(tags: 'Mammalia', description: 'third level of tree', user: user)
+mammalia = chordates.children.create(tags: 'Mammalia', description: 'third level of tree', user: user)
+
+mammalia.children.create(tags: 'Rodents', description: '4th level', user: user)
+mammalia.children.create(tags: 'Cats', description: '4th level', user: user)
+mammalia.children.create(tags: 'Dogs', description: '4th level', user: user)
