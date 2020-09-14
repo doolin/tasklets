@@ -1,22 +1,42 @@
 version: v1.0
-name: Initial Pipeline
+name: Tasklets for the win!
+execution_time_limit:
+  minutes: 10
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: RSpec
+  - name: Set it all up
+    dependencies: []
+    task:
+      prologue:
+        commands:
+          - checkout
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock)
+      jobs:
+        - name: install gems
+          commands:
+            # - bundle config set path 'vendor/bundle'
+            - bundle install
+      epilogue:
+        commands:
+          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+  - name: rspec
+    dependencies: ['Set it all up']
     task:
       env_vars:
         - name: RAILS_ENV
           value: test
+      prologue:
+        commands:
+          - checkout
+          - cache restore
       jobs:
         - name: Run specs
           commands:
-            - checkout
             - sem-version ruby 2.7.1
             - sem-service start postgres 12.4
             - bundle config set path 'vendor/bundle'
-            - bundle install
             - bundle exec rake db:create db:migrate
             - bundle exec rspec
