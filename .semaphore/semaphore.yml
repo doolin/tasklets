@@ -16,6 +16,7 @@ blocks:
             - checkout
             - sem-version ruby 2.7.1
             - sem-service start postgres 12.4
-            - bundle install --path vendor/bundle
+            - bundle config set path 'vendor/bundle'
+            - bundle install
             - bundle exec rake db:create db:migrate
             - bundle exec rspec
