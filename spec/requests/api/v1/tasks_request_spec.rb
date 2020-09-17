@@ -18,7 +18,7 @@ module Api
 
       describe 'api_v1_tasks_url' do
         it 'creates a task for signed in user' do
-          parameters = { task: { description: 'some task' } }
+          parameters = { task: { description: 'some task', label: 'some label' } }
 
           expect do
             post api_v1_tasks_url, params: parameters, headers: header_params
@@ -29,8 +29,7 @@ module Api
 
       describe 'api_v1_task_url/:id' do
         it 'returns task specified by :id' do
-          task = Task.create! description: 'foobar', user: user
-
+          task = create :task
           get api_v1_task_url(task), headers: header_params
           expect(response).to have_http_status(:ok)
         end

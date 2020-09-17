@@ -20,41 +20,47 @@ RSpec.describe Task do
       task.children << create(:task)
       expect(Task.count).to be 2
     end
+
+    context 'label' do
+      it 'rejects log strings' do
+        expect(build(:task, label: 'a'*65).valid?).to be false
+      end
+    end
   end
 
   context 'extracting records' do
     before :all do
       user = User.create(email: 'foo@bar.com')
-      root = Task.create!(tags: 'Animalia', description: 'Top level root of tree', user: user)
-      chordates = root.children.create(tags: 'Chordates', description: 'second level of tree', user: user)
-      root.children.create(tags: 'Sponges', description: 'second level of tree', user: user)
-      root.children.create(tags: 'Rotifers', description: 'second level of tree', user: user)
-      chordates.children.create(tags: 'Mammalia', description: 'third level of tree', user: user)
-      chordates.children.create(tags: 'Amphibian', description: 'third level of tree', user: user)
+      root = Task.create!(label: 'Animalia', description: 'Top level root of tree', user: user)
+      chordates = root.children.create(label: 'Chordates', description: 'second level of tree', user: user)
+      root.children.create(label: 'Sponges', description: 'second level of tree', user: user)
+      root.children.create(label: 'Rotifers', description: 'second level of tree', user: user)
+      chordates.children.create(label: 'Mammalia', description: 'third level of tree', user: user)
+      chordates.children.create(label: 'Amphibian', description: 'third level of tree', user: user)
     end
 
     describe '#descendants' do
       it 'builds tree from root using repeated database calls' do
         expected = {
-          tags: 'Animalia',
+          label: 'Animalia',
           children: [{
-            tags: 'Chordates',
+            label: 'Chordates',
             children: [{
-              tags: 'Mammalia',
+              label: 'Mammalia',
               children: []
             }, {
-              tags: 'Amphibian',
+              label: 'Amphibian',
               children: []
             }]
           }, {
-            tags: 'Sponges',
+            label: 'Sponges',
             children: []
           }, {
-            tags: 'Rotifers',
+            label: 'Rotifers',
             children: []
           }]
         }.to_json
-        actual = Task.find_by(tags: 'Animalia').descendants.to_json
+        actual = Task.find_by(label: 'Animalia').descendants.to_json
         expect(actual).to eq expected
       end
     end
@@ -66,19 +72,19 @@ RSpec.describe Task do
       end
 
       it 'counts descendants of Rotifers' do
-        parent_id = Task.find_by(tags: 'Rotifers').id
+        parent_id = Task.find_by(label: 'Rotifers').id
         count = Task.count_descendants_with_cte(parent_id)
         expect(count).to be 0
       end
 
       it 'counts descendants of Sponges' do
-        parent_id = Task.find_by(tags: 'Sponges').id
+        parent_id = Task.find_by(label: 'Sponges').id
         count = Task.count_descendants_with_cte(parent_id)
         expect(count).to be 0
       end
 
       it 'counts descendants of Chordates' do
-        parent_id = Task.find_by(tags: 'Chordates').id
+        parent_id = Task.find_by(label: 'Chordates').id
         count = Task.count_descendants_with_cte(parent_id)
         expect(count).to be 2
       end
@@ -97,23 +103,23 @@ RSpec.describe Task do
         expected = {
           'id' => 1,
           'parent_id' => nil,
-          'tags' => 'Animalia',
+          'label' => 'Animalia',
           'children' => [
             {
               'id' => 2,
               'parent_id' => 1,
-              'tags' => 'Chordates',
+              'label' => 'Chordates',
               'children' => [
                 {
                   'id' => 5,
                   'parent_id' => 2,
-                  'tags' => 'Mammalia',
+                  'label' => 'Mammalia',
                   'children' => []
                 },
                 {
                   'id' => 6,
                   'parent_id' => 2,
-                  'tags' => 'Amphibian',
+                  'label' => 'Amphibian',
                   'children' => []
                 }
               ]
@@ -121,12 +127,12 @@ RSpec.describe Task do
             {
               'id' => 3,
               'parent_id' => 1,
-              'tags' => 'Sponges',
+              'label' => 'Sponges',
               'children' => []
             }, {
               'id' => 4,
               'parent_id' => 1,
-              'tags' => 'Rotifers',
+              'label' => 'Rotifers',
               'children' => []
             }
           ]

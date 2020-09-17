@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   end
 
   def permitted_params
-    params.require(:task).permit(:description, :started, :tags)
+    params.require(:task).permit(:description, :started, :tags, :label)
   end
 
   def create
