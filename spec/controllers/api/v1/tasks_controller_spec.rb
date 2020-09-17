@@ -8,13 +8,10 @@ module Api
       let(:user) { create :user }
       before { request.headers.merge! user.create_new_auth_token }
 
-      describe '#index' do
-      end
-
       describe '#create' do
         it 'a task for signed in user' do
           expect do
-            post :create, params: { task: { description: 'some task' } }
+            post :create, params: { task: { description: 'some task', label: 'some label' } }
             expect(response).to have_http_status(:created)
           end.to change { Task.count }.by 1
         end
@@ -22,7 +19,7 @@ module Api
 
       describe '#show' do
         it 'task found by task id' do
-          task = Task.create! description: 'foobar', user: user
+          task = create :task
           get :show, params: { id: task.id }
           expect(response).to have_http_status(:ok)
         end

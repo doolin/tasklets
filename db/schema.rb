@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_28_121149) do
+ActiveRecord::Schema.define(version: 2020_09_17_113911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_08_28_121149) do
     t.string "tags"
     t.integer "user_id"
     t.bigint "parent_id"
+    t.string "label"
     t.index ["parent_id"], name: "index_tasks_on_parent_id"
   end
 

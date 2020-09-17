@@ -64,7 +64,8 @@ describe TasksController, type: :request do
         parameters = {
           task: {
             description: 'some description',
-            tags: tags
+            tags: tags,
+            label: 'some label'
           }
         }
         expect do
@@ -75,12 +76,12 @@ describe TasksController, type: :request do
 
       it 'assigns a newly created task as @task' do
         create :user, email: 'foo@bar.com'
-        post tasks_url, params: { task: { description: 'some description' } }
+        post tasks_url, params: { task: { description: 'some description', label: 'some label' } }
         expect(response).to have_http_status(:redirect)
       end
 
       it 'redirects to the created task' do
-        post tasks_url, params: { task: { description: 'some description' } }
+        post tasks_url, params: { task: { description: 'some description', label: 'some label' } }
         expect(response).to redirect_to(task_url(Task.last))
       end
     end

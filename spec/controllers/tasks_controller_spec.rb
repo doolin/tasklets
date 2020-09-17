@@ -73,7 +73,8 @@ describe TasksController, type: :controller do
         parameters = {
           task: {
             description: 'some description',
-            tags: tags
+            tags: tags,
+            label: 'some label'
           }
         }
 
@@ -85,7 +86,7 @@ describe TasksController, type: :controller do
 
       it 'redirects to the created task' do
         create :user, email: 'foo@bar.com'
-        post :create, params: { task: { description: 'some description' } }
+        post :create, params: { task: { description: 'some description', label: 'some label' } }
 
         aggregate_failures do
           expect(response).to have_http_status(:redirect)

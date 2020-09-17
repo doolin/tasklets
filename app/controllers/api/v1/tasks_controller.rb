@@ -13,7 +13,7 @@ module Api
       end
 
       def permitted_params
-        params.require(:task).permit(:description)
+        params.require(:task).permit(:description, :label)
       end
     end
   end

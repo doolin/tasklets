@@ -8,6 +8,7 @@ class Task < ActiveRecord::Base
   has_many :children, class_name: 'Task', foreign_key: 'parent_id'
   belongs_to :parent, class_name: 'Task', optional: true
 
+  validates_with TaskLabelValidator, attributes: [:label]
   validates :description, presence: true
 
   # This is a nasty way to do it, makes a database call for each record.
@@ -17,7 +18,7 @@ class Task < ActiveRecord::Base
     root.children.each do |c|
       children << descendants(c)
     end
-    { tags: root.tags, children: children }
+    { label: root.label, children: children }
   end
 
   def self.to_hash(task)
@@ -68,16 +69,16 @@ class Task < ActiveRecord::Base
       # This pulls all the descendants into a flat array.
       <<-SQL
         WITH RECURSIVE tree AS (
-          select t.id, t.parent_id, t.tags from tasks t where parent_id #{id}
+          select t.id, t.parent_id, t.label from tasks t where parent_id #{id}
           UNION ALL
-          select t1.id, t1.parent_id, t1.tags from tree
+          select t1.id, t1.parent_id, t1.label from tree
           join tasks t1 ON t1.parent_id = tree.id
         ) --
       SQL
     end
 
     def self.descendants_cte(id)
-      "#{descendants(id)} select id, parent_id, tags from tree"
+      "#{descendants(id)} select id, parent_id, label from tree"
     end
 
     def self.descendants_count(id)
