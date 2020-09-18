@@ -5,11 +5,19 @@ class Task < ActiveRecord::Base
 
   # https://guides.rubyonrails.org/association_basics.html#self-joins
   # to create a tree structure.
+  # TODO: look into foreign key gem.
   has_many :children, class_name: 'Task', foreign_key: 'parent_id'
   belongs_to :parent, class_name: 'Task', optional: true
 
   validates_with TaskLabelValidator, attributes: [:label]
   validates :description, presence: true
+  validates :parent_id, with: :parent_exists_or_nil
+
+  def parent_exists_or_nil
+    return true if parent_id.nil?
+    return true if Task.exists?(parent_id)
+    errors.add(:parent_id, :parent_id_exists)
+  end
 
   # This is a nasty way to do it, makes a database call for each record.
   # But it does work!

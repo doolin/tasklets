@@ -35,9 +35,14 @@ activerecord:
     user:
       email: 'E-mail address'
   errors:
+    messages:
+      parent_id_exists: 'from yaml'
     models:
       task:
+        parent_id_exists: 'higher yaml'
         attributes:
           label:
             blank: 'is required'
             on_label: 'length 64 or less'
+          parent_id:
+            parent_id_exists: 'from yaml'

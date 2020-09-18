@@ -26,6 +26,12 @@ RSpec.describe Task do
         expect(build(:task, label: 'a' * 65).valid?).to be false
       end
     end
+
+    context 'parent_id' do
+      it 'rejects unless parent is nil or exists' do
+        expect(build(:task, parent_id: 42).valid?).to be false
+      end
+    end
   end
 
   context 'extracting records' do
