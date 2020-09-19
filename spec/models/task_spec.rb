@@ -23,13 +23,17 @@ RSpec.describe Task do
 
     context 'label' do
       it 'rejects log strings' do
-        expect(build(:task, label: 'a' * 65).valid?).to be false
+        expect do
+          create(:task, label: 'a' * 65)
+        end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Label length 64 or less')
       end
     end
 
     context 'parent_id' do
       it 'rejects unless parent is nil or exists' do
-        expect(build(:task, parent_id: 42).valid?).to be false
+        expect do
+          create(:task, parent_id: 42)
+        end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Parent id must reference a valid task or be nil')
       end
     end
   end

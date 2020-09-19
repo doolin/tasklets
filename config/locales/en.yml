@@ -30,19 +30,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-activerecord:
-  attributes:
-    user:
-      email: 'E-mail address'
-  errors:
-    messages:
-      parent_id_exists: 'from yaml'
-    models:
-      task:
-        parent_id_exists: 'higher yaml'
-        attributes:
-          label:
-            blank: 'is required'
-            on_label: 'length 64 or less'
-          parent_id:
-            parent_id_exists: 'from yaml'
+  activerecord:
+    attributes:
+      user:
+        email: 'E-mail address'
+    errors:
+      messages:
+        parent_id_exists: 'from yaml'
+      models:
+        task:
+          parent_id_exists: 'higher yaml'
+          attributes:
+            label:
+              blank: 'is required'
+              on_label: 'length 64 or less'
+            parent_id:
+              parent_id_exists: 'id must reference a valid task or be nil'
