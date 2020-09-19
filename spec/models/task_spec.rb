@@ -5,6 +5,10 @@ require 'json'
 require 'pry'
 
 RSpec.describe Task do
+  def parent_id_exists
+    'Validation failed: Parent id must reference a valid task or be nil'
+  end
+
   context 'basic validations' do
     it "doesn't save an invalid model" do
       expect(Task.create).not_to be_valid
@@ -33,7 +37,42 @@ RSpec.describe Task do
       it 'rejects unless parent is nil or exists' do
         expect do
           create(:task, parent_id: 42)
-        end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Parent id must reference a valid task or be nil')
+        end.to raise_error(ActiveRecord::RecordInvalid, parent_id_exists)
+      end
+    end
+  end
+
+  describe 'update' do
+    context 'with valid parent_id' do
+      it 'increases child count for parent' do
+        task1 = create :task
+        task2 = create :task
+        expect do
+          task2.update!(parent_id: task1.id)
+        end.to change { task1.children.count }.from(0).to(1)
+      end
+    end
+
+    context 'with nil parent_id' do
+      def tree_count
+        Task.where(parent_id: nil).count
+      end
+
+      it 'increases the number of roots in the table' do
+        task1 = create :task
+        task2 = create :task, parent_id: task1.id
+        expect(tree_count).to be 1
+        task2.update!(parent_id: nil)
+        expect(tree_count).to be 2
+      end
+    end
+
+    context 'with non-nil invalid parent_id' do
+      it 'raises ActiveRecord::RecordInvalid' do
+        expect do
+          task = create :task
+          task.update!(parent_id: 42)
+        end.to raise_error(ActiveRecord::RecordInvalid, parent_id_exists)
       end
     end
   end
