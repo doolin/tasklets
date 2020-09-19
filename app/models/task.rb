@@ -16,6 +16,7 @@ class Task < ActiveRecord::Base
   def parent_exists_or_nil
     return true if parent_id.nil?
     return true if Task.exists?(parent_id)
+
     errors.add(:parent_id, :parent_id_exists)
   end
 
