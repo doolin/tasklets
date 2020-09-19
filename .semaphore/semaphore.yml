@@ -33,6 +33,11 @@ blocks:
           - checkout
           - cache restore
       jobs:
+        - name: Linting for the win
+          commands:
+            - bundle config set path 'vendor/bundle'
+            - bundle install
+            - bundle exec rubocop --parallel
         - name: Run specs
           commands:
             - sem-version ruby 2.7.1

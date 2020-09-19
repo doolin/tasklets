@@ -44,8 +44,6 @@ group :development do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'rubocop-performance'
-  gem 'meowcop'
-  gem 'mry'
   gem 'listen'
 end
 

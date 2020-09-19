@@ -6,11 +6,16 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
+#require:
+#  - rubocop-rails
+#  - rubocop-performance
+
 AllCops:
   NewCops: enable
   Exclude:
     - 'config.ru'
     - 'db/schema.rb'
+    - 'vendor/**/*'
 
 # Offense count: 11
 # Cop supports --auto-correct.
