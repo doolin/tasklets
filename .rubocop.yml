@@ -189,6 +189,10 @@ Metrics/AbcSize:
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
 Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*_spec.rb'
+    - 'lib/tasks/*'
   Max: 135
 
 # Offense count: 1
@@ -353,6 +357,7 @@ Style/FrozenStringLiteralComment:
     - 'config/puma.rb'
     - 'config/spring.rb'
     - 'db/schema.rb'
+    - 'db/migrate/**/*.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
