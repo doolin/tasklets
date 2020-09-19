@@ -89,7 +89,7 @@ RSpec.describe Task do
       chordates.children.create(label: 'Reptilia', description: 'third level of tree', user: user)
 
       root2 = Task.create!(label: 'Plants', description: 'Top level root of tree', user: user)
-      forbes = root2.children.create(label: 'Forbes', description: 'second level of tree', user: user)
+      root2.children.create(label: 'Forbes', description: 'second level of tree', user: user)
       trees = root2.children.create(label: 'Trees', description: 'second level of tree', user: user)
       trees.children.create(label: 'Evergreen', description: 'third level of tree', user: user)
       trees.children.create(label: 'Deciduous', description: 'third level of tree', user: user)
@@ -147,7 +147,6 @@ RSpec.describe Task do
       end
 
       it 'at Chordates' do
-        parent_id = Task.find_by(label: 'Chordates').id
         count = Task.size_with_cte('Chordates')
         expect(count).to be 4
       end
@@ -155,7 +154,6 @@ RSpec.describe Task do
 
     describe '.count_descendants_with_cte' do
       it 'counts descendants of root' do
-        # TODO: We're counting on an implicit nil here for parent_id TASKLETS-13
         count = Task.count_descendants_with_cte('Animalia')
         expect(count).to be 5
       end
@@ -173,7 +171,6 @@ RSpec.describe Task do
       end
 
       it 'counts descendants of Chordates' do
-        parent_id = Task.find_by(label: 'Chordates').id
         count = Task.count_descendants_with_cte('Chordates')
         expect(count).to be 3
       end
@@ -189,7 +186,8 @@ RSpec.describe Task do
 
     describe '.to_hash' do
       it 'returns tree from root in hash form' do
-        expected = {
+        # TODO: find a way to test output structure TASKLETS-54
+        _expected = {
           'id' => 1,
           'parent_id' => nil,
           'label' => 'Animalia',

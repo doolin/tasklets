@@ -22,7 +22,7 @@ mammalia.children.create(label: 'Cats', description: '4th level', user: user)
 mammalia.children.create(label: 'Dogs', description: '4th level', user: user)
 
 root2 = Task.create!(label: 'Plants', description: 'Top level root of tree', user: user)
-forbes = root2.children.create(label: 'Forbes', description: 'second level of tree', user: user)
+root2.children.create(label: 'Forbes', description: 'second level of tree', user: user)
 trees = root2.children.create(label: 'Trees', description: 'second level of tree', user: user)
 trees.children.create(label: 'Evergreen', description: 'third level of tree', user: user)
 trees.children.create(label: 'Deciduous', description: 'third level of tree', user: user)
