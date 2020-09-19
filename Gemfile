@@ -23,6 +23,7 @@ gem 'sprockets'
 gem 'jquery-rails'
 gem 'zurb-foundation', group: :assets
 gem 'coverband'
+gem 'aws-sdk-secretsmanager'
 
 group :test do
   gem 'simplecov', require: false
