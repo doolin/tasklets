@@ -24,10 +24,10 @@ Given /^I fill in the "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, with: value)
 end
 
-When(/^I pressem button "(.*?)"$/) do |arg1|
+When(/^I press button "(.*?)"$/) do |arg1|
   click_button 'Create Task'
 end
 
-Then(/^I'ma get "(.*?)"$/) do |arg1|
+Then(/^I see message "(.*?)"$/) do |arg1|
   page.body.should have_selector '.flash.success', text: 'Task was successfully created.'
 end
