@@ -33,6 +33,13 @@ blocks:
           - checkout
           - cache restore
       jobs:
+        - name: cucumber
+          commands:
+            - bundle config set path 'vendor/bundle'
+            - bundle install
+            - sem-service start postgres 12.4
+            - bundle exec rake db:create db:migrate
+            - bundle exec cucumber
         - name: Linting for the win
           commands:
             - bundle config set path 'vendor/bundle'
