@@ -33,6 +33,11 @@ blocks:
           - checkout
           - cache restore
       jobs:
+        - name: brakeman
+          commands:
+            - bundle config set path 'vendor/bundle'
+            - bundle install
+            - bundle exec brakeman
         - name: cucumber
           commands:
             - bundle config set path 'vendor/bundle'
