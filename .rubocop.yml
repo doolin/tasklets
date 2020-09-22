@@ -6,9 +6,9 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-#require:
+require:
+  - rubocop-performance
 #  - rubocop-rails
-#  - rubocop-performance
 
 AllCops:
   NewCops: enable
