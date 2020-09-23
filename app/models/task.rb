@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class Task < ActiveRecord::Base
+class Task < ApplicationRecord
   belongs_to :user
 
   # https://guides.rubyonrails.org/association_basics.html#self-joins
   # to create a tree structure.
   # TODO: look into foreign key gem.
-  has_many :children, class_name: 'Task', foreign_key: 'parent_id'
+  has_many :children, class_name: 'Task', foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
   belongs_to :parent, class_name: 'Task', optional: true
 
   validates_with TaskLabelValidator, attributes: [:label]
@@ -81,13 +81,13 @@ class Task < ActiveRecord::Base
       # id = id.nil? ? 'IS NULL' : "= #{id}"
 
       # This pulls all the descendants into a flat array.
-      <<-SQL
+      <<-SQL.squish
         WITH RECURSIVE tree AS (
           select t.id, t.parent_id, t.label from tasks t where label = \'#{label}\'
           UNION ALL
           select t1.id, t1.parent_id, t1.label from tree
           join tasks t1 ON t1.parent_id = tree.id
-        ) --
+        )
       SQL
     end
 

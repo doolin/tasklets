@@ -49,15 +49,13 @@ class TasksController < ApplicationController
     # Create the time stamp if the task is started.
     # This will need to be done in the edit method
     # as well.  Will dry it out afterward.
-    @task.start_time = Time.now if @task.started?
+    @task.start_time = Time.zone.now if @task.started?
 
     respond_to do |format|
       if @task.valid?
         format.html { redirect_to(@task, flash: { success: 'Task was successfully created.' }) }
-        format.xml  { render xml: @task, status: :created, location: @task }
       else
         format.html { render action: 'new', status: :forbidden }
-        format.xml  { render xml: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,7 +67,7 @@ class TasksController < ApplicationController
       # if @task.update_attributes(params[:task])
       if @task.update(permitted_params)
         if @task.started?
-          @task.start_time = Time.now
+          @task.start_time = Time.zone.now
           @task.save
         end
         format.html { redirect_to(@task, notice: 'Task was successfully updated.') }

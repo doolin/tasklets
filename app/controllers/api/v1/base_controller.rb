@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class BaseController < ActionController::Base
+    class BaseController < ApplicationController
       include DeviseTokenAuth::Concerns::SetUserByToken
 
       before_action :authenticate_user! # , except: [:new, :create]
