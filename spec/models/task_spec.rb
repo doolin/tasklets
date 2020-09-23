@@ -42,6 +42,44 @@ RSpec.describe Task do
     end
   end
 
+  describe 'destroy' do
+    before :each do
+      user = User.create(email: 'foo@bar.com')
+      root1 = Task.create!(label: 'Animalia', description: 'Top level root of tree', user: user)
+      chordates = root1.children.create(label: 'Chordates', description: 'second level of tree', user: user)
+      root1.children.create(label: 'Sponges', description: 'second level of tree', user: user)
+      root1.children.create(label: 'Rotifers', description: 'second level of tree', user: user)
+      chordates.children.create(label: 'Mammalia', description: 'third level of tree', user: user)
+      chordates.children.create(label: 'Amphibian', description: 'third level of tree', user: user)
+      chordates.children.create(label: 'Reptilia', description: 'third level of tree', user: user)
+    end
+
+    it 'assert full tree' do
+      expect(Task.count).to be 7
+    end
+
+    # Using the destroy method is really expensive, Rails makes a db call for each record:
+    #   Task Load (0.3ms)  SELECT "tasks".* FROM "tasks" WHERE "tasks"."label" = $1 ORDER BY "tasks"."id" ASC LIMIT $2  [["label", "Chordates"], ["LIMIT", 1]]
+    #  (0.2ms)  SAVEPOINT active_record_1
+    #  Task Load (0.3ms)  SELECT "tasks".* FROM "tasks" WHERE "tasks"."parent_id" = $1  [["parent_id", 2]]
+    #  Task Load (0.2ms)  SELECT "tasks".* FROM "tasks" WHERE "tasks"."parent_id" = $1  [["parent_id", 5]]
+    #  Task Destroy (0.3ms)  DELETE FROM "tasks" WHERE "tasks"."id" = $1  [["id", 5]]
+    #  Task Load (0.2ms)  SELECT "tasks".* FROM "tasks" WHERE "tasks"."parent_id" = $1  [["parent_id", 6]]
+    #  Task Destroy (0.2ms)  DELETE FROM "tasks" WHERE "tasks"."id" = $1  [["id", 6]]
+    #  Task Load (0.2ms)  SELECT "tasks".* FROM "tasks" WHERE "tasks"."parent_id" = $1  [["parent_id", 7]]
+    #  Task Destroy (0.4ms)  DELETE FROM "tasks" WHERE "tasks"."id" = $1  [["id", 7]]
+    #  Task Destroy (0.2ms)  DELETE FROM "tasks" WHERE "tasks"."id" = $1  [["id", 2]]
+    it 'from root destroys all children' do
+      Task.where(label: 'Animalia').first.destroy
+      expect(Task.count).to be 0
+    end
+
+    it 'from a subtree destroys children' do
+      Task.where(label: 'Chordates').first.destroy
+      expect(Task.count).to be 3
+    end
+  end
+
   describe 'update' do
     context 'with valid parent_id' do
       it 'increases child count for parent' do
