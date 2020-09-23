@@ -63,6 +63,11 @@ class Task < ApplicationRecord
     size.zero? ? 0 : size - 1
   end
 
+  def self.descendants_delete(label)
+    sql = CteQueryBuilder.descendants_delete(label)
+    execute(sql)
+  end
+
   def self.descendants_cte(id)
     sql = CteQueryBuilder.descendants_cte(id)
     result = execute(sql)
@@ -97,6 +102,10 @@ class Task < ApplicationRecord
 
     def self.descendants_count(id)
       "#{descendants(id)} SELECT count(*) FROM tree where parent_id IS NOT NULL"
+    end
+
+    def self.descendants_delete(id)
+      "#{descendants(id)}  delete from tasks where id in (select id from tree)"
     end
   end
 end
