@@ -33,6 +33,11 @@ blocks:
           - checkout
           - cache restore
       jobs:
+        - name: vulnerability audit
+          commands:
+            - bundle config set path 'vendor/bundle'
+            - bundle install
+            - bundle exec bundle audit check --update --ignore
         - name: brakeman
           commands:
             - bundle config set path 'vendor/bundle'
