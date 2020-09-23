@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', '6.0.3.3'
 gem 'pg'
@@ -50,6 +50,7 @@ end
 
 group :test, :development do
   gem 'email_spec'
+  gem 'bundle-audit', require: false
   gem 'jasmine-rails'
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'database_cleaner'
