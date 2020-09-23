@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Rails/BulkChangeTable
 class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.1]
   def change
     add_column :users, :provider, :string, null: false, default: 'email'
@@ -22,3 +23,4 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.1]
     add_index :users, %i[uid provider], unique: true
   end
 end
+# rubocop:enable Rails/BulkChangeTable

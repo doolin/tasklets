@@ -8,7 +8,7 @@
 
 require:
   - rubocop-performance
-#  - rubocop-rails
+  - rubocop-rails
 
 AllCops:
   NewCops: enable
@@ -59,7 +59,6 @@ Layout/EmptyLines:
 # SupportedStyles: empty_lines, no_empty_lines
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
-    - 'db/migrate/20101217012805_devise_create_users.rb'
     - 'db/schema.rb'
     - 'lib/tasks/backup.rake'
 
