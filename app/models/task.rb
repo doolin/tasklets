@@ -5,7 +5,12 @@ class Task < ApplicationRecord
 
   # https://guides.rubyonrails.org/association_basics.html#self-joins
   # to create a tree structure.
-  # TODO: look into foreign key gem.
+  # Note: there is a migration which adds a postgres foreign key constrain to the Tasks
+  # table. It is not clear how that interacts with the dependent: :destroy parameter.
+  #
+  # TODO: follow up on how Rails dependent: :destroy interacts with a postgres defined
+  # foreign key constraint. This will require watching the postgres logs as the Rails
+  # destroy event is invoked.
   has_many :children, class_name: 'Task', foreign_key: 'parent_id', dependent: :destroy, inverse_of: :parent
   belongs_to :parent, class_name: 'Task', optional: true
 
