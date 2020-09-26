@@ -9,7 +9,8 @@ blocks:
   - name: Deploy
     task:
       secrets:
-        - name: demoapp-heroku
+        - name: heroku-api
+        - name: heroku-api-key
       env_vars:
         - name: HEROKU_REMOTE
           value: https://git.heroku.com/tasklets.git
@@ -20,10 +21,12 @@ blocks:
           commands:
             - checkout --use-cache
             - ssh-keyscan -H heroku.com >> ~/.ssh/known_hosts
-            - chmod 600 ~/.ssh/id_rsa_semaphore_heroku
-            - ssh-add ~/.ssh/id_rsa_semaphore_heroku
+            - chmod 600 ~/.ssh/heroku_api
+            - ssh-add ~/.ssh/heroku_api
             - git config --global url.ssh://git@heroku.com/.insteadOf https://git.heroku.com/
             - git remote add heroku $HEROKU_REMOTE
+            - echo $HEROKU_REMOTE
             - git push heroku -f $SEMAPHORE_GIT_BRANCH:master
-            - heroku run --app $HEROKU_APP_NAME rake db:migrate
+            - echo $SEMAPHORE_GIT_BRANCH
+            - heroku run -a ${HEROKU_APP_NAME} rake db:migrate
             - heroku ps:restart
