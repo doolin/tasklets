@@ -62,3 +62,8 @@ blocks:
             - bundle config set path 'vendor/bundle'
             - bundle exec rake db:create db:migrate
             - bundle exec rspec
+promotions:
+  - name: Production deploy
+    pipeline_file: production-deploy.yml
+    auto_promote:
+      when: "result = 'passed' and branch = 'master'"
