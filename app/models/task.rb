@@ -85,32 +85,4 @@ class Task < ApplicationRecord
     # https://github.com/rails/rails/blob/master/activerecord/lib/active_record/base.rb#L271
     ActiveRecord::Base.connection.execute(sql)
   end
-
-  class CteQueryBuilder
-    def self.descendants(label)
-      # id = id.nil? ? 'IS NULL' : "= #{id}"
-
-      # This pulls all the descendants into a flat array.
-      <<-SQL.squish
-        WITH RECURSIVE tree AS (
-          select t.id, t.parent_id, t.label from tasks t where label = \'#{label}\'
-          UNION ALL
-          select t1.id, t1.parent_id, t1.label from tree
-          join tasks t1 ON t1.parent_id = tree.id
-        )
-      SQL
-    end
-
-    def self.descendants_cte(id)
-      "#{descendants(id)} select id, parent_id, label from tree"
-    end
-
-    def self.descendants_count(id)
-      "#{descendants(id)} SELECT count(*) FROM tree where parent_id IS NOT NULL"
-    end
-
-    def self.descendants_delete(id)
-      "#{descendants(id)}  delete from tasks where id in (select id from tree)"
-    end
-  end
 end
