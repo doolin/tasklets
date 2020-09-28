@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-App1::Application.routes.draw do
+Tasklets::Application.routes.draw do
   resources :profiles
   resources :tasks
 

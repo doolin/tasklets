@@ -6,4 +6,4 @@
 require File.expand_path('config/application', __dir__)
 require 'rake'
 
-App1::Application.load_tasks
+Tasklets::Application.load_tasks
