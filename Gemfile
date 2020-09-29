@@ -27,6 +27,9 @@ gem 'zurb-foundation', group: :assets
 gem 'coverband'
 gem 'aws-sdk-secretsmanager'
 
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.4.2', require: false
+
 group :test do
   gem 'simplecov', require: false
 end
