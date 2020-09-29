@@ -81,7 +81,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     backports (3.18.2)
     bcrypt (3.1.16)
-    brakeman (4.9.1)
+    brakeman (4.10.0)
     builder (3.2.4)
     bundle-audit (0.1.0)
       bundler-audit
