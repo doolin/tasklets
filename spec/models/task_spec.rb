@@ -120,11 +120,22 @@ RSpec.describe Task do
     end
 
     context 'with non-nil invalid parent_id' do
-      it 'raises ActiveRecord::RecordInvalid' do
+      it 'raises ActiveRecord::RecordInvalid when parent_id does reference an existing node' do
         expect do
           task = create :task
           task.update!(parent_id: 42)
         end.to raise_error(ActiveRecord::RecordInvalid, parent_id_exists)
+      end
+
+      it 'raises an error when updating would induce a cycle' do
+        task1 = create :task, label: 'foo'
+        task2 = task1.children.create(label: 'bar')
+        # This is pretty interesting as Rails apparently manages the self-join
+        # automatically, and won't allow a cycle to be induced.
+        # TODO: write a snippet to test Rails in more detail.
+        expect do
+          task1.update!(parent_id: task2.id)
+        end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Children is invalid')
       end
     end
   end
