@@ -19,6 +19,13 @@ Tasklets::Application.routes.draw do
     end
   end
 
+  # Devise authentication. This is a super kludge.
+  # https://github.com/danmayer/coverband#mounting-as-a-rack-app
+  # TODO: https://doolin.atlassian.net/browse/TASKLETS-114
+  authenticate :user, ->(u) { u.id == 1 } do
+    mount Coverband::Reporters::Web.new, at: '/coverage'
+  end
+
   authenticated do
     root to: "secret#index", as: :authenticated_root
   end
