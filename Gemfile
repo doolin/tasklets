@@ -26,6 +26,7 @@ gem 'jquery-rails'
 gem 'zurb-foundation', group: :assets
 gem 'coverband'
 gem 'aws-sdk-secretsmanager'
+gem 'sentry-raven'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
