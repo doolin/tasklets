@@ -55,6 +55,11 @@ blocks:
             - bundle config set path 'vendor/bundle'
             - bundle install
             - bundle exec rubocop --parallel
+        - name: flay for structural similarity
+          commands:
+            - bundle config set path 'vendor/bundle'
+            - bundle install
+            - bundle exec flay
         - name: Run specs
           commands:
             - sem-version ruby 2.7.1
