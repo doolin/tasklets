@@ -6,8 +6,8 @@ RSpec.describe Api::V1::ProfilesController do
   let!(:user) { create :user }
   before { request.headers.merge! user.create_new_auth_token }
 
-  describe '#index' do
-  end
+  # describe '#index' do
+  # end
 
   describe '#create' do
     example 'profile for signed in user' do
@@ -26,12 +26,12 @@ RSpec.describe Api::V1::ProfilesController do
     end
   end
 
-  describe '#edit' do
-  end
+  # describe '#edit' do
+  # end
 
-  describe '#update' do
-  end
+  # describe '#update' do
+  # end
 
-  describe '#destroy' do
-  end
+  # describe '#destroy' do
+  # end
 end

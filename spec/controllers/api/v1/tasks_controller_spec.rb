@@ -25,14 +25,14 @@ module Api
         end
       end
 
-      describe '#edit' do
-      end
+      # describe '#edit' do
+      # end
 
-      describe '#update' do
-      end
+      # describe '#update' do
+      # end
 
-      describe '#destroy' do
-      end
+      # describe '#destroy' do
+      # end
     end
   end
 end

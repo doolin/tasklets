@@ -6,8 +6,8 @@ RSpec.describe 'api_v1_profile request', type: :request do
   let!(:user) { create :user }
   let!(:header) { user.create_new_auth_token }
 
-  describe '#index' do
-  end
+  # describe '#index' do
+  # end
 
   describe 'api_v1_profiles_url' do
     example 'profile for signed in user' do
@@ -31,12 +31,12 @@ RSpec.describe 'api_v1_profile request', type: :request do
     end
   end
 
-  describe '#edit' do
-  end
+  # describe '#edit' do
+  # end
 
-  describe '#update' do
-  end
+  # describe '#update' do
+  # end
 
-  describe '#destroy' do
-  end
+  # describe '#destroy' do
+  # end
 end

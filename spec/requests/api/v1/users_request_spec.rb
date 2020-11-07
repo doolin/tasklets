@@ -11,8 +11,8 @@ module Api
       let!(:user) { create :user }
       let(:headers) { user.create_new_auth_token }
 
-      describe '#index' do
-      end
+      # describe '#index' do
+      # end
 
       describe 'api_v1_users_url' do
         it 'creates new user with signed in user' do
@@ -37,14 +37,14 @@ module Api
         end
       end
 
-      describe '#edit' do
-      end
+      # describe '#edit' do
+      # end
 
-      describe '#update' do
-      end
+      # describe '#update' do
+      # end
 
-      describe '#destroy' do
-      end
+      # describe '#destroy' do
+      # end
     end
   end
 end
