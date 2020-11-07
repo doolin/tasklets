@@ -8,13 +8,13 @@ module Api
       let!(:user) { create :user }
       let(:header_params) { user.create_new_auth_token }
 
-      describe '#index' do
-      end
+      # describe '#index' do
+      # end
 
       # TODO: should not be necessary with API, but I'm leaving
       # it here to think about for a bit.
-      describe '#new' do
-      end
+      # describe '#new' do
+      # end
 
       describe 'api_v1_tasks_url' do
         it 'creates a task for signed in user' do
@@ -38,14 +38,14 @@ module Api
       # TODO: edit should not be something we care about with API.
       # As above with new, I'm leaving it in here to think about
       # it for a bit.
-      describe '#edit' do
-      end
+      # describe '#edit' do
+      # end
 
-      describe '#update' do
-      end
+      # describe '#update' do
+      # end
 
-      describe '#destroy' do
-      end
+      # describe '#destroy' do
+      # end
     end
   end
 end

@@ -54,15 +54,15 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       # Not sold on the following logic.
       # Read through http://weblog.rubyonrails.org/2012/3/21/strong-parameters/
-      if !@profile.valid? # permitted_params.empty?
-        format.html { render action: 'edit', status: :unprocessable_entity }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      if @profile.valid? # permitted_params.empty?
+        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.json { head :ok }
       else
         # This is succeeding when the parameter is not permitted, due to allowing
         # {} to be permitted.
         # @profile.update_attributes(permitted_params)
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { head :ok }
+        format.html { render action: 'edit', status: :unprocessable_entity }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
   end

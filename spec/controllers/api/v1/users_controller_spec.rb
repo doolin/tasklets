@@ -8,8 +8,8 @@ module Api
       let(:user) { create :user }
       before { request.headers.merge! user.create_new_auth_token }
 
-      describe '#index' do
-      end
+      # describe '#index' do
+      # end
 
       describe '#create' do
         it 'a user for signed in user' do
@@ -34,14 +34,14 @@ module Api
         end
       end
 
-      describe '#edit' do
-      end
+      # describe '#edit' do
+      # end
 
-      describe '#update' do
-      end
+      # describe '#update' do
+      # end
 
-      describe '#destroy' do
-      end
+      # describe '#destroy' do
+      # end
     end
   end
 end
