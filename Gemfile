@@ -65,3 +65,5 @@ group :test, :development do
   gem 'rspec-activemodel-mocks'
   gem 'rubycritic'
 end
+
+gem 'webpacker', '~> 5.2'
