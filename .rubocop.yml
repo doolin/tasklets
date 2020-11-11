@@ -16,6 +16,9 @@ AllCops:
     - 'config.ru'
     - 'db/schema.rb'
     - 'vendor/**/*'
+    - 'node_modules/**/*.rb'
+    - 'node_modules/**/*.spec'
+    - 'bin/webpack*'
 
 # Offense count: 11
 # Cop supports --auto-correct.
