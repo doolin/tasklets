@@ -160,7 +160,7 @@ RSpec.describe Task do
 
     describe '#descendants' do
       it 'builds tree from root using repeated database calls' do
-        # Note: Order matters in the JSON output as a result of order mattering in the
+        # NOTE: Order matters in the JSON output as a result of order mattering in the
         # hash which is created in the method. The following test is fragile in so far as
         # it relies on hash order.
         expected = {
