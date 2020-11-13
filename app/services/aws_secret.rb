@@ -7,6 +7,7 @@ require 'base64'
 # Probably good to keep all the rescues in this method, they are
 # really helpful if something goes wrong.
 class AwsSecret
+  # rubocop:disable Lint/DuplicateBranch
   def get(secret_name, region_name)
     client = Aws::SecretsManager::Client.new(region: region_name)
 
@@ -49,4 +50,5 @@ class AwsSecret
       JSON.parse(secret)
     end
   end
+  # rubocop:enable Lint/DuplicateBranch
 end

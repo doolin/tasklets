@@ -19,8 +19,10 @@ module NavigationHelpers
     when /^sign in$/
       '/users/sign_in'
 
+    # rubocop:disable Lint/DuplicateBranch
     when /^the sign in page$/
       '/users/sign_in'
+    # rubocop:enable Lint/DuplicateBranch
 
     when /^the sign out link$/
       '/users/sign_out'
