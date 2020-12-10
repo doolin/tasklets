@@ -1,7 +1,7 @@
 version: v1.0
 name: Tasklets for the win!
 execution_time_limit:
-  minutes: 10
+  minutes: 15
 agent:
   machine:
     type: e1-standard-2
