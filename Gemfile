@@ -59,7 +59,7 @@ group :test, :development do
   gem 'email_spec'
   gem 'bundle-audit', require: false
   gem 'jasmine-rails'
-  gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rspec-activemodel-mocks'
