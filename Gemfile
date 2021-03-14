@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby '2.7.2'
 
-gem 'rails', '6.1'
+gem 'rails', '6.1.3'
 gem 'pg'
 gem 'devise'
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
