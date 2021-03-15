@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
+  class TaskError < StandardError; end
+
   belongs_to :user
 
   # https://guides.rubyonrails.org/association_basics.html#self-joins
@@ -33,6 +35,29 @@ class Task < ApplicationRecord
       children << descendants(c)
     end
     { label: root.label, children: children }
+  end
+
+  # Swap all the nodex in one subtree swap parents with all the nodes in another
+  # subtree. This would be like having two teams where the team leads swap.
+  #
+  # Note: this method is NOT thread safe.
+  def self.swap_children(task1, task2)
+    raise TaskError, 'nil task' if task1.nil? || task2.nil?
+
+    # We need to build the actual tasks instead of acquiring
+    # a collection proxy (task1.children, etc) as a collection
+    # is lazy loaded, and there is no "temp" variable for managing
+    # the swap state. The locally built tasks provide the temporary
+    # state: update both then write to database. Otherwise, one
+    # task ends up with all the children.
+    children1 = Task.where(parent_id: task1.id)
+    children2 = Task.where(parent_id: task2.id)
+
+    children1.each { |c| c.parent_id = task2.id }
+    children2.each { |c| c.parent_id = task1.id }
+
+    children1.each(&:save!)
+    children2.each(&:save!)
   end
 
   def self.to_hash(task)
