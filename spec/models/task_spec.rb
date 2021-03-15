@@ -138,6 +138,90 @@ RSpec.describe Task do
         end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Children is invalid')
       end
     end
+
+    context 'swap children' do
+      before :each do
+        user = create :user
+        root = Task.create!(label: 'bigboss', description: 'the big boss', user: user)
+
+        # TODO: https://doolin.atlassian.net/browse/TASKLETS-159
+        # See if these can be built via factories instead
+        lead1 = root.children.create(label: 'lead1', description: 'team lead 1', user: user)
+        lead1.children.create(label: 'm1-t1', description: 'team member 1 for team 1', user: user)
+        lead1.children.create(label: 'm2-t1', description: 'team member 2 for team 1', user: user)
+
+        lead2 = root.children.create(label: 'lead2', description: 'team lead 2', user: user)
+        lead2.children.create(label: 'm1-t2', description: 'team member 1 for team 2', user: user)
+        lead2.children.create(label: 'm2-t2', description: 'team member 2 for team 2', user: user)
+
+        root.children.create(label: 'lead3', description: 'team lead 3', user: user)
+      end
+
+      it 'raises TaskError when an argument is nil' do
+        l1 = Task.find_by(label: 'lead1')
+        l2 = Task.find_by(label: 'lead2')
+
+        aggregate_failures do
+          expect do
+            Task.swap_children(nil, l2)
+          end.to raise_error(Task::TaskError)
+
+          expect do
+            Task.swap_children(l1, nil)
+          end.to raise_error(Task::TaskError)
+        end
+      end
+
+      it 'swaps all the children from one team lead to another lead' do
+        lead1 = Task.find_by(label: 'lead1')
+        lead2 = Task.find_by(label: 'lead2')
+        Task.swap_children(lead1, lead2)
+        l1 = Task.find_by(label: 'lead1')
+        l2 = Task.find_by(label: 'lead2')
+
+        labels1 = l1.children.to_a.map(&:label).join(',')
+        labels2 = l2.children.to_a.map(&:label).join(',')
+
+        aggregate_failures do
+          expect(labels1).to eq 'm1-t2,m2-t2'
+          expect(labels2).to eq 'm1-t1,m2-t1'
+        end
+      end
+
+      context 'one argument has no children' do
+        it 'second has no children' do
+          lead1 = Task.find_by(label: 'lead1')
+          lead3 = Task.find_by(label: 'lead3')
+          Task.swap_children(lead1, lead3)
+          l1 = Task.find_by(label: 'lead1')
+          l3 = Task.find_by(label: 'lead3')
+
+          labels1 = l1.children.to_a.map(&:label).join(',')
+          labels3 = l3.children.to_a.map(&:label).join(',')
+
+          aggregate_failures do
+            expect(labels1).to eq ''
+            expect(labels3).to eq 'm1-t1,m2-t1'
+          end
+        end
+
+        it 'first has no children' do
+          lead1 = Task.find_by(label: 'lead1')
+          lead3 = Task.find_by(label: 'lead3')
+          Task.swap_children(lead3, lead1)
+          l1 = Task.find_by(label: 'lead1')
+          l3 = Task.find_by(label: 'lead3')
+
+          labels1 = l1.children.to_a.map(&:label).join(',')
+          labels3 = l3.children.to_a.map(&:label).join(',')
+
+          aggregate_failures do
+            expect(labels1).to eq ''
+            expect(labels3).to eq 'm1-t1,m2-t1'
+          end
+        end
+      end
+    end
   end
 
   context 'extracting records' do
