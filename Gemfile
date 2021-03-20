@@ -7,7 +7,7 @@ ruby '2.7.2'
 gem 'rails', '6.1.3'
 gem 'pg'
 gem 'devise'
-gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
+gem 'devise_token_auth'
 gem 'haml-rails'
 gem 'thin'
 # http://blog.daviddollar.org/2011/05/06/introducing-foreman.html
