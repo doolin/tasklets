@@ -9,7 +9,7 @@ gem 'pg'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'haml-rails'
-gem 'thin'
+# gem 'thin'
 # http://blog.daviddollar.org/2011/05/06/introducing-foreman.html
 # The advice from https://github.com/ddollar/foreman is to _not_
 # put `foreman` in the Gemfile, install is using `gem install foreman`
