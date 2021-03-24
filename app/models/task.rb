@@ -37,6 +37,24 @@ class Task < ApplicationRecord
     { label: root.label, children: children }
   end
 
+  #   Suppose a three level tree:
+  #
+  #     A
+  #     |
+  #     B
+  #   /   \
+  #  C     D
+  #
+  # Turn it into:
+  #
+  #     A
+  #   /   \
+  #  C     D
+  def delete_reassign_children!
+    children.each { |child| child.update!(parent_id: parent_id) }
+    delete
+  end
+
   # Swap all the nodex in one subtree swap parents with all the nodes in another
   # subtree. This would be like having two teams where the team leads swap.
   #
