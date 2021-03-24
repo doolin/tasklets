@@ -94,6 +94,35 @@ RSpec.describe Task do
     end
   end
 
+  describe '#delete_reassign_children' do
+    before :each do
+      user = User.create(email: 'foo@bar.com')
+      @root1 = Task.create!(label: 'Animalia', description: 'Top level root of tree', user: user)
+      @chordates = @root1.children.create(label: 'Chordates', description: 'second level of tree', user: user)
+      @chordates.children.create(label: 'Mammalia', description: 'third level of tree', user: user)
+      @chordates.children.create(label: 'Amphibian', description: 'third level of tree', user: user)
+    end
+
+    it 'deletes a node and reassigns its children to its parent' do
+      expect(Task.count).to be 4
+      expect(@root1.children.count).to be 1
+      expect(@chordates.children.count).to be 2
+
+      @chordates.delete_reassign_children!
+
+      expect(@root1.children.count).to be 2
+      expect(Task.count).to be 3
+    end
+
+    it 'promotes children to root' do
+      @chordates.update!(parent_id: nil)
+      @chordates.delete_reassign_children!
+      tree_count = Task.where(parent_id: nil).count
+
+      expect(tree_count).to be 3
+    end
+  end
+
   describe 'update' do
     context 'with valid parent_id' do
       it 'increases child count for parent' do
