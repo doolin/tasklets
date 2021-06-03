@@ -112,7 +112,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.8)
-    coverband (5.0.3)
+    coverband (5.1.0)
       redis
     crass (1.0.6)
     cucumber (5.3.0)
